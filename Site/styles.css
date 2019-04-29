@@ -1,0 +1,15 @@
+li {
+	display: inline !important;
+}
+
+a {
+	display: inline !important;
+}
+
+h1 {
+	color : blue;
+}
+
+#brand{
+	font-size:30px;
+}
