@@ -1,10 +1,10 @@
 <html>
 	<head>
-		<title>ECE Amazon | Home</title>
+		<title>ECE Amazon | Catégories</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
-		<link href="styleHome.css" rel="stylesheet" type="text/css"/>
+		<link href="styleCategorie.css" rel="stylesheet" type="text/css"/>
 		
 		<!-- Bootstrap content -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -32,7 +32,7 @@
 			<!--  Menu -->
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#">Admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="categories.html">Admin</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
@@ -62,56 +62,6 @@
 				<div class="container-fluid">
 				<!-- Text decoration to none pour enlever le surlignage du lien -->
 					
-					<!-- Lien pour les Ventes flash -->
-					<a href="#" style="text-decoration: none" ><h1>Ventes Flash</h1></a>
-					
-					<div class="card-deck" id="flash" style="width: 85%; margin: auto;">
-						<!-- Best seller Livre -->
-						<div class="card" >
-							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center">Best Seller Livres</h4> </div>
-							<img class="card-img" src="" alt="Card image">
-							<div class="card-body" >
-								<p class="card-text" style="font-size: 0.75rem">Description du produit a charger dans la base de données</p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
-								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;">75€</p>
-							</div>
-						</div>						
-						
-						<!-- Best seller Musique -->
-						<div class="card" >
-							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center">Best Seller Musique</h4> </div>
-							<img class="card-img" src="" alt="Card image">
-							<div class="card-body" >
-								<p class="card-text" style="font-size: 0.75rem">Description du produit a charger dans la base de données</p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
-								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;">75€</p>
-							</div>
-						</div>						
-						
-						<!-- Best seller Sport -->
-						<div class="card " >
-							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center">Best Seller Sports</h4> </div>
-							<img class="card-img" src="" alt="Card image">
-							<div class="card-body" >
-								<p class="card-text" style="font-size: 0.75rem">Description du produit a charger dans la base de données</p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
-								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;">75€</p>
-							</div>
-						</div>						
-						
-						<!-- Best seller Vetements -->
-						<div class="card " >
-							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center">Best Seller Vêtements</h4> </div>
-							<img class="card-img" src="" alt="Card image">
-							<div class="card-body" >
-								<p class="card-text" style="font-size: 0.75rem">Description du produit a charger dans la base de données</p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
-								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;">75€</p>
-							</div>
-						</div>
-						
-					</div>
-					
 					<!-- Lien pour les categories -->
 					<a href="categories.html" style="text-decoration: none"><h1>Catégories</h1><a><br>
 						
@@ -121,6 +71,8 @@
 							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Livres</a> </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Livres.png" alt="Card image">
+								<p class="card-text" style="font-size: 0.75rem; text-align: left">Venez découvrir notre large sélection de livres pour les petits comme pour les grands</p>
+								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
 							</div>
 						</div>						
 						
@@ -129,6 +81,8 @@
 							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Musique</a>  </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Musique.png" alt="Card image">
+								<p class="card-text" style="font-size: 0.75rem; text-align: left">Ecoutez notre sélection de musiques et nos divers artistes sélectionnés rien que pour vous</p>
+								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
 							</div>
 						</div>						
 						
@@ -137,6 +91,8 @@
 							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Sports & Loisirs</a>  </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Sports.png" alt="Card image">
+								<p class="card-text" style="font-size: 0.75rem; text-align: left">Gardez la forme avec notre panel d'équipements de sports et articles de loisirs en plein air </p>
+								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
 							</div>
 						</div>						
 						
@@ -145,6 +101,8 @@
 							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Vêtements</a>  </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Vetements.png" alt="Card image">
+								<p class="card-text" style="font-size: 0.75rem; text-align: left">Affichez un style unique avec notre selection mode de première qualité</p>
+								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
 							</div>
 						</div>
 						
