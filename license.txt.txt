@@ -1,8 +1,10 @@
 Bibliographie.
 
+
 Outil d'aide à la conception du site :
 
 - https://wireframe.cc/pro/ (Conception du Wireframe)
+- https://www.draw.io (Conception du Storyboard et du Modèle entité-association de la base de donnée)
 
 
 Outil d'aide à la conception du code :
