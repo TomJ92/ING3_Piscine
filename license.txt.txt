@@ -1,0 +1,12 @@
+Bibliographie.
+
+Outil d'aide à la conception du site :
+
+- https://wireframe.cc/pro/ (Conception du Wireframe)
+
+
+Outil d'aide à la conception du code :
+
+- https://getbootstrap.com/ (Bootstrap4)
+- https://bootstrapious.com/tutorial/sidebar/index.html (Vertical Sidebar in Bootstrap4)
+- https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp (NavsBars)
