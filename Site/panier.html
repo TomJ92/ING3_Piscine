@@ -1,17 +1,17 @@
 <html>
 	<head>
-		<title>ECE Market Place | Catégories</title>
+		<title>ECE Market Place | Panier </title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
-		<link href="styleCategorie.css" rel="stylesheet" type="text/css"/>
+		<link href="styleHome.css" rel="stylesheet" type="text/css"/>
 		
 		<!-- Bootstrap content -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+			
 	</head>
 	
 	<body>
@@ -42,7 +42,7 @@
 		
 		<div class="d-flex" id="wrapper">
 		
-			<!-- Sidebar -->
+		<!-- Sidebar -->
 			<div class="bg-light border-right" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
 					<a href="categories.html" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
@@ -53,7 +53,6 @@
 					<a href="#" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
 				</div>
 			</div>
-
 		<!-- /#sidebar-wrapper -->
 
 		<!-- Page Content -->
@@ -63,51 +62,47 @@
 				<!-- Text decoration to none pour enlever le surlignage du lien -->
 					
 					<!-- Lien pour les categories -->
-					<a href="categories.html" style="text-decoration: none"><h1>Catégories</h1></a><br>
-						
-					<div class="card-deck" id="categories" style="width: 85%; margin-bottom: 4rem; margin-left: auto; margin-right: auto; text-align: center">
-						<!--  Livre -->
-						<div class="card" >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Livres</a> </div>
-							<div class="card-body" >
-								<img class="card-img" src="Pictures/Livres.png" alt="Card image">
-								<p class="card-text" style="font-size: 0.75rem; text-align: left">Venez découvrir notre large sélection de livres pour les petits comme pour les grands</p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
-							</div>
-						</div>						
-						
-						<!-- Musique -->
-						<div class="card " >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Musique</a>  </div>
-							<div class="card-body" >
-								<img class="card-img" src="Pictures/Musique.png" alt="Card image">
-								<p class="card-text" style="font-size: 0.75rem; text-align: left">Ecoutez notre sélection de musiques et nos divers artistes sélectionnés rien que pour vous</p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
-							</div>
-						</div>						
-						
-						<!-- Sport & Loisirs -->
-						<div class="card " >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Sports & Loisirs</a>  </div>
-							<div class="card-body" >
-								<img class="card-img" src="Pictures/Sports.png" alt="Card image">
-								<p class="card-text" style="font-size: 0.75rem; text-align: left">Gardez la forme avec notre panel d'équipements de sports et articles de loisirs en plein air </p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
-							</div>
-						</div>						
-						
-						<!-- Vetements -->
-						<div class="card" >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Vêtements</a>  </div>
-							<div class="card-body" >
-								<img class="card-img" src="Pictures/Vetements.png" alt="Card image">
-								<p class="card-text" style="font-size: 0.75rem; text-align: left">Affichez un style unique avec notre selection mode de première qualité</p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
-							</div>
-						</div>
-						
-					</div>
+					<h1 style="text-align:center ">Mon Panier</h1><br>
+					<table class="table table-striped vertical-align: middle" style="width:80%; margin: auto">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">Image</th>
+								<th scope="col">Article</th>
+								<th scope="col">Prix Unitaire</th>
+								<th scope="col">Quantité</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row"><img class="card-img" src="Pictures/Musique.png" style="width:6rem; height:6rem" alt="Card image"></th>
+								<td class="align-middle">Album de Coldplay</td>
+								<td class="align-middle"><h5 style="font-weight: bold">12 €</h5></td>
+								<td class="align-middle">1</td>
+								<td class="align-middle"><button type="button" class="btn btn-outline-danger">Supprimer cet article</button></td>
+							</tr>
+							<tr>
+								<th scope="row"><img class="card-img" src="Pictures/Livres.png" style="width:6rem; height:6rem" alt="Card image"></th>
+								<td class="align-middle">Game of thrones</td>
+								<td class="align-middle"><h5 style="font-weight: bold">18 €</h5></td>
+								<td class="align-middle">1</td>
+								<td class="align-middle"><button type="button" class="btn btn-outline-danger">Supprimer cet article</button></td>
+							</tr>
+							<tr>
+								<th scope="row"><img class="card-img" src="Pictures/Sports.png" style="width:6rem; height:6rem" alt="Card image"></th>
+								<td class="align-middle">Ballon de foot</td>
+								<td class="align-middle"><h5 style="font-weight: bold">5 €</h5></td>
+								<td class="align-middle">5</td>
+								<td class="align-middle"><button type="button" class="btn btn-outline-danger">Supprimer cet article</button></td>
+							</tr>
+						</tbody>
+					</table><br>
+					<div id="commande" style = "text-align: center">
+						<button type="button" class="btn btn-success" style="font-size: 1.5rem;">Passer ma commande</button>
+						<h3 style ="display: inline-block; margin-left: 5rem; font-weight: bold;"> Prix Total : 55 €</h3>
 					
+					</div>
+						
 				</div>
 				
 			</div>
