@@ -1,18 +1,57 @@
-h1 {
-	color : blue;
+#wrapper{
+	max-height: 80%;
 }
 
-#sidebar{
-	width: 15%;
-	height: 80%;
+/* set la color des titres de la page */
+h1{
+	color: gray;
+	padding: 1.5rem;
 }
 
-#navigation{
-	width: 100%;
-	height: 10%;
+/*rajoute un peu d'espace a gauche du logo */
+#brand{
+		padding-left :2rem;
 }
 
-#footer{
-	width: 100%;
-	height: 10%;
+/*Parametre de transition*/
+#sidebar-wrapper {
+  min-height: 110vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+/* taille de la sidebar */
+#sidebar-wrapper .list-group {
+	width: 15rem;
+}
+
+/* cache la sidebar si la largeur minimale n'est plus respéctée*/
+#page-content-wrapper {
+	min-width: 100vw;
+}
+
+/* 0 de marge quand la sidebar est visible*/
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+/* Quand la sidebar est cachée (toggle button pressed)*/
+@media (min-width: 768px) {
+	#sidebar-wrapper {
+		margin-left: 0;
+	}
+	
+	/* set le content sur toute la largeur de la page*/
+	#page-content-wrapper {
+		min-width: 0;
+		width: 100%;
+	}
+	
+	/*cache la sidebar */
+	#wrapper.toggled #sidebar-wrapper {
+		margin-left: -15rem;
+	}
 }
