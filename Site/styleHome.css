@@ -8,6 +8,11 @@ h1{
 	padding: 1.5rem;
 }
 
+h2{
+	color: gray;
+	padding: 1.7rem;
+}
+
 /*rajoute un peu d'espace a gauche du logo */
 #brand{
 		padding-left :2rem;
@@ -15,7 +20,7 @@ h1{
 
 /*Parametre de transition*/
 #sidebar-wrapper {
-  min-height: 110vh;
+  min-height: 110%;
   margin-left: -15rem;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
@@ -35,7 +40,7 @@ h1{
 
 /* 0 de marge quand la sidebar est visible*/
 #wrapper.toggled #sidebar-wrapper {
-  margin-left: 0;
+	margin-left: 0;
 }
 
 /* Quand la sidebar est cachée (toggle button pressed)*/
