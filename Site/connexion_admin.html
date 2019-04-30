@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>ECE Market Place | Paiement</title>
+		<title>ECE Market Place | Connexion Admin</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
@@ -60,65 +60,27 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Informations relatives à la Livraison</h1><br>
-					<!-- Carte enregistrée-->
-					<div class="card" style="width: 60%; margin:auto;">
+					<h1 style="font-weight: bold; text-align: center;">Bienvenue dans la section Administrateur!</h1><br>
+					<!-- Connexion-->
+					<div class="card" style="width: 40%; margin:auto;">
 						<div class="card-header bg-light">
-							<h3 style="font-weight: bold; font-size: 1.5rem ">Carte enregistrée </h3>
-						</div>
-						<div class="card-body bg-light">
-							
-							<p style="font-weight: bold; color: #696969; font-size:1.25rem;">
-								<img  src="Pictures/Mastercard.png" width="100" height="70" alt="" id="carte"> 
-								|  Tom Jouvet  |  Carte : 1324 XXXX XXXX XXXX
-							</p>
-							<p style="text-align: right;"><a href="paiement.html"><button type="button" class="btn btn-success" style="font-size: 1.5rem;">Utiliser cette carte</button></a></p>
-						</div>
-					</div><br>
-					<!-- Utiliser une autre carte-->
-					<div class="card" style="width: 60%; margin:auto;">
-						<div class="card-header bg-light">
-							<h3 style="font-weight: bold; font-size: 1.5rem ">Utiliser une autre Carte ? </h3>
+							<h3 style="font-weight: bold; font-size: 1.5rem ">Veuillez saisir vos Identifiants</h3>
 						</div>
 						<div class="card-body bg-light">
 							<form class="form" action="/action_page.php">
 								<div style="display: inline-block; width: 90%;">
-									<p style="text-align: left;">Titulaire de la carte :</p>
-									<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le nom du titulaire de la carte" id="nom" >
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Identifiant :</p>
+									<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre login" id="login" >
 								</div>
-								<div style="display: inline-block; width: 92%;">
-									<p style="text-align: left;">Numéro de carte :</p>
-									<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre numéro de carte" id="carte">
+								<div style="display: inline-block; width: 90%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Mot de passe :</p>
+									<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre mot de passe" id="password">
 								</div>
-								<div style="display: inline-block; width: 25%;">
-									<p style="text-align: left;">Type de carte :</p>
-									<select class="form-control" id="card type">
-										<option>Mastercard</option>
-										<option>Visa</option>
-										<option>American Express</option>
-										<option>Paypal</option>
-									</select>						
-								</div>
-								<div style="display: inline-block; width: 5%;"></div>
-								<div style="display: inline-block; width: 30%;">
-									<p style="text-align: left;">CVV :</p>
-									<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre CVV" id="cvv">
-								</div>
-								<div style="display: inline-block; width: 5%;"></div>
-								<div style="display: inline-block; width: 30%;">
-									<p style="text-align: left;">Date d'expiration :</p>
-									<div style="display: inline-block; width: 30%; "><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Mois" id="mois"></div>
-									<div style="display: inline-block; "><p>/</p></div>
-									<div style="display: inline-block; width: 30%; "><input type="text" class="form-control mb-2 mr-sm-2" placeholder="Année" id="annee"></div>
-								</div>
-						
-								<p style="text-align: right; margin-top: 2rem;"><a href="paiement.html" ><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">Utiliser cette carte</button></a></p>
-							
-							</form> 
-							
+								<div style="text-align: center; margin-top: 2rem;"><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">Se connecter</button></div>
+								
+							</form>
 						</div>
 					</div><br>
-					
 				</div>
 			</div>
 			<!-- /#page-content-wrapper -->
