@@ -20,7 +20,7 @@ h2{
 
 /*Parametre de transition*/
 #sidebar-wrapper {
-  min-height: 110%;
+  min-height: 110vh;
   margin-left: -15rem;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
