@@ -26,7 +26,10 @@ else
 			if(($mail==$data['Email_client']) && ($mdp==$data['Password']))
 			{
 				$validation=true;
-				$client=$data;
+				session_name('Client');
+				session_start();
+				$_SESSION = array();
+				$_SESSION=$data;
 			}
 		}
 	}
@@ -36,12 +39,12 @@ else
 	}
 	if($validation)
 	{
-		$message= 'Bienvenue, vous êtes connecté ' . $client['Prenom'].' '. $client['Nom'];
+		$message= 'Bienvenue, vous êtes connecté ' . $_SESSION['Prenom'].' '. $_SESSION['Nom'];
 		header('Location: compte_client.html');
 	}
 	else
 	{
-		$message= '<p> Identifiants incorrects </p> <p> <a href="connexion_client.html"> Revenir au menu de connexion </p>';
+		$message= '<p> Identifiants incorrects </p>';
 	}
 }
 mysqli_close($db_handle);
@@ -115,7 +118,7 @@ mysqli_close($db_handle);
 							<h3 style="font-weight: bold; font-size: 1.5rem ">Veuillez saisir vos Identifiants</h3>
 						</div>
 						<div class="card-body bg-light">
-							<form class="form" action="connexion_client.php" method="post">
+							<form class="form" action="client_connexion.php" method="post">
 								<div style="display: inline-block; width: 90%;">
 									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Identifiant :</p>
 									<input type="email" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre adresse E-Mail" name="email" >
