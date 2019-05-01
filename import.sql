@@ -151,7 +151,7 @@ VALUES
 (45,'Short de sport','Idéal pour les sports en interieur ou en exterieur par beau temps','https://www.youtube.com/watch?v=OKdEZFacHQc','Vetements',39,1,'M','violet',57, 301),
 (46,'T-shirt blanc','Un beau tshirt blanc','https://www.youtube.com/watch?v=d1K-OrFo7QA','Vetements',38,1,'M','blanc',78, 1750),
 (47,'T-shirt gris','Un très joli tshirt gris','https://www.youtube.com/watch?v=fH6oSWBFSg0','Vetements',19,1,'XL','gris',70, 772),
-(48,'T-shirt rose','Un très joli tshirt rose avec un chat trop mims','https://www.youtube.com/watch?v=OJ8HeOC7Ono','Vetements',34,0,'XS','rose',7, 49),
+(48,'T-shirt rose','Un très joli tshirt rose avec un chat trop mims','https://www.youtube.com/watch?v=OJ8HeOC7Ono','Vetements',34,0,'XS','rose',7, 49);
 
 INSERT INTO ImgItem(Nom,Id_item)
 VALUES
@@ -202,8 +202,7 @@ VALUES
 ('Pictures/vetements/short_sport_homme.jpg',45),
 ('Pictures/vetements/tshirt_blanc_femme.jpg',46),
 ('Pictures/vetements/tshirt_gris_homme.jpg',47),
-('Pictures/vetements/tshirt_rose.jpg',48),
-
+('Pictures/vetements/tshirt_rose.jpg',48);
 
 
 INSERT INTO Client(Email_client,Nom,Prenom,Password,Adresse,Ville,Code_postal,Pays,Telephone,Type_carte,Numero_carte,Nom_carte,Date_carte,Code_carte)
