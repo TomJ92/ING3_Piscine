@@ -102,13 +102,13 @@ VALUES
 INSERT INTO Admin (Pseudo,Password)
 VALUES
 ('root','root');
-INSERT INTO Item (Id_item,Nom, Video,Categorie, Prix,Genre,Taille,Couleur,Quantite)
+INSERT INTO Item (Id_item,Nom,Description,Video,Categorie, Prix,Genre,Taille,Couleur,Quantite,Vendu)
 VALUES
-(1, 'Rickroll','https://www.youtube.com/watch?v=dQw4w9WgXcQ','Musique',4,null,null,null,3, 234),
-(2, 'Harry Potter et les gilets jaunes','https://www.youtube.com/watch?v=OZ6KaQXykQE','Livres',20,null,null,null,6, 13),
-(5, 'Game of Thrones',null,'Livres',20,null,null,null,6, 4837),
-(3, 'Tshirt bordeau UNICLO','https://www.youtube.com/watch?v=sogkfan2VHw','Vetements',15,1,'M','rouge',10, 433),
-(4, 'Barre de traction','https://www.youtube.com/watch?v=RLDlqbumvW0','Sports',21,null,null,null,2, 12);
+(1, 'Rickroll','Chanson cool','https://www.youtube.com/watch?v=dQw4w9WgXcQ','Musique',4,null,null,null,3, 234),
+(2, 'Harry Potter et les gilets jaunes','Livre sympa','https://www.youtube.com/watch?v=OZ6KaQXykQE','Livres',20,null,null,null,6, 13),
+(5, 'Game of Thrones','Serie qualite',null,'Livres',20,null,null,null,6, 4837),
+(3, 'Tshirt bordeau UNICLO','Beau tshirt','https://www.youtube.com/watch?v=sogkfan2VHw','Vetements',15,1,'M','rouge',10, 433),
+(4, 'Barre de traction','Des pompes et des tractions','https://www.youtube.com/watch?v=RLDlqbumvW0','Sports',21,null,null,null,2, 12);
 INSERT INTO ImgItem(Nom,Id_item)
 VALUES
 ('rick.png',1),
