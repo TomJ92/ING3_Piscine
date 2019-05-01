@@ -38,6 +38,7 @@ else
 	if($validation)
 	{
 		$message= 'Bienvenue, vous êtes connecté ' . $client['Prenom'].' '. $client['Nom'];
+		header('Location: compte_client.html');
 	}
 	else
 	{
@@ -126,8 +127,8 @@ mysqli_close($db_handle);
 								</div>
 								<p style="margin-top: 2rem;"><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">Se connecter</button></p>
 								<?php 
-echo $message;
- ?>
+								echo $message;
+ 								?>
 								<!-- Nouveau client zone -->
 								<p style="font-weight: bold; font-size: 1.25rem"> Nouveau Client ?</p>
 								<a href="inscription_client.html" ><button type="button" class="btn btn-success" style="font-size: 1.5rem;">S'inscrire</button></a>													
