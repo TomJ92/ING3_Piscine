@@ -59,50 +59,39 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Liste actuelle des vendeurs</h1><br>
-					<!-- Recherche -->
-					<div style="text-align: center">
-						<form>
-							<div style="display: inline-block"><input type="text" class="form-control form-control-lg mb-2 mr-sm-2" placeholder="Rechercher un Item" id="prenom" ></div>
-							<div style="display: inline-block; width:2%"></div>
-							<div style="display: inline-block"><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">Rechercher</button></div>
-						</form>
-					</div>					
+					<h1 style="font-weight: bold; text-align: center;">Ajouter un vendeur</h1><br>				
 					
 					<!-- Table de recherche -->
 					<div style="text-align: center">
-						<form action="action.php">
-							<table class="table table-striped " style="width:80%; margin: auto">
-								<thead class="thead-dark">
-									<tr>
-										<th scope="col">Email</th>
-										<th scope="col">Pseudo</th>
-										<th scope="col">Nom</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="align-middle">louis.deveze@edu.ece.fr</td>
-										<td class="align-middle">Loulou</td>
-										<td class="align-middle">Deveze</td>
-									</tr>
-									<tr>
-										<td class="align-middle">tom.jouvet@edu.ece.fr</td>
-										<td class="align-middle">Tommy</td>
-										<td class="align-middle">Jouvet</td>
-									</tr>
-									<tr>
-										<td class="align-middle">paul.chasseloup@edu.ece.fr</td>
-										<td class="align-middle">Paulo</td>
-										<td class="align-middle">Chasseloup</td>
-									</tr>
-								</tbody>
-							</table><br>
-							<!-- Navigation -->
-							<div style="text-align: center">
-								<div style="display: inline-block"><a href="admin_ajouter_vendeurs.html" style="text-decoration: none;"><button type="button" class="btn btn-success" style="font-size: 1.5rem;">Ajouter</button></a></div>
-								<div style="display: inline-block"><a href="admin_supprimer_vendeurs.html" style="text-decoration: none;"><button type="button" class="btn btn-danger" style="font-size: 1.5rem;">Supprimer</button></a></div>
-							</div>	
+						<form action="admin_ajouter_vendeurs.php">
+							<div class="card" style="width: 70%; margin:auto;">
+								
+								<div class="card-header bg-light">
+									<h3 style="font-weight: bold; font-size: 1.5rem ">Saisir les informations necessaires</h3>
+								</div>
+								
+								<div class="card-body bg-light">
+									<!-- Nom -->
+									<div style="display: inline-block; width: 100%;">
+										<p style="text-align: left;">Nom :</p>
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le nom " id="nom" />
+									</div>
+									<!-- email -->
+									<div style="display: inline-block; width: 100%;">
+										<p style="text-align: left;">Email :</p>
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez l'email " id="email" />
+									</div>
+									<!-- Pseudo -->
+									<div style="display: inline-block; width: 100%;">
+										<p style="text-align: left;">Pseudo :</p>
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le pseudo " id="pseudo" />
+									</div>
+									<!-- Validation -->
+									<div style="text-align: center">
+										<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Ajouter</button>
+									</div>
+								</div>
+							</div>
 						</form>
 					</div>			
 				</div>
