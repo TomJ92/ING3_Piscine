@@ -6,6 +6,12 @@ $message='';
 $database='commerce';
 $db_handle=mysqli_connect('localhost','root','');
 $db_found=mysqli_select_db($db_handle,$database);
+session_name('Client');
+session_start();
+if(!empty($_SESSION['Email_client']))
+{
+	header('Location: client_compte.php');
+}
 //si il y a un champ vide
 if(empty($mail)||empty($mdp))
 {
@@ -26,8 +32,6 @@ else
 			if(($mail==$data['Email_client']) && ($mdp==$data['Password']))
 			{
 				$validation=true;
-				session_name('Client');
-				session_start();
 				$_SESSION = array();
 				$_SESSION=$data;
 			}
@@ -40,7 +44,7 @@ else
 	if($validation)
 	{
 		$message= 'Bienvenue, vous êtes connecté ' . $_SESSION['Prenom'].' '. $_SESSION['Nom'];
-		header('Location: compte_client.html');
+		header('Location: client_compte.php');
 	}
 	else
 	{
@@ -75,7 +79,7 @@ mysqli_close($db_handle);
 
 			
 			<!-- Brand image -->
-			<a class="navbar-brand" href="home.html" id="brand">
+			<a class="navbar-brand" href="home.php" id="brand">
 				<img src="Pictures/Logo.png" width="130px" height="60px">
 			</a>
 
@@ -83,10 +87,10 @@ mysqli_close($db_handle);
 			<!--  Menu -->
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#">Admin</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
-					<li class="nav-item"><a class="nav-link" href="compte_client.html">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
-					<li class="nav-item"><a class="nav-link" href="panier.html">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
+					<li class="nav-item"><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="panier.php">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -96,12 +100,12 @@ mysqli_close($db_handle);
 			<!-- Sidebar -->
 			<div class="bg-light border-right" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
-					<a href="categories.html" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
-					<a href="livres.html" class="list-group-item list-group-item-action bg-light">Livres</a>
-					<a href="musique" class="list-group-item list-group-item-action bg-light">Musique</a>
-					<a href="sports.html" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
-					<a href="vetements.html" class="list-group-item list-group-item-action bg-light">Vêtements</a>
-					<a href="ventes_flash.html" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
+					<a href="categories.php" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
+					<a href="livres.php" class="list-group-item list-group-item-action bg-light">Livres</a>
+					<a href="musique.php" class="list-group-item list-group-item-action bg-light">Musique</a>
+					<a href="sports.php" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
+					<a href="vetements.php" class="list-group-item list-group-item-action bg-light">Vêtements</a>
+					<a href="ventes_flash.php" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
 				</div>
 			</div>
 
@@ -133,7 +137,7 @@ mysqli_close($db_handle);
  								?>
 								<!-- Nouveau client zone -->
 								<p style="font-weight: bold; font-size: 1.25rem"> Nouveau Client ?</p>
-								<a href="inscription_client.html" ><button type="button" class="btn btn-success" style="font-size: 1.5rem;">S'inscrire</button></a>													
+								<a href="client_connexion.php" ><button type="button" class="btn btn-success" style="font-size: 1.5rem;">S'inscrire</button></a>													
 							</form>
 						</div>
 					</div><br>
