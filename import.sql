@@ -24,13 +24,14 @@ CREATE TABLE IF NOT EXISTS Item
 (
 	Id_item INT PRIMARY KEY NOT NULL ,
 	Nom VARCHAR(255),
+	Description VARCHAR(255),
 	Video VARCHAR(255),
 	Categorie ENUM('Livres','Musique','Vetements','Sports'),
 	Prix INT,
 	Genre BOOLEAN,
 	Taille VARCHAR(255),
 	Couleur ENUM ('jaune','orange','marron','rose','beige','rouge','violet','bleu','vert','noir','blanche','gris'),
-	Quantite INT
+	Quantite INT,
 	Vendu INT
 );
 CREATE TABLE IF NOT EXISTS ImgItem
