@@ -1,3 +1,43 @@
+<?php 
+	$nom = isset($_POST["nom"])? $_POST["nom"] : "";
+	$prenom = isset($_POST["prenom"])? $_POST["prenom"] : "";
+	$mail = isset($_POST["mail"])? $_POST["mail"] : "";
+	$pseudo = isset($_POST["pseudo"])? $_POST["pseudo"] : "";
+	$validation = false;
+	$database='commerce';
+	$db_handle=mysqli_connect('localhost','root','');
+	$db_found=mysqli_select_db($db_handle,$database);
+	
+	//si il y a un champ vide
+	if(empty($nom)||empty($mail)||empty($prenom)||empty($pseudo))
+	{
+		$message =' Un champ est vide, remplissez tous les champs s\'il-vous-plaît' ;
+	}
+	//aucun champ vide
+	else
+	{
+		//si on trouve la database
+		if($db_found)
+		{
+			//Si tous les champs sont valides
+			if(!empty($nom) && !empty($prenom) && !empty($mail) && !empty($pseudo)){
+				
+				$sql=" INSERT INTO `vendeur` (`Email_ECE`, `Pseudo`, `Nom`, `Prenom`) VALUES ('".$mail."','".$pseudo."','".$nom."','".$prenom."')";
+				//on effectue la commande SQL
+				mysqli_query($db_handle,$sql);
+				header('Location: compte_admin.php');
+				$message = "";
+			}
+		}
+		else
+		{
+			$message= 'BDD non trouvé';
+		}
+	}
+	
+	mysqli_close($db_handle);
+ ?>
+
 <html>
 	<head>
 		<title>ECE Market Place | Consulter vendeurs</title>
@@ -23,7 +63,7 @@
 
 			
 			<!-- Brand image -->
-			<a class="navbar-brand" href="home.html" id="brand">
+			<a class="navbar-brand" href="home.php" id="brand">
 				<img src="Pictures/Logo.png" width="130px" height="60px">
 			</a>
 
@@ -31,10 +71,10 @@
 			<!--  Menu -->
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#">Admin</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
-					<li class="nav-item"><a class="nav-link" href="compte_client.html">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
-					<li class="nav-item"><a class="nav-link" href="panier.html">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
+					<li class="nav-item"><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="panier.php">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -44,12 +84,12 @@
 			<!-- Sidebar -->
 			<div class="bg-light border-right" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
-					<a href="categories.html" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
-					<a href="livres.html" class="list-group-item list-group-item-action bg-light">Livres</a>
-					<a href="musique" class="list-group-item list-group-item-action bg-light">Musique</a>
-					<a href="sports.html" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
-					<a href="vetements.html" class="list-group-item list-group-item-action bg-light">Vêtements</a>
-					<a href="ventes_flash.html" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
+					<a href="categories.php" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
+					<a href="livres.php" class="list-group-item list-group-item-action bg-light">Livres</a>
+					<a href="musique.php" class="list-group-item list-group-item-action bg-light">Musique</a>
+					<a href="sports.php" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
+					<a href="vetements.php" class="list-group-item list-group-item-action bg-light">Vêtements</a>
+					<a href="ventes_flash.php" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
 				</div>
 			</div>
 
@@ -63,7 +103,7 @@
 					
 					<!-- Table de recherche -->
 					<div style="text-align: center">
-						<form action="admin_ajouter_vendeurs.php">
+						<form action="admin_ajouter_vendeurs.php" method="post">
 							<div class="card" style="width: 70%; margin:auto;">
 								
 								<div class="card-header bg-light">
@@ -74,20 +114,26 @@
 									<!-- Nom -->
 									<div style="display: inline-block; width: 100%;">
 										<p style="text-align: left;">Nom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le nom " id="nom" />
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le nom " name="nom" />
+									</div>
+									<!-- Prenom -->
+									<div style="display: inline-block; width: 100%;">
+										<p style="text-align: left;">Prénom :</p>
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le nom " name="prenom" />
 									</div>
 									<!-- email -->
 									<div style="display: inline-block; width: 100%;">
 										<p style="text-align: left;">Email :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez l'email " id="email" />
+										<input type="email" class="form-control mb-2 mr-sm-2" placeholder="Entrez l'email " name="mail" />
 									</div>
 									<!-- Pseudo -->
 									<div style="display: inline-block; width: 100%;">
 										<p style="text-align: left;">Pseudo :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le pseudo " id="pseudo" />
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le pseudo " name="pseudo" />
 									</div>
 									<!-- Validation -->
 									<div style="text-align: center">
+										<h3 style=" font-size: 1.25rem "> <?php echo($message); ?><h3>
 										<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Ajouter</button>
 									</div>
 								</div>

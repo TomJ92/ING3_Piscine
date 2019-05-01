@@ -1,18 +1,28 @@
 <?php
 	//Connection to the database
-    $base = mysqli_connect ('localhost', 'root', ''); 
-	//Connection to the table Item
-    mysqli_select_db ("commerce", $base); 
-       
-    // on Capte le best seller musique
-    $sql = "SELECT `nom`, MAX(`Vendu`)  FROM `item` WHERE `Categorie` = 'Musique'"; 
-    $req = mysqli_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error()); 
-    $data = mysqli_fetch_array($req); 
-    mysqli_free_result($req); 
-    mysqli_close(); 
-	$bslivre = $req;
-
- 
+	$database='commerce';
+	$db_handle=mysqli_connect('localhost','root','');
+	//Connection to database
+	$db_found=mysqli_select_db($db_handle,$database);
+	if($db_found){	
+		// on Capte le best seller livre
+		$sql = "SELECT nom, description, prix, Vendu FROM item WHERE Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Livres')"; 
+		$req = mysqli_query($db_handle, $sql); 
+		$bslivres = mysqli_fetch_assoc($req); 
+		// on Capte le best seller musique
+		$sql = "SELECT nom, description, prix, Vendu FROM item WHERE Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Musique')"; 
+		$req = mysqli_query($db_handle, $sql); 
+		$bsmusique = mysqli_fetch_assoc($req); 
+		// on Capte le best seller sports
+		$sql = "SELECT nom, description, prix, Vendu FROM item WHERE Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Sports')"; 
+		$req = mysqli_query($db_handle, $sql); 
+		$bssports = mysqli_fetch_assoc($req); 
+		// on Capte le best seller vetements
+		$sql = "SELECT nom, description, prix, Vendu FROM item WHERE Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Vetements')"; 
+		$req = mysqli_query($db_handle, $sql); 
+		$bsvetements = mysqli_fetch_assoc($req); 
+	}
+	mysqli_close($db_handle);
 ?>
 
 <html>
@@ -83,45 +93,45 @@
 					<div class="card-deck" id="flash" style="width: 85%; margin: auto;">
 						<!-- Best seller Livre -->
 						<div class="card" >
-							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center">Best Seller Livres</h4> </div>
+							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center"><?php echo($bslivres['nom']); ?></h4> </div>
 							<img class="card-img" src="" alt="Card image">
 							<div class="card-body" >
-								<p class="card-text" style="font-size: 0.75rem">Description du produit a charger dans la base de données</p>
+								<p class="card-text" ><?php echo($bslivres['description']); ?></p>
 								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
-								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;">75€</p>
+								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;"><?php echo($bslivres['prix']); ?> €</p>
 							</div>
 						</div>						
 						
 						<!-- Best seller Musique -->
 						<div class="card" >
-							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center"><?php echo(CACA); ?></h4> </div>
+							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center"><?php echo($bsmusique['nom']); ?></h4> </div>
 							<img class="card-img" src="" alt="Card image">
 							<div class="card-body" >
-								<p class="card-text" style="font-size: 0.75rem">Description du produit a charger dans la base de données</p>
+								<p class="card-text" ><?php echo($bsmusique['description']); ?></p>
 								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
-								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;">75€</p>
+								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;"><?php echo($bsmusique['prix']); ?> €</p>
 							</div>
 						</div>						
 						
 						<!-- Best seller Sport -->
 						<div class="card " >
-							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center">Best Seller Sports</h4> </div>
+							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center"><?php echo($bssports['nom']); ?></h4> </div>
 							<img class="card-img" src="" alt="Card image">
 							<div class="card-body" >
-								<p class="card-text" style="font-size: 0.75rem">Description du produit a charger dans la base de données</p>
+								<p class="card-text" ><?php echo($bssports['description']); ?></p>
 								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
-								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;">75€</p>
+								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;"><?php echo($bssports['prix']); ?> €</p>
 							</div>
 						</div>						
 						
 						<!-- Best seller Vetements -->
 						<div class="card " >
-							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center">Best Seller Vêtements</h4> </div>
+							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center"><?php echo($bsvetements['nom']); ?></h4> </div>
 							<img class="card-img" src="" alt="Card image">
 							<div class="card-body" >
-								<p class="card-text" style="font-size: 0.75rem">Description du produit a charger dans la base de données</p>
+								<p class="card-text" ><?php echo($bsvetements['description']); ?></p>
 								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
-								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;">75€</p>
+								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;"> <?php echo($bsvetements['prix']); ?> €</p>
 							</div>
 						</div>
 						
