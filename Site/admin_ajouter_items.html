@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>ECE Market Place | Paiement</title>
+		<title>ECE Market Place | Ajouter Items</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
@@ -60,62 +60,55 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Informations relatives au Paiement</h1><br>
-					<!-- Recherche -->
-					<div style="text-align: center">
-						<form>
-							<div style="display: inline-block"><input type="text" class="form-control form-control-lg mb-2 mr-sm-2" placeholder="Rechercher un Item" id="prenom" ></div>
-							<div style="display: inline-block; width:2%"></div>
-							<div style="display: inline-block"><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">Rechercher</button></div>
-						</form>
-					</div>					
+					<h1 style="font-weight: bold; text-align: center;">Renseignez les Informations sur l'Item</h1><br>
+					<form action="ajout_item.php">		
+							<div class="card" style="width: 70%; margin:auto;">
+								
+								<div class="card-header bg-light">
+									<h3 style="font-weight: bold; font-size: 1.5rem ">Ajouter un Item</h3>
+								</div>
+								
+								<div class="card-body bg-light">
+									<!-- Nom -->
+									<div style="display: inline-block; width: 100%;">
+										<p style="text-align: left;">Nom :</p>
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Nom " id="nom" />
+									</div>
+									<!-- Photos upload -->
+									<div style="display: inline-block; width: 100%; ">
+										<p style="text-align: left;">Photos :</p>
+										<input type="file" style="margin-bottom:1rem; width:100%;" id="photos" accept="image/png, image/jpg" multiple/>	
+									
+									</div>
+									<!-- video upload -->
+									<div style="display: inline-block; width: 100%;">
+										<p style="text-align: left;">Vidéo :</p>
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le lien de la vidéo " id="video" />										
+									</div>
+									<!-- Prix -->
+									<div style="display: inline-block; width: 100%;">
+										<p style="text-align: left;">Prix :</p>
+										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Prix" id="nom" />
+									</div>
+									<!-- Catégorie -->
+									<div style="display: inline-block; width: 100%;">
+										<p style="text-align: left;">Catégories :</p>
+										<select class="form-control" id="card type">
+											<option>Livres</option>
+											<option>Musique</option>
+											<option>Sports</option>
+											<option>Vetements</option>
+										</select>	
+									</div>
+									<!-- Validation -->
+									<div style="text-align: center">
+										<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Ajouter</button>
+									</div>
+								</div>
+							</div><br>
+						
 					
-					<!-- Teble de recherche -->
-					<div style="text-align: center">
-						<table class="table table-striped vertical-align: middle" style="width:80%; margin: auto">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Image</th>
-								<th scope="col">Article</th>
-								<th scope="col">Description</th>
-								<th scope="col">Prix Unitaire</th>
-								<th scope="col">Quantité Totale</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row"><img class="card-img" src="Pictures/Musique.png" style="width:6rem; height:6rem" alt="Card image"></th>
-								<td class="align-middle">Album de Coldplay</td>
-								<td class="align-middle">Le 4ème album du groupe mythique, 42 minutes de pur génie</td>
-								<td class="align-middle"><h5 style="font-weight: bold">12 €</h5></td>
-								<td class="align-middle">321</td>
-							</tr>
-							<tr>
-								<th scope="row"><img class="card-img" src="Pictures/Livres.png" style="width:6rem; height:6rem" alt="Card image"></th>
-								<td class="align-middle">Game of thrones</td>
-								<td class="align-middle">1er Volume du roman à la base de la série à grand succès</td>
-								<td class="align-middle"><h5 style="font-weight: bold">18 €</h5></td>
-								<td class="align-middle">423</td>
-							</tr>
-							<tr>
-								<th scope="row"><img class="card-img" src="Pictures/Sports.png" style="width:6rem; height:6rem" alt="Card image"></th>
-								<td class="align-middle">Ballon de foot</td>
-								<td class="align-middle">Pour s'amuser à la récrée avec les petits potes</td>
-								<td class="align-middle"><h5 style="font-weight: bold">5 €</h5></td>
-								<td class="align-middle">9352</td>
-							</tr>
-						</tbody>
-						</table><br>
-					</div>			
-					<!-- Navigation -->
-					<div style="text-align: center">
-						<form>
-							<div style="display: inline-block"><a href="admin_ajouter_item.html" style="text-decoration: none;"><button type="button" class="btn btn-success" style="font-size: 1.5rem;">Ajouter des Items</button></a></div>
-							<div style="display: inline-block; width:10%"></div>
-							<div style="display: inline-block"><a href="admin_supprimer_item.html" style="text-decoration: none;"><button type="button" class="btn btn-danger" style="font-size: 1.5rem;">Supprimer des Items</button></a></div>
-						</form>
-					</div>					
-					
+					</form>
 				</div>
 			</div>
 			<!-- /#page-content-wrapper -->
