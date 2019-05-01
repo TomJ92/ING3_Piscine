@@ -8,9 +8,9 @@ $db_handle=mysqli_connect('localhost','root','');
 $db_found=mysqli_select_db($db_handle,$database);
 session_name('Admin');
 session_start();
-if($_SESSION['Pseudo']=='root')
+if((!empty($_SESSION['Pseudo'])) && ($_SESSION['Pseudo']=='root'))
 {
-	header('Location: admin_compte.html');
+	header('Location: admin_compte.php');
 }
 //si il y a un champ vide
 if(empty($login)||empty($mdp))
@@ -44,7 +44,7 @@ else
 	if($validation)
 	{
 		$message= 'Bienvenue, vous êtes connecté ' . $_SESSION['Pseudo'];
-		header('Location: admin_compte.html');
+		header('Location: admin_compte.php');
 	}
 	else
 	{
