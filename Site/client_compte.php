@@ -1,3 +1,11 @@
+<?php
+session_name('Client');
+session_start();
+if(empty($_SESSION['Email_client']))
+{
+	header('Location: client_connexion.php');
+}
+?>
 <html>
 	<head>
 		<title>ECE Market Place | Votre Compte</title>
@@ -32,9 +40,9 @@
 			<!--  Menu -->
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#">Admin</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
-					<li class="nav-item active"><a class="nav-link" href="compte_client.html">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
+					<li class="nav-item active"><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
 					<li class="nav-item"><a class="nav-link" href="panier.html">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
 				</ul>
 			</div>
@@ -120,7 +128,7 @@
 							<a href="client_modifier.html" ><button type="button" class="btn btn-success" style="font-size: 1.5rem; display: inline-block">Modifier les Informations</button></a>
 						</div>
 						<div style="display: inline-block;  width:48%;   text-align: center; ">
-							<button type="button" class="btn btn-danger" style="font-size: 1.5rem; display: inline-block">Se Déconnecter</button>
+							<a href="client_logout.php" class="btn btn-danger" style="font-size: 1.5rem; display: inline-block">Se Déconnecter</a>
 						</div>
 						
 					</div>

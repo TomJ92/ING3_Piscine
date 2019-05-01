@@ -1,14 +1,14 @@
 <?php
-session_name('Admin');
+session_name('Vendeur');
 session_start();
-if($_SESSION['Pseudo']!='root')
+if(empty($_SESSION['Email_ECE']))
 {
-	header('Location: admin_connexion.php');
+	header('Location: vendeur_connexion.php');
 }
 ?>
 <html>
 	<head>
-		<title>ECE Market Place | Espace Administrateur</title>
+		<title>ECE Market Place | Escpace Vendeur</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
@@ -48,7 +48,7 @@ if($_SESSION['Pseudo']!='root')
 			</div>
 		</nav>
 		
-		<div class="d-flex" id="wrapper">
+		<div class="d-flex" id="wrapper" >
 		
 			<!-- Sidebar -->
 			<div class="bg-light border-right" id="sidebar-wrapper">
@@ -66,42 +66,77 @@ if($_SESSION['Pseudo']!='root')
 		
 		<!-- Page Content -->
 
-			<div id="page-content-wrapper">
-				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Panneau de Contrôle Administrateur</h1><br>
+			<div id="page-content-wrapper" >
+				<div class="container-fluid" style=" background-image: url('Pictures/background.jpg')">
+					<h1 style="font-weight: bold; text-align: center; color:black">Mes informations</h1><br>
 					<!-- Informations -->
-					<div style="text-align: center; margin-top: 3rem;">
-						<div style="display: inline-block; width: 45%;">
-							<div class="card" style="width: 60%; margin:auto;">
-								<!-- Gestion des items -->
+					<div id="identifiants" style="text-align: center; display: inline-block; width: 48%">
+							<!-- Identifiants  enregistrée-->
+							<div class="card" style="width: 90%; margin:auto; ">
 								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Gestion des Items</h3>
+									<h3 style="font-weight: bold; font-size: 1.5rem; text-align: center">Identifiants</h3>
 								</div>
+								
 								<div class="card-body bg-light">
-										<div style="padding-bottom: 2rem;"> <a href="admin_ajouter_items.php" style="text-decoration:none;"><button type="button" class="btn btn-success btn-lg btn-block">Ajouter</button></a></div>
-										<div style="padding-bottom: 2rem;"><a href="admin_consulter_items.php" style="text-decoration:none;"><button type="button" class="btn btn-secondary btn-lg btn-block">Consulter</button></a></div>
-										<div style="padding-bottom: 2rem;"><a href="admin_supprimer_items.php" style="text-decoration:none;"><button type="button" class="btn btn-danger btn-lg btn-block">Supprimer</button></a></div>
+									<img class="card-img" src="Pictures/Louis.jpg" alt="Card image" style="width:200px; height:200px; ">
+									<div>
+										<div>
+											<div style="width:48%; display: inline-block">
+												<h3 style="font-weight: bold; color: black; font-size:1.4rem; text-align: left">Nom : </h3> 
+											</div>
+											<div style="width:48%; display: inline-block">
+												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="nom">Devèze</h3>
+											</div>
+										</div>
+										<div>
+											<div style="width:48%; display: inline-block">
+												<h3 style="font-weight: bold; color: black; font-size:1.4rem; text-align: left">Pseudo : </h3> 
+											</div>
+											<div style="width:48%; display: inline-block">
+												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="pseudo">Xx_DarkSasukeDu78_xX</h3>
+											</div>
+										</div>
+										<div>
+											<div style="width:48%; display: inline-block">
+												<h3 style="font-weight: bold; color: black; font-size:1.4rem; text-align: left">E-mail : </h3> 
+											</div>
+											<div style="width:48%; display: inline-block">
+												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="email">louis.deveze@edu.ece.fr</h3>
+											</div>
+										</div>
+										
+									</div>
+									<div style="margin-top: 2rem">
+										<div style="width:48%; display: inline-block">
+											<a href="vendeur_modifier.php" ><button type="button" class="btn btn-success" style="font-size: 1.5rem;">Modifier les Informations</button></a>
+										</div>
+										<div style="width:48%; display: inline-block">
+											<a href="vendeur_logout.php" type="submit" class="btn btn-danger" style="font-size: 1.5rem;">Se Déconnecter</a>
+										</div>
+									</div>
 								</div>
 							</div><br>
-						</div>
-						<div style="display: inline-block; vertical-align: top; width: 45%;">
-							<div class="card" style="width: 60%; margin:auto;;">
-								<!-- Gestion des Vendeurs -->
+							
+					</div>				
+					<div id="gestion" style="text-align: center; display: inline-block; vertical-align: top; width: 48%; margin-bottom:45rem">
+							
+							<div class="card" style="width: 90%; margin:auto; ">
 								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Gestion des Vendeurs</h3>
+									<h3 style="font-weight: bold; font-size: 1.5rem; text-align: center">Gérer les Ventes</h3>
 								</div>
+								
 								<div class="card-body bg-light">
-									<div style="padding-bottom: 2rem;"> <a href="admin_ajouter_vendeurs.php" style="text-decoration:none;"><button type="button" class="btn btn-success btn-lg btn-block">Ajouter</button></a></div>
-									<div style="padding-bottom: 2rem;"><a href="admin_consulter_vendeurs.php" style="text-decoration:none;"><button type="button" class="btn btn-secondary btn-lg btn-block">Consulter</button></a></div>
-									<div style="padding-bottom: 2rem;"><a href="admin_supprimer_vendeurs.php" style="text-decoration:none;"><button type="button" class="btn btn-danger btn-lg btn-block">Supprimer</button></a></div>
+									<div style="margin-top: 2rem">
+										<div style="width:48%; display: inline-block">
+											<a href="vendeur_ajouter_item.php" ><button type="button" class="btn btn-secondary" style="font-size: 1.5rem;">Ajouter à la Vente</button></a>
+										</div>
+										<div style="width:48%; display: inline-block">
+											<a href="vendeur_supprimer_item.php" ><button type="button" class="btn btn-secondary" style="font-size: 1.5rem;">Retirer de la Vente</button></a>
+										</div>
+									</div>
 								</div>
 							</div><br>
-						</div>
-						<div style="display: inline-block; margin-top: 2rem; width: 100%;">
-							<a href="admin_logout.php" class="btn btn-danger btn-lg">Se Déconnecter</a>
-						</div>
-					</div>
-					</div>
+					</div><br>
 				</div>
 			</div>
 			<!-- /#page-content-wrapper -->
