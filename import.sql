@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS Item
 	Taille VARCHAR(255),
 	Couleur ENUM ('jaune','orange','marron','rose','beige','rouge','violet','bleu','vert','noir','blanche','gris'),
 	Quantite INT
+	Vendu INT
 );
 CREATE TABLE IF NOT EXISTS ImgItem
 (
@@ -102,10 +103,11 @@ VALUES
 ('root','root');
 INSERT INTO Item (Id_item,Nom, Video,Categorie, Prix,Genre,Taille,Couleur,Quantite)
 VALUES
-(1, 'Rickroll','https://www.youtube.com/watch?v=dQw4w9WgXcQ','Musique',4,null,null,null,3),
-(2, 'Harry Potter et les gilets jaunes','https://www.youtube.com/watch?v=OZ6KaQXykQE','Livres',20,null,null,null,6),
-(3, 'Tshirt bordeau UNICLO','https://www.youtube.com/watch?v=sogkfan2VHw','Vetements',15,1,'M','rouge',10),
-(4, 'Barre de traction','https://www.youtube.com/watch?v=RLDlqbumvW0','Sports',21,null,null,null,2);
+(1, 'Rickroll','https://www.youtube.com/watch?v=dQw4w9WgXcQ','Musique',4,null,null,null,3, 234),
+(2, 'Harry Potter et les gilets jaunes','https://www.youtube.com/watch?v=OZ6KaQXykQE','Livres',20,null,null,null,6, 13),
+(5, 'Game of Thrones',null,'Livres',20,null,null,null,6, 4837),
+(3, 'Tshirt bordeau UNICLO','https://www.youtube.com/watch?v=sogkfan2VHw','Vetements',15,1,'M','rouge',10, 433),
+(4, 'Barre de traction','https://www.youtube.com/watch?v=RLDlqbumvW0','Sports',21,null,null,null,2, 12);
 INSERT INTO ImgItem(Nom,Id_item)
 VALUES
 ('rick.png',1),
