@@ -1,3 +1,20 @@
+<?php
+	//Connection to the database
+    $base = mysqli_connect ('localhost', 'root', ''); 
+	//Connection to the table Item
+    mysqli_select_db ("commerce", $base); 
+       
+    // on Capte le best seller musique
+    $sql = "SELECT `nom`, MAX(`Vendu`)  FROM `item` WHERE `Categorie` = 'Musique'"; 
+    $req = mysqli_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysqli_error()); 
+    $data = mysqli_fetch_array($req); 
+    mysqli_free_result($req); 
+    mysqli_close(); 
+	$bslivre = $req;
+
+ 
+?>
+
 <html>
 	<head>
 		<title>ECE Market Place | Home</title>
@@ -77,7 +94,7 @@
 						
 						<!-- Best seller Musique -->
 						<div class="card" >
-							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center">Best Seller Musique</h4> </div>
+							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center"><?php echo(CACA); ?></h4> </div>
 							<img class="card-img" src="" alt="Card image">
 							<div class="card-body" >
 								<p class="card-text" style="font-size: 0.75rem">Description du produit a charger dans la base de données</p>
