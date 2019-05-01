@@ -9,8 +9,7 @@ $db_found=mysqli_select_db($db_handle,$database);
 //si il y a un champ vide
 if(empty($mail)||empty($mdp))
 {
-	$message ='<p> Un champ est vide, remplissez tous les champs s\'il-vous-plaît </p>
-		<p> <a href="connexion_client.html"> Revenir au menu de connexion </p>' ;
+	$message ='<p> Un champ est vide, remplissez tous les champs s\'il-vous-plaît </p>' ;
 }
 //aucun champ vide
 else
@@ -27,7 +26,10 @@ else
 			if(($mail==$data['Email_client']) && ($mdp==$data['Password']))
 			{
 				$validation=true;
-				$client=$data;
+				session_name('Client');
+				session_start();
+				$_SESSION = array();
+				$_SESSION=$data;
 			}
 		}
 	}
@@ -37,12 +39,12 @@ else
 	}
 	if($validation)
 	{
-		$message= 'Bienvenue, vous êtes connecté ' . $client['Prenom'].' '. $client['Nom'];
+		$message= 'Bienvenue, vous êtes connecté ' . $_SESSION['Prenom'].' '. $_SESSION['Nom'];
 		header('Location: compte_client.html');
 	}
 	else
 	{
-		$message= '<p> Identifiants incorrects </p> <p> <a href="connexion_client.html"> Revenir au menu de connexion </p>';
+		$message= '<p> Identifiants incorrects </p>';
 	}
 }
 mysqli_close($db_handle);
@@ -116,7 +118,7 @@ mysqli_close($db_handle);
 							<h3 style="font-weight: bold; font-size: 1.5rem ">Veuillez saisir vos Identifiants</h3>
 						</div>
 						<div class="card-body bg-light">
-							<form class="form" action="connexion_client.php" method="post">
+							<form class="form" action="client_connexion.php" method="post">
 								<div style="display: inline-block; width: 90%;">
 									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Identifiant :</p>
 									<input type="email" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre adresse E-Mail" name="email" >
@@ -125,7 +127,7 @@ mysqli_close($db_handle);
 									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Mot de passe :</p>
 									<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre mot de passe" name="password">
 								</div>
-								<p style="margin-top: 2rem;"><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">Se connecter</button></p>
+								<p style="margin-top: 2rem;"><button type="submit" class="btn btn-success" name="button1" style="font-size: 1.5rem;">Se connecter</button></p>
 								<?php 
 								echo $message;
  								?>
