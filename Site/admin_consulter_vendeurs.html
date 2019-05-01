@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>ECE Market Place | Ajouter Items</title>
+		<title>ECE Market Place | Consulter vendeurs</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
@@ -16,7 +16,6 @@
 	
 	<body>
 	
-		
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navigation">	
 						
 			<!-- bouton de toggle du menu -->
@@ -60,61 +59,57 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Renseignez les Informations sur l'Item</h1><br>
-					<form action="ajout_item.php">		
-							<div class="card" style="width: 70%; margin:auto;">
-								
-								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Ajouter un Item</h3>
-								</div>
-								
-								<div class="card-body bg-light">
-									<!-- Nom -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Nom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Nom " id="nom" />
-									</div>
-									<!-- Photos upload -->
-									<div style="display: inline-block; width: 100%; ">
-										<p style="text-align: left;">Photos :</p>
-										<input type="file" style="margin-bottom:1rem; width:100%;" id="photos" accept="image/png, image/jpg" multiple/>	
-									
-									</div>
-									<!-- video upload -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Vidéo :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le lien de la vidéo " id="video" />										
-									</div>
-									<!-- Prix -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Prix :</p>
-										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Prix" id="nom" />
-									</div>
-									<!-- Catégorie -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Catégories :</p>
-										<select class="form-control" id="card type">
-											<option>Livres</option>
-											<option>Musique</option>
-											<option>Sports</option>
-											<option>Vetements</option>
-										</select>	
-									</div>
-									<!-- Validation -->
-									<div style="text-align: center">
-										<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Ajouter</button>
-									</div>
-								</div>
-							</div><br>
-						
+					<h1 style="font-weight: bold; text-align: center;">Liste actuelle des vendeurs</h1><br>
+					<!-- Recherche -->
+					<div style="text-align: center">
+						<form>
+							<div style="display: inline-block"><input type="text" class="form-control form-control-lg mb-2 mr-sm-2" placeholder="Rechercher un Item" id="prenom" ></div>
+							<div style="display: inline-block; width:2%"></div>
+							<div style="display: inline-block"><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">Rechercher</button></div>
+						</form>
+					</div>					
 					
-					</form>
+					<!-- Table de recherche -->
+					<div style="text-align: center">
+						<form action="admin_consulter_vendeurs.php">
+							<table class="table table-striped " style="width:80%; margin: auto">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col">Email</th>
+										<th scope="col">Pseudo</th>
+										<th scope="col">Nom</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="align-middle">louis.deveze@edu.ece.fr</td>
+										<td class="align-middle">Loulou</td>
+										<td class="align-middle">Deveze</td>
+									</tr>
+									<tr>
+										<td class="align-middle">tom.jouvet@edu.ece.fr</td>
+										<td class="align-middle">Tommy</td>
+										<td class="align-middle">Jouvet</td>
+									</tr>
+									<tr>
+										<td class="align-middle">paul.chasseloup@edu.ece.fr</td>
+										<td class="align-middle">Paulo</td>
+										<td class="align-middle">Chasseloup</td>
+									</tr>
+								</tbody>
+							</table><br>
+							<!-- Navigation -->
+							<div style="text-align: center">
+								<div style="display: inline-block"><a href="admin_ajouter_vendeurs.html" style="text-decoration: none;"><button type="button" class="btn btn-success" style="font-size: 1.5rem;">Ajouter</button></a></div>
+								<div style="display: inline-block"><a href="admin_supprimer_vendeurs.html" style="text-decoration: none;"><button type="button" class="btn btn-danger" style="font-size: 1.5rem;">Supprimer</button></a></div>
+							</div>	
+						</form>
+					</div>			
 				</div>
 			</div>
 			<!-- /#page-content-wrapper -->
 		</div>
 		<!-- /#wrapper -->
-
 
 		<!-- JS Code to Toggle Menu -->
 		<script>
@@ -122,8 +117,6 @@
 			$("#wrapper").toggleClass("toggled");
 		});
 		</script>
-		
-
 		
 		<!-- Footer Navbar --> 
 		<footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom" id="footer">

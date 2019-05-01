@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>ECE Market Place | Ajouter Items</title>
+		<title>ECE Market Place | Vendeur Supprimer Items</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
@@ -60,53 +60,56 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Renseignez les Informations sur l'Item</h1><br>
-					<form action="ajout_item.php">		
-							<div class="card" style="width: 70%; margin:auto;">
-								
-								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Ajouter un Item</h3>
-								</div>
-								
-								<div class="card-body bg-light">
-									<!-- Nom -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Nom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Nom " id="nom" />
-									</div>
-									<!-- Photos upload -->
-									<div style="display: inline-block; width: 100%; ">
-										<p style="text-align: left;">Photos :</p>
-										<input type="file" style="margin-bottom:1rem; width:100%;" id="photos" accept="image/png, image/jpg" multiple/>	
-									
-									</div>
-									<!-- video upload -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Vidéo :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le lien de la vidéo " id="video" />										
-									</div>
-									<!-- Prix -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Prix :</p>
-										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Prix" id="nom" />
-									</div>
-									<!-- Catégorie -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Catégories :</p>
-										<select class="form-control" id="card type">
-											<option>Livres</option>
-											<option>Musique</option>
-											<option>Sports</option>
-											<option>Vetements</option>
-										</select>	
-									</div>
-									<!-- Validation -->
-									<div style="text-align: center">
-										<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Ajouter</button>
-									</div>
-								</div>
-							</div><br>
+					
+					<h1 style="font-weight: bold; text-align: center;">Choisir la quantité a supprimer de votre stock de chaque article</h1><br>
+					<!-- Recherche -->
+					<div style="text-align: center">
+						<form>
+							<div style="display: inline-block"><input type="text" class="form-control form-control-lg mb-2 mr-sm-2" placeholder="Rechercher un Item" id="prenom" ></div>
+							<div style="display: inline-block; width:2%"></div>
+							<div style="display: inline-block"><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">Rechercher</button></div>
+						</form>
+					</div>	
+					<form action="vendeur_supprimer_item.php">		
+						<table class="table table-striped " style="width:80%; margin: auto">
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">Image</th>
+									<th scope="col">Article</th>
+									<th scope="col">Prix Unitaire</th>
+									<th scope="col">Quantité en stock</th>
+									<th scope="col">Quantité en a supprimer</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row"><img class="card-img" src="Pictures/Musique.png" style="width:6rem; height:6rem" alt="Card image"></th>
+									<td class="align-middle">Album de Coldplay</td>
+									<td class="align-middle"><h5 style="font-weight: bold">12 €</h5></td>
+									<td class="align-middle"><h5 style="font-weight: bold">50</h5></td>
+									<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Nb"/></td>
+								</tr>
+								<tr>
+									<th scope="row"><img class="card-img" src="Pictures/Livres.png" style="width:6rem; height:6rem" alt="Card image"></th>
+									<td class="align-middle">Game of thrones</td>
+									<td class="align-middle"><h5 style="font-weight: bold">14 €</h5></td>
+									<td class="align-middle"><h5 style="font-weight: bold">200</h5></td>
+									<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Nb"/></td>
+								</tr>
+								<tr>
+									<th scope="row"><img class="card-img" src="Pictures/Sports.png" style="width:6rem; height:6rem" alt="Card image"></th>
+									<td class="align-middle">Ballon de foot</td>
+									<td class="align-middle"><h5 style="font-weight: bold">13 €</h5></td>
+									<td class="align-middle"><h5 style="font-weight: bold">128</h5></td>
+									<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Nb"/></td>
+								</tr>
+							</tbody>
+						</table>
 						
+						<!-- Validation -->
+						<div style="text-align: center">
+							<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Valider Suppression</button>
+						</div>
 					
 					</form>
 				</div>

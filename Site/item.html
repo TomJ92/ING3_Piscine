@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>ECE Market Place | Votre Compte</title>
+		<title>ECE Market Place | Fiche Produit</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
@@ -60,64 +60,71 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Mes informations</h1><br>
+					<h1 style="font-weight: bold; text-align: center;">Nom de l'article</h1><br>
 					<!-- Informations -->
 					<div id="informations" style="text-align: center;">
-						<div style="width:48%; display: inline-block; text-align:left;">
-							<!-- Identifiants  enregistrée-->
+						<div style="width:30%; display: inline-block; text-align:left;">
+							<!-- Carte Carroussel -->
 							<div class="card" style="width: 90%; margin:auto;">
 								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem; text-align: center">Identifiants</h3>
+									<h3 style="font-weight: bold; font-size: 1.5rem; text-align: center">Photos</h3>
 								</div>
-								
+								<!-- Carroussel-->
 								<div class="card-body bg-light">
-									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Nom : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="nom">Devèze</p><br>
-									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Prénom : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="prenom">Louis</p><br>
-									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">E-mail : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="email">louis.deveze@edu.ece.fr</p><br>
+									<div id="demo" class="carousel slide" data-ride="carousel">
+
+									  <!-- Indicators -->
+									  <ul class="carousel-indicators">
+										<li data-target="#" data-slide-to="0" class="active"></li>
+										<li data-target="#" data-slide-to="1"></li>
+										<li data-target="#" data-slide-to="2"></li>
+									  </ul>
+
+									  <!-- The slideshow -->
+									  <div class="carousel-inner">
+										<div class="carousel-item active">
+										  <img src="Pictures/Ioda/ioda0.jpg" alt="Ioda0" style="width:400px; height:400px">
+										</div>
+										<div class="carousel-item">
+										  <img src="Pictures/Ioda/ioda1.jpg" alt="Ioda1" style="width:400px; height:400px">
+										</div>
+										<div class="carousel-item">
+										  <img src="Pictures/Ioda/ioda2.jpg" alt="Ioda2" style="width:400px; height:400px">
+										</div>
+									  </div>
+
+									  <!-- Left and right controls -->
+									  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+										<span class="carousel-control-prev-icon"></span>
+									  </a>
+									  <a class="carousel-control-next" href="#demo" data-slide="next">
+										<span class="carousel-control-next-icon"></span>
+									  </a>
+
+									</div>
 								</div>
 							</div><br>
-							<!-- Carte enregistrée-->
-							<div class="card" style="width: 90%; margin:auto;">
-								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Carte enregistrée </h3>
-								</div>
-								<div class="card-body bg-light">
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem;">
-										<img  src="Pictures/Mastercard.png" width="100" height="70" alt="" id="carte"> 
-										|  Louis DEVEZE  |  Carte : 1324 XXXX XXXX XXXX
-									</p>
-								</div>
-							</div><br>
+							
 						</div>
 						
-						<div style="width:48%; display: inline-block;  vertical-align: top; text-align:left;">
-							<!-- Adresse  enregistrée-->
+						<div style="width:55%; display: inline-block;  vertical-align: top; text-align:left;">
+							<!-- Video-->
 							<div class="card" style="width: 90%; margin:auto;">
 								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem; text-align: center">Adresse</h3>
+									<h3 style="font-weight: bold; font-size: 1.5rem; text-align: center">Video</h3>
 								</div>
 								
 								<div class="card-body bg-light">
-									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Adresse 1 : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="adresse1">33 Rue du Professeur Guyon</p><br>
-									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Adresse 2 : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="adresse2">/</p><br>
-									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Ville : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="ville">Louveciennes</p><br>
-									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Code Postale : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="poste">78430</p><br>
-									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Pays : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="pays">France</p><br>
+									<div class="embed-responsive embed-responsive-16by9" style="height: 400px">
+										<iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=FavUpD_IjVY" allowfullscreen></iframe>
+									</div>
 								</div>
 							</div><br>
 						</div>
 					</div>
 					<div id="informations" style="text-align: center; ">
 						<div style="display: inline-block; width:48%; text-align: center; ">
-							<a href="modifier_client.html" ><button type="button" class="btn btn-success" style="font-size: 1.5rem; display: inline-block">Modifier les Informations</button></a>
+							<a href="client_modifier.html" ><button type="button" class="btn btn-success" style="font-size: 1.5rem; display: inline-block">Modifier les Informations</button></a>
 						</div>
 						<div style="display: inline-block;  width:48%;   text-align: center; ">
 							<button type="button" class="btn btn-danger" style="font-size: 1.5rem; display: inline-block">Se Déconnecter</button>

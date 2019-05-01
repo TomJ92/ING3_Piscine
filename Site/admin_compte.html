@@ -1,10 +1,10 @@
 <html>
 	<head>
-		<title>ECE Market Place | Ajouter Items</title>
+		<title>ECE Market Place | Espace Administrateur</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
-		<link href="styleVenteFlash.css" rel="stylesheet" type="text/css"/>
+		<link href="styleHome.css" rel="stylesheet" type="text/css"/>
 		
 		<!-- Bootstrap content -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -34,7 +34,7 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="#">Admin</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
-					<li class="nav-item"><a class="nav-link" href="compte_client.html">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
+					<li class="nav-item active"><a class="nav-link" href="compte_client.html">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
 					<li class="nav-item"><a class="nav-link" href="panier.html">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
 				</ul>
 			</div>
@@ -47,7 +47,7 @@
 				<div class="list-group list-group-flush">
 					<a href="categories.html" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
 					<a href="livres.html" class="list-group-item list-group-item-action bg-light">Livres</a>
-					<a href="musique" class="list-group-item list-group-item-action bg-light">Musique</a>
+					<a href="musique.html" class="list-group-item list-group-item-action bg-light">Musique</a>
 					<a href="sports.html" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
 					<a href="vetements.html" class="list-group-item list-group-item-action bg-light">Vêtements</a>
 					<a href="ventes_flash.html" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
@@ -60,55 +60,36 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Renseignez les Informations sur l'Item</h1><br>
-					<form action="ajout_item.php">		
-							<div class="card" style="width: 70%; margin:auto;">
-								
+					<h1 style="font-weight: bold; text-align: center;">Panneau de Contrôle Administrateur</h1><br>
+					<!-- Informations -->
+					<div style="text-align: center; margin-top: 3rem;">
+						<div style="display: inline-block; width: 45%;">
+							<div class="card" style="width: 60%; margin:auto;">
+								<!-- Gestion des items -->
 								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Ajouter un Item</h3>
+									<h3 style="font-weight: bold; font-size: 1.5rem ">Gestion des Items</h3>
 								</div>
-								
 								<div class="card-body bg-light">
-									<!-- Nom -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Nom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Nom " id="nom" />
-									</div>
-									<!-- Photos upload -->
-									<div style="display: inline-block; width: 100%; ">
-										<p style="text-align: left;">Photos :</p>
-										<input type="file" style="margin-bottom:1rem; width:100%;" id="photos" accept="image/png, image/jpg" multiple/>	
-									
-									</div>
-									<!-- video upload -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Vidéo :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le lien de la vidéo " id="video" />										
-									</div>
-									<!-- Prix -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Prix :</p>
-										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Prix" id="nom" />
-									</div>
-									<!-- Catégorie -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Catégories :</p>
-										<select class="form-control" id="card type">
-											<option>Livres</option>
-											<option>Musique</option>
-											<option>Sports</option>
-											<option>Vetements</option>
-										</select>	
-									</div>
-									<!-- Validation -->
-									<div style="text-align: center">
-										<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Ajouter</button>
-									</div>
+										<div style="padding-bottom: 2rem;"> <a href="admin_ajouter_items.html" style="text-decoration:none;"><button type="button" class="btn btn-success btn-lg btn-block">Ajouter</button></a></div>
+										<div style="padding-bottom: 2rem;"><a href="admin_consulter_items.html" style="text-decoration:none;"><button type="button" class="btn btn-secondary btn-lg btn-block">Consulter</button></a></div>
+										<div style="padding-bottom: 2rem;"><a href="admin_supprimer_items.html" style="text-decoration:none;"><button type="button" class="btn btn-danger btn-lg btn-block">Supprimer</button></a></div>
 								</div>
 							</div><br>
-						
-					
-					</form>
+						</div>
+						<div style="display: inline-block; vertical-align: top; width: 45%;">
+							<div class="card" style="width: 60%; margin:auto;;">
+								<!-- Gestion des Vendeurs -->
+								<div class="card-header bg-light">
+									<h3 style="font-weight: bold; font-size: 1.5rem ">Gestion des Vendeurs</h3>
+								</div>
+								<div class="card-body bg-light">
+									<div style="padding-bottom: 2rem;"> <a href="admin_ajouter_vendeurs.html" style="text-decoration:none;"><button type="button" class="btn btn-success btn-lg btn-block">Ajouter</button></a></div>
+									<div style="padding-bottom: 2rem;"><a href="admin_consulter_vendeurs.html" style="text-decoration:none;"><button type="button" class="btn btn-secondary btn-lg btn-block">Consulter</button></a></div>
+									<div style="padding-bottom: 2rem;"><a href="admin_supprimer_vendeurs.html" style="text-decoration:none;"><button type="button" class="btn btn-danger btn-lg btn-block">Supprimer</button></a></div>
+								</div>
+							</div><br>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- /#page-content-wrapper -->

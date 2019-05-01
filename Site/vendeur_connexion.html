@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>ECE Market Place | Ajouter Items</title>
+		<title>ECE Market Place | Vendeur connexion</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
@@ -16,7 +16,6 @@
 	
 	<body>
 	
-		
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navigation">	
 						
 			<!-- bouton de toggle du menu -->
@@ -60,61 +59,42 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Renseignez les Informations sur l'Item</h1><br>
-					<form action="ajout_item.php">		
+					<h1 style="font-weight: bold; text-align: center;">Connection au profil de vendeur</h1><br>				
+					
+					<!-- Table de recherche -->
+					<div style="text-align: center">
+						<form action="vendeur_connexion.php">
 							<div class="card" style="width: 70%; margin:auto;">
 								
 								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Ajouter un Item</h3>
+									<h3 style="font-weight: bold; font-size: 1.5rem ">Veuillez saisir les informations necessaires</h3>
 								</div>
 								
 								<div class="card-body bg-light">
-									<!-- Nom -->
+									<!-- pseudo -->
 									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Nom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Nom " id="nom" />
+										<p style="text-align: left;">Pseudo :</p>
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre pseudo " id="pseudo" />
 									</div>
-									<!-- Photos upload -->
-									<div style="display: inline-block; width: 100%; ">
-										<p style="text-align: left;">Photos :</p>
-										<input type="file" style="margin-bottom:1rem; width:100%;" id="photos" accept="image/png, image/jpg" multiple/>	
-									
-									</div>
-									<!-- video upload -->
+									<!-- email -->
 									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Vidéo :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le lien de la vidéo " id="video" />										
+										<p style="text-align: left;">Email :</p>
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre email " id="email" />
 									</div>
-									<!-- Prix -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Prix :</p>
-										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Prix" id="nom" />
-									</div>
-									<!-- Catégorie -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Catégories :</p>
-										<select class="form-control" id="card type">
-											<option>Livres</option>
-											<option>Musique</option>
-											<option>Sports</option>
-											<option>Vetements</option>
-										</select>	
-									</div>
+								
 									<!-- Validation -->
 									<div style="text-align: center">
-										<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Ajouter</button>
+										<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Connexion</button>
 									</div>
 								</div>
-							</div><br>
-						
-					
-					</form>
+							</div>
+						</form>
+					</div>			
 				</div>
 			</div>
 			<!-- /#page-content-wrapper -->
 		</div>
 		<!-- /#wrapper -->
-
 
 		<!-- JS Code to Toggle Menu -->
 		<script>
@@ -122,8 +102,6 @@
 			$("#wrapper").toggleClass("toggled");
 		});
 		</script>
-		
-
 		
 		<!-- Footer Navbar --> 
 		<footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom" id="footer">

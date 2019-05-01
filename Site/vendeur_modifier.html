@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>ECE Market Place | Ajouter Items</title>
+		<title>ECE Market Place | Espace Vendeur Modification</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
@@ -60,54 +60,34 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Renseignez les Informations sur l'Item</h1><br>
-					<form action="ajout_item.php">		
+					<h1 style="font-weight: bold; text-align: center;">Renseignez les champs à Modifier</h1><br>
+					<form action="vendeur_modifier.php">		
 							<div class="card" style="width: 70%; margin:auto;">
 								
 								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Ajouter un Item</h3>
+									<h3 style="font-weight: bold; font-size: 1.5rem ">Importer Images</h3>
 								</div>
 								
 								<div class="card-body bg-light">
-									<!-- Nom -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Nom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Nom " id="nom" />
-									</div>
 									<!-- Photos upload -->
 									<div style="display: inline-block; width: 100%; ">
-										<p style="text-align: left;">Photos :</p>
-										<input type="file" style="margin-bottom:1rem; width:100%;" id="photos" accept="image/png, image/jpg" multiple/>	
-									
+										<p style="text-align: left;">Photo de profil :</p>
+										<input type="file" style="margin-bottom:1rem; width:100%;" id="profile"/>	
 									</div>
 									<!-- video upload -->
 									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Vidéo :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le lien de la vidéo " id="video" />										
+										<p style="text-align: left;">Fond d'écran :</p>
+										<input type="file" style="margin-bottom:1rem; width:100%;" id="background"/>										
 									</div>
-									<!-- Prix -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Prix :</p>
-										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez le Prix" id="nom" />
-									</div>
-									<!-- Catégorie -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Catégories :</p>
-										<select class="form-control" id="card type">
-											<option>Livres</option>
-											<option>Musique</option>
-											<option>Sports</option>
-											<option>Vetements</option>
-										</select>	
-									</div>
+									
 									<!-- Validation -->
 									<div style="text-align: center">
-										<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Ajouter</button>
+										<div style="display: inline-block;"><button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Modifier</button></div>
+										<div style="display: inline-block; width:10%;"></div>
+										<div style="display: inline-block;"><a href="vendeur_compte.html"><button type="button" class="btn btn-danger" style="font-size: 1.5rem; margin-top:1rem;">Annuler</button></div>
 									</div>
 								</div>
 							</div><br>
-						
-					
 					</form>
 				</div>
 			</div>
