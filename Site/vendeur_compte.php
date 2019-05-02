@@ -1,10 +1,23 @@
 <?php
-session_name('Vendeur');
-session_start();
-if(empty($_SESSION['Email_ECE']))
-{
-	header('Location: vendeur_connexion.php');
-}
+	session_name('Vendeur');
+	session_start();
+	if(empty($_SESSION['Email_ECE']))
+	{
+		header('Location: vendeur_connexion.php');
+	}else{
+		//Connection to the database
+		$database='commerce';
+		$db_handle=mysqli_connect('localhost','root','');
+		//Connection to database
+		$db_found=mysqli_select_db($db_handle,$database);
+		if($db_found){	
+		// on Recherche les infos
+		$sql = "SELECT * FROM vendeur WHERE Email_vendeur LIKE '".$_SESSION['Email_ECE']."'";
+		$req = mysqli_query($db_handle, $sql);
+		$data = mysqli_fetch_assoc($req);
+		}
+	mysqli_close($db_handle);
+	}
 ?>
 <html>
 	<head>
@@ -85,7 +98,7 @@ if(empty($_SESSION['Email_ECE']))
 												<h3 style="font-weight: bold; color: black; font-size:1.4rem; text-align: left">Nom : </h3> 
 											</div>
 											<div style="width:48%; display: inline-block">
-												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="nom">Devèze</h3>
+												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="nom"><?php echo($data['nom']); ?></h3>
 											</div>
 										</div>
 										<div>
