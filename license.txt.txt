@@ -1,14 +1,18 @@
 Bibliographie.
 
 
-Outil d'aide à la conception du site :
+Outils d'aide à la conception du site :
 
 - https://wireframe.cc/pro/ (Conception du Wireframe)
 - https://www.draw.io (Conception du Storyboard et du Modèle entité-association de la base de donnée)
 
 
-Outil d'aide à la conception du code :
+Outils d'aide à la conception du code :
 
 - https://getbootstrap.com/ (Bootstrap4)
 - https://bootstrapious.com/tutorial/sidebar/index.html (Vertical Sidebar in Bootstrap4)
 - https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp (NavsBars)
+
+
+Sources de code utilisées :
+- https://pedago-ece.campusonline.me/course/view.php?id=1018 (ECE Paris : Web Dynamique, Cours et Corrigés de TD/TP)
