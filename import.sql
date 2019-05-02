@@ -104,12 +104,12 @@ VALUES
 INSERT INTO Admin (Pseudo,Password)
 VALUES
 ('root','root');
-INSERT INTO Item (Id_item,Nom,Description,Video,Categorie, Prix,Genre,Taille,Couleur,Quantite,Vendu)
+INSERT INTO Item (Id_item,Nom,Description,Video,Categorie,Prix,Genre,Taille,Pointure,Couleur,Quantite,Vendu)
 VALUES
 (1,'Candide','Un classique interessant, a lire et relire !','https://www.youtube.com/watch?v=_h-fP2nt9fM','Livres',11,null,null,null,null,20, 234),
 (2,'Simplissime','Le livre de cuisine le plus vendu en france','https://www.youtube.com/watch?v=tDgmIjtmOr4','Livres',25,null,null,null,null,6, 13),
 (3,'Dictionnaire Larousse','Contiens 74 000 definitions. Incroyable non ?','https://www.youtube.com/watch?v=PM5iH7XL-Nw','Livres',9,null,null,null,null,6, 4837),
-(4,'Divergent vol.1','le premier volume d\'une trilogie qui fais rever les adolescents et les grands enfants !','https://www.youtube.com/watch?v=MGpz8Y5dNRY','Livres',20,null,null,null,10, 433),
+(4,'Divergent vol.1','le premier volume d\'une trilogie qui fais rever les adolescents et les grands enfants !','https://www.youtube.com/watch?v=MGpz8Y5dNRY','Livres',20,null,null,null,null,10, 433),
 (5,'L\'encyclopedie','receuil de connaissances de diverses domaines','https://www.youtube.com/watch?v=B333warhGtM','Livres',13,null,null,null,null,39, 975),
 (6,'Eragon','Un classique dans le domaine de la fantaisie !','https://www.youtube.com/watch?v=JXUznp9-fLY','Livres',9,null,null,null,null,56, 62),
 (7,'Le livre des 7 couronnes','Le livre qui a fait naitre la serie mythique "Games Of Thrones" : il n\'a rien a envier a l\'oeuvre de reference de Tolkien dans ce domaine','https://www.youtube.com/watch?v=TZE9gVF1QbA','Livres',10,null,null,null,null,574, 12537),
@@ -153,9 +153,9 @@ VALUES
 (45,'Short de sport','Idéal pour les sports en interieur ou en exterieur par beau temps','https://www.youtube.com/watch?v=OKdEZFacHQc','Vetements',39,1,1,0,1,57, 301),
 (46,'T-shirt blanc','Un beau tshirt blanc','https://www.youtube.com/watch?v=d1K-OrFo7QA','Vetements',38,1,1,0,1,78, 1750),
 (47,'T-shirt gris','Un très joli tshirt gris','https://www.youtube.com/watch?v=fH6oSWBFSg0','Vetements',19,1,1,0,1,70, 772),
-(48,'T-shirt rose','Un très joli tshirt rose avec un chat trop mims','https://www.youtube.com/watch?v=OJ8HeOC7Ono','Vetements',34,1,1,0,1,7, 49);
-(49,'Baskets','des belles baskets mega stylees','https://www.youtube.com/watch?v=5bgyES4jpJQ&t=1s','Vetements',34,1,0,1,1,20, 219);
-(50,'chaussures de ville','de tres bonnes chaussures pour aller travailler et avoir des ampoules','https://www.youtube.com/watch?v=SidW-cvU58k','Vetements',34,1,0,1,1,18, 99);
+(48,'T-shirt rose','Un très joli tshirt rose avec un chat trop mims','https://www.youtube.com/watch?v=OJ8HeOC7Ono','Vetements',34,1,1,0,1,7, 49),
+(49,'Baskets','des belles baskets mega stylees','https://www.youtube.com/watch?v=5bgyES4jpJQ&t=1s','Vetements',34,1,0,1,1,20, 219),
+(50,'chaussures de ville','de tres bonnes chaussures pour aller travailler et avoir des ampoules','https://www.youtube.com/watch?v=SidW-cvU58k','Vetements',34,1,0,1,1,18, 99),
 (51,'chaussures a talon','pour avoir l\'air belle et grande mais egalement performantes pour faire mal aux pieds','https://www.youtube.com/watch?v=7i-h0OPvreg','Vetements',34,1,0,1,1,56, 497);
 
 INSERT INTO ImgItem(Nom_img,Id_item,Is_main)
@@ -218,9 +218,9 @@ VALUES
 ('Pictures/vetements/tshirt_blanc_femme2.jpg',46,0),
 ('Pictures/vetements/tshirt_blanc_femme3.jpg',46,0),
 ('Pictures/vetements/tshirt_gris_homme.jpg',47,1),
-('Pictures/vetements/tshirt_rose.jpg',48,1);
-('Pictures/vetements/basket.jpg',49,1);
-('Pictures/vetements/chaussure_ville.jpg',50,1);
+('Pictures/vetements/tshirt_rose.jpg',48,1),
+('Pictures/vetements/basket.jpg',49,1),
+('Pictures/vetements/chaussure_ville.jpg',50,1),
 ('Pictures/vetements/talons.jpg',51,1);
 
 
