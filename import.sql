@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS Vendeur
 );
 CREATE TABLE IF NOT EXISTS ImgVendeur
 (
-	Nom VARCHAR(255) PRIMARY KEY NOT NULL,
+	Nom_vendeur VARCHAR(255) PRIMARY KEY NOT NULL,
 	Email_ECE VARCHAR(255),
 	isProfil BOOLEAN,
 	FOREIGN KEY (Email_ECE) REFERENCES Vendeur(Email_ECE)
@@ -92,7 +92,7 @@ VALUES
 ('paul.chasseloup@edu.ece.fr','Gladalle78','Chasseloup','Paul'),
 ('tom.jouvet@edu.ece.fr','Akane','Jouvet','Tom');
 
-INSERT INTO ImgVendeur (Nom, Email_ECE, isProfil)
+INSERT INTO ImgVendeur (Nom_vendeur, Email_ECE, isProfil)
 VALUES
 ('louis.png','louis.deveze@edu.ece.fr', 1),
 ('louis_fond.png','louis.deveze@edu.ece.fr', 0),
