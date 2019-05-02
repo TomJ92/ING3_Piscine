@@ -1,6 +1,20 @@
 <?php
+	//getting the id of the item
 	$param = $_GET["param"];
-	echo($param);
+	//Connection to the database
+	$database='commerce';
+	$db_handle=mysqli_connect('localhost','root','');
+	//Connection to database
+	$db_found=mysqli_select_db($db_handle,$database);
+	if($db_found){	
+		// on Recherche les infos
+		$sql = "SELECT * FROM item WHERE id_item LIKE '".$param."'";
+		$req = mysqli_query($db_handle, $sql);
+		$data = mysqli_fetch_assoc($req);
+		
+	}
+	
+	
 ?>
 
 <html>
@@ -29,7 +43,7 @@
 
 			
 			<!-- Brand image -->
-			<a class="navbar-brand" href="home.html" id="brand">
+			<a class="navbar-brand" href="home.php" id="brand">
 				<img src="Pictures/Logo.png" width="130px" height="60px">
 			</a>
 
@@ -37,10 +51,10 @@
 			<!--  Menu -->
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="#">Admin</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
-					<li class="nav-item active"><a class="nav-link" href="compte_client.html">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
-					<li class="nav-item"><a class="nav-link" href="panier.html">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
+					<li class="nav-item active"><a class="nav-link" href="client_compte.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="panier.php">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -50,12 +64,12 @@
 			<!-- Sidebar -->
 			<div class="bg-light border-right" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
-					<a href="categories.html" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
-					<a href="livres.html" class="list-group-item list-group-item-action bg-light">Livres</a>
-					<a href="musique.html" class="list-group-item list-group-item-action bg-light">Musique</a>
-					<a href="sports.html" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
-					<a href="vetements.html" class="list-group-item list-group-item-action bg-light">Vêtements</a>
-					<a href="ventes_flash.html" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
+					<a href="categories.php" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
+					<a href="livres.php" class="list-group-item list-group-item-action bg-light">Livres</a>
+					<a href="musique.php" class="list-group-item list-group-item-action bg-light">Musique</a>
+					<a href="sports.php" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
+					<a href="vetements.php" class="list-group-item list-group-item-action bg-light">Vêtements</a>
+					<a href="ventes_flash.php" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
 				</div>
 			</div>
 
@@ -65,7 +79,7 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Ioda</h1><br>
+					<h1 style="font-weight: bold; text-align: center;"><?php echo($data['Nom']);?></h1><br>
 					<!-- Informations -->
 					<div id="informations" style="text-align: center;">
 						<div style="width:30%; display: inline-block; text-align:left;">
@@ -80,22 +94,43 @@
 
 									  <!-- Indicators -->
 									  <ul class="carousel-indicators">
-										<li data-target="#" data-slide-to="0" class="active"></li>
-										<li data-target="#" data-slide-to="1"></li>
-										<li data-target="#" data-slide-to="2"></li>
+										<?php 
+											$sql = "SELECT Nom_img FROM imgitem WHERE id_item LIKE '".$param."'";
+											$req = mysqli_query($db_handle, $sql);
+											$num=0;
+											while($data2 = mysqli_fetch_assoc($req)){
+												if($num==0){
+													echo('<li data-target="#" data-slide-to="'.$num.'" class="active"></li>');
+												}else{
+													echo('<li data-target="#" data-slide-to="'.$num.'"></li>');
+												}
+												
+												$num += 1;
+											}
+										?>
 									  </ul>
 
 									  <!-- The slideshow -->
 									  <div class="carousel-inner">
-										<div class="carousel-item active">
-										  <img src="Pictures/Ioda/ioda0.jpg" alt="Ioda0" style="width:400px; height:400px">
-										</div>
-										<div class="carousel-item">
-										  <img src="Pictures/Ioda/ioda1.jpg" alt="Ioda1" style="width:400px; height:400px">
-										</div>
-										<div class="carousel-item">
-										  <img src="Pictures/Ioda/ioda2.jpg" alt="Ioda2" style="width:400px; height:400px">
-										</div>
+										<?php 
+											$sql = "SELECT Nom_img FROM imgitem WHERE id_item LIKE '".$param."'";
+											$req = mysqli_query($db_handle, $sql);
+											$num=0;
+											while($data2 = mysqli_fetch_assoc($req)){
+												if($num==0){
+													echo('<div class="carousel-item active">
+															<img src="'.$data2['Nom_img'].'" alt="Ioda0" style="width:400px; height:400px">
+														</div>');
+												}else{
+													echo('<div class="carousel-item">
+															<img src="'.$data2['Nom_img'].'" alt="Ioda0" style="width:400px; height:400px">
+														</div>');
+												}
+												
+												$num += 1;
+											}
+										?>
+										
 									  </div>
 
 									  <!-- Left and right controls -->
@@ -121,8 +156,10 @@
 								
 								<div class="card-body bg-light">
 									<div class="embed-responsive embed-responsive-16by9" style="height: 400px">
-										<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+										<iframe class="embed-responsive-item" src="<?php echo($data['Video']);?>" allowfullscreen></iframe>
+										
 									</div>
+									
 								</div>
 							</div><br>
 						</div>
@@ -131,15 +168,17 @@
 						<div class="card" style="width: 60%; margin:auto;">
 							<div class="card-header bg-light">
 								<h3 style="display: inline-block; font-size: 1.5rem; font-weight: bold color: #696969"> Prix : </h3> 
-								<h3 style="display: inline-block; font-size: 1.5rem; font-weight: bold"> 500 € </h3> 
+								<h3 style="display: inline-block; font-size: 1.5rem; font-weight: bold"> <?php echo($data['Prix']);?> € </h3> 
+								<h3 style="display: inline-block; font-size: 1.25rem; margin-left: 2rem; font-weight: bold color: #696969"> Quantité disponible : </h3> 
+								<h3 style="display: inline-block; font-size: 1.25rem; font-weight: bold"> <?php echo($data['Quantite']);?> </h3> 
 							</div>
 								
 							<div class="card-body bg-light">
-								<p style="font-size: 1.25rem; font-weight: italic"> Un chat farceur et un peu flemmtouille.... Bon ok en vrai c'est un enorme flemmard qui reste la journée sur son canapé. Il est néanmoins très amical et n'hesitera pas a venir laisser plein de poils sur vos vetements ! </p>
+								<p style="font-size: 1.25rem; font-weight: italic"> <?php echo($data['Description']);?> </p>
 							</div>
 						</div><br>
 						<div style="display: inline-block;  text-align: center; ">
-							<a href="client_modifier.html" ><button type="button" class="btn btn-success" style="font-size: 1.5rem; display: inline-block">Ajouter au Panier</button></a>
+							<a href="panier.php" ><button type="button" class="btn btn-success" style="font-size: 1.5rem; display: inline-block">Ajouter au Panier</button></a>
 						</div>
 						
 					</div>
@@ -172,3 +211,7 @@
 		</footer> 
 	</body>
 </html>
+
+<?php
+mysqli_close($db_handle);
+?>

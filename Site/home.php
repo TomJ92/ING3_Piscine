@@ -6,19 +6,19 @@
 	$db_found=mysqli_select_db($db_handle,$database);
 	if($db_found){	
 		// on Capte le best seller livre
-		$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Livres')"; 
+		$sql = "SELECT item.id_item, item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Livres')"; 
 		$req = mysqli_query($db_handle, $sql); 
 		$bslivres = mysqli_fetch_assoc($req); 
 		// on Capte le best seller musique
-		$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Musique')"; 
+		$sql = "SELECT item.id_item, item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Musique')"; 
 		$req = mysqli_query($db_handle, $sql); 
 		$bsmusique = mysqli_fetch_assoc($req); 
 		// on Capte le best seller sports
-		$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Sports')"; 
+		$sql = "SELECT item.id_item, item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Sports')"; 
 		$req = mysqli_query($db_handle, $sql); 
 		$bssports = mysqli_fetch_assoc($req); 
 		// on Capte le best seller vetements
-		$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Vetements')"; 
+		$sql = "SELECT item.id_item, item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Vetements')"; 
 		$req = mysqli_query($db_handle, $sql); 
 		$bsvetements = mysqli_fetch_assoc($req); 
 	}
@@ -97,7 +97,7 @@
 							<img class="card-img" src="<?php echo($bslivres['nom_img']); ?>" alt="Card image">
 							<div class="card-body" >
 								<p class="card-text" ><?php echo($bslivres['description']); ?></p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
+								<?php echo('<a href="item.php?param='.$bslivres['id_item'].'" class="btn btn-secondary" style="font-size: 0.75rem">Plus d\'informations</a>');?>
 								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;"><?php echo($bslivres['prix']); ?> €</p>
 							</div>
 						</div>						
@@ -108,7 +108,7 @@
 							<img class="card-img" src="<?php echo($bsmusique['nom_img']); ?>" alt="Card image">
 							<div class="card-body" >
 								<p class="card-text" ><?php echo($bsmusique['description']); ?></p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
+								<?php echo('<a href="item.php?param='.$bsmusique['id_item'].'" class="btn btn-secondary" style="font-size: 0.75rem">Plus d\'informations</a>');?>
 								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;"><?php echo($bsmusique['prix']); ?> €</p>
 							</div>
 						</div>						
@@ -119,7 +119,7 @@
 							<img class="card-img" src="<?php echo($bssports['nom_img']); ?>" alt="Card image">
 							<div class="card-body" >
 								<p class="card-text" ><?php echo($bssports['description']); ?></p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
+								<?php echo('<a href="item.php?param='.$bssports['id_item'].'" class="btn btn-secondary" style="font-size: 0.75rem">Plus d\'informations</a>');?>
 								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;"><?php echo($bssports['prix']); ?> €</p>
 							</div>
 						</div>						
@@ -130,7 +130,7 @@
 							<img class="card-img" src="<?php echo($bsvetements['nom_img']); ?>" alt="Card image">
 							<div class="card-body" >
 								<p class="card-text" ><?php echo($bsvetements['description']); ?></p>
-								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
+								<?php echo('<a href="item.php?param='.$bsvetements['id_item'].'" class="btn btn-secondary" style="font-size: 0.75rem">Plus d\'informations</a>');?>
 								<p style="display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;"> <?php echo($bsvetements['prix']); ?> €</p>
 							</div>
 						</div>
