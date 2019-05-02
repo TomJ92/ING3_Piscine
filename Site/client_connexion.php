@@ -137,7 +137,7 @@ mysqli_close($db_handle);
  								?>
 								<!-- Nouveau client zone -->
 								<p style="font-weight: bold; font-size: 1.25rem"> Nouveau Client ?</p>
-								<a href="client_connexion.php" ><button type="button" class="btn btn-success" style="font-size: 1.5rem;">S'inscrire</button></a>													
+								<a href="client_inscription.php" ><button type="button" class="btn btn-success" style="font-size: 1.5rem;">S'inscrire</button></a>													
 							</form>
 						</div>
 					</div><br>
