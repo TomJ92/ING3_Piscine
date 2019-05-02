@@ -1,3 +1,8 @@
+<?php
+	$param = $_GET["param"];
+	echo($param);
+?>
+
 <html>
 	<head>
 		<title>ECE Market Place | Fiche Produit</title>
