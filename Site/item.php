@@ -178,7 +178,11 @@
 							</div>
 						</div><br>
 						<div style="display: inline-block;  text-align: center; ">
-							<a href="panier.php" ><button type="button" class="btn btn-success" style="font-size: 1.5rem; display: inline-block">Ajouter au Panier</button></a>
+							<form action="panier_ajout.php" method="post" id="formulaire">
+								<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Saisir la quantité" value="1" id="amount" name="nombre" >
+								<input type="hidden" name="id" value="<?php echo ($param); ?>">	
+								<button type="submit" class="btn btn-success" style="font-size: 1.5rem; display: inline-block">Ajouter au Panier</button>
+							</form>
 						</div>
 						
 					</div>
@@ -194,6 +198,15 @@
 		$("#toggler").click(function(e) {
 			$("#wrapper").toggleClass("toggled");
 		});
+		
+		$('form').submit(function(){
+			var input = $('#amount').val();
+			if(input == ''){
+				$('#amount').val('1');
+			}else if( input <1){
+				$('#amount').val('1');
+			}
+		});  
 		</script>
 		
 
