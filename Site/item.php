@@ -175,15 +175,83 @@
 								
 							<div class="card-body bg-light">
 								<p style="font-size: 1.25rem; font-weight: italic"> <?php echo($data['Description']);?> </p>
+							
+								<div style="display: inline-block;  text-align: center; ">
+									<form action="panier_ajout.php" method="post" id="formulaire">
+										<?php
+											
+											//Code genre 
+											if(!empty($data['Genre'])){
+												if($data['Genre'] == 1){
+													echo("<p style=\"font-size: 1.25rem;font-weight: bold\">Article taillé pour Homme</p>");
+												}else{
+													echo("<p style=\"font-size: 1.25rem; font-weight: bold\">Article taillé pour Femme</p>" );
+
+												}
+											}
+											//Code taille
+											if(!empty($data['Taille'])){
+												echo('
+													<div class="form-check" style="text-align: left; width: 30%; display: inline-block">
+														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios0" value="option0" checked>
+														<label class="form-check-label" for="exampleRadios0">XXL</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+														<label class="form-check-label" for="exampleRadios1">XL</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" >
+														<label class="form-check-label" for="exampleRadios2">L</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
+														<label class="form-check-label" for="exampleRadios3">M</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" >
+														<label class="form-check-label" for="exampleRadios4">S</label><br>
+													</div>
+												');
+											}	
+											//Code Pointure
+											if(!empty($data['Pointure'])){
+												echo('														
+													<div class="form-check" style="text-align: left; width: 30%; display: inline-block">										
+														<input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios0" value="option0" checked>
+														<label class="form-check-label" for="exampleRadios0">44</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios1" value="option1" >
+														<label class="form-check-label" for="exampleRadios1">42</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios2" value="option2" >
+														<label class="form-check-label" for="exampleRadios2">40</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios3" value="option3" >
+														<label class="form-check-label" for="exampleRadios3">38</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios4" value="option4" >
+														<label class="form-check-label" for="exampleRadios4">36</label><br>
+													</div>
+												');
+											}	
+											//Code Couleur
+											if(!empty($data['Couleur'])){
+												echo('
+													<div class="form-check" style="text-align: left; width: 30%; display: inline-block">										
+														<input class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios0" value="option0" checked>
+														<label class="form-check-label" for="exampleRadios0">Dark</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios1" value="option1" >
+														<label class="form-check-label" for="exampleRadios1">Light</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios2" value="option2" >
+														<label class="form-check-label" for="exampleRadios2">Blue</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios3" value="option3" >
+														<label class="form-check-label" for="exampleRadios3">Red</label><br>
+														<input class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios4" value="option4" >
+														<label class="form-check-label" for="exampleRadios4">Yellow</label><br>
+													</div>
+												');
+											}	
+										?>
+										<div style = "margin-top: 2rem;">
+											
+											<div style=" display: inline-block" ><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Saisir la quantité" value="1" id="amount" name="nombre" ></div>
+											<div style=" display: inline-block" ><input type="hidden" style=" display: inline-block" name="id" value="<?php echo ($param); ?>">	</div>
+											<div style="font-size: 1.5rem; display: inline-block"><button type="submit" class="btn btn-success" >Ajouter au Panier</button></div>
+										</div>
+									</form>
+								</div>
 							</div>
 						</div><br>
-						<div style="display: inline-block;  text-align: center; ">
-							<form action="panier_ajout.php" method="post" id="formulaire">
-								<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Saisir la quantité" value="1" id="amount" name="nombre" >
-								<input type="hidden" name="id" value="<?php echo ($param); ?>">	
-								<button type="submit" class="btn btn-success" style="font-size: 1.5rem; display: inline-block">Ajouter au Panier</button>
-							</form>
-						</div>
+						
 						
 					</div>
 				</div>
