@@ -26,12 +26,12 @@
 			<!--  Menu -->
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="categories.html">Admin</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
+					<li class="nav-item"><a class="nav-link" href="categories.php">Admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
 
-					<li class="nav-item"><a class="nav-link" href="compte_client.html">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
 
-					<li class="nav-item"><a class="nav-link" href="panier.html">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="panier.php">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -42,11 +42,11 @@
 			<div class="bg-light border-right" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
 					<a href="categories.html" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
-					<a href="livres.html" class="list-group-item list-group-item-action bg-light">Livres</a>
-					<a href="musique.html" class="list-group-item list-group-item-action bg-light">Musique</a>
-					<a href="sports.html" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
-					<a href="vetements.html" class="list-group-item list-group-item-action bg-light">Vêtements</a>
-					<a href="ventes_flash.html" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
+					<a href="livres.php" class="list-group-item list-group-item-action bg-light">Livres</a>
+					<a href="musique.php" class="list-group-item list-group-item-action bg-light">Musique</a>
+					<a href="sports.php" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
+					<a href="vetements.php" class="list-group-item list-group-item-action bg-light">Vêtements</a>
+					<a href="ventes_flash.php" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
 				</div>
 			</div>
 
