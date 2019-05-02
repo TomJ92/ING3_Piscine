@@ -76,7 +76,7 @@
 							if($db_found){	
 								
 								// on Capte la collection de livres
-								$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Categorie='Livres' ORDER BY item.vendu DESC LIMIT 4"; 
+								$sql = "SELECT item.id_item, item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Categorie='Livres' ORDER BY item.vendu DESC LIMIT 4"; 
 								$req = mysqli_query($db_handle, $sql);
 								while($data=mysqli_fetch_assoc($req))
 								{
@@ -86,7 +86,8 @@
 									echo($data['nom_img']);
 									echo("\" alt=\"Card image\"><div class=\"card-body\" ><p class=\"card-text\" style=\"font-size: 0.75rem\">");
 									echo($data['description']);
-									echo("</p><a href=\"#\" class=\"btn btn-secondary\" style=\"font-size: 0.75rem\">Plus d'informations</a><p style=\"display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;\">");
+									echo('</p><a href="item.php?param='.$data['id_item']);
+									echo("\" class=\"btn btn-secondary\" style=\"font-size: 0.75rem\">Plus d'informations</a><p style=\"display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;\">");
 									echo($data['prix']);
 									echo("€</p></div></div>");
 								}
@@ -111,7 +112,7 @@
 							if($db_found){	
 								
 								// on Capte la collection de musiques
-								$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Categorie='Musique' ORDER BY item.vendu DESC LIMIT 4"; 
+								$sql = "SELECT item.id_item, item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Categorie='Musique' ORDER BY item.vendu DESC LIMIT 4"; 
 								$req = mysqli_query($db_handle, $sql);
 								while($data=mysqli_fetch_assoc($req))
 								{
@@ -121,7 +122,8 @@
 									echo($data['nom_img']);
 									echo("\" alt=\"Card image\"><div class=\"card-body\" ><p class=\"card-text\" style=\"font-size: 0.75rem\">");
 									echo($data['description']);
-									echo("</p><a href=\"#\" class=\"btn btn-secondary\" style=\"font-size: 0.75rem\">Plus d'informations</a><p style=\"display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;\">");
+									echo('</p><a href="item.php?param='.$data['id_item']);
+									echo("\" class=\"btn btn-secondary\" style=\"font-size: 0.75rem\">Plus d'informations</a><p style=\"display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;\">");
 									echo($data['prix']);
 									echo("€</p></div></div>");
 								}
@@ -146,7 +148,7 @@
 							if($db_found){	
 								
 								// on Capte la collection d'articles sports et loisirs
-								$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Categorie='Sports' ORDER BY item.vendu DESC LIMIT 4"; 
+								$sql = "SELECT item.id_item, item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Categorie='Sports' ORDER BY item.vendu DESC LIMIT 4"; 
 								$req = mysqli_query($db_handle, $sql); 
 								while($data=mysqli_fetch_assoc($req))
 								{
@@ -156,7 +158,8 @@
 									echo($data['nom_img']);
 									echo("\" alt=\"Card image\"><div class=\"card-body\" ><p class=\"card-text\" style=\"font-size: 0.75rem\">");
 									echo($data['description']);
-									echo("</p><a href=\"#\" class=\"btn btn-secondary\" style=\"font-size: 0.75rem\">Plus d'informations</a><p style=\"display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;\">");
+									echo('</p><a href="item.php?param='.$data['id_item']);
+									echo("\" class=\"btn btn-secondary\" style=\"font-size: 0.75rem\">Plus d'informations</a><p style=\"display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;\">");
 									echo($data['prix']);
 									echo("€</p></div></div>");
 								}
@@ -181,7 +184,7 @@
 							if($db_found){	
 								
 								// on Capte la collection de vetements
-								$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Categorie='Vetements' ORDER BY item.vendu DESC LIMIT 4"; 
+								$sql = "SELECT item.id_item, item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Categorie='Vetements' ORDER BY item.vendu DESC LIMIT 4"; 
 								$req = mysqli_query($db_handle, $sql);
 								while($data=mysqli_fetch_assoc($req))
 								{
@@ -191,7 +194,8 @@
 									echo($data['nom_img']);
 									echo("\" alt=\"Card image\"><div class=\"card-body\" ><p class=\"card-text\" style=\"font-size: 0.75rem\">");
 									echo($data['description']);
-									echo("</p><a href=\"#\" class=\"btn btn-secondary\" style=\"font-size: 0.75rem\">Plus d'informations</a><p style=\"display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;\">");
+									echo('</p><a href="item.php?param='.$data['id_item']);
+									echo("\" class=\"btn btn-secondary\" style=\"font-size: 0.75rem\">Plus d'informations</a><p style=\"display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;\">");
 									echo($data['prix']);
 									echo("€</p></div></div>");
 								}
