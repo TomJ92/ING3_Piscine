@@ -94,12 +94,12 @@ VALUES
 
 INSERT INTO ImgVendeur (Nom_vendeur, Email_ECE, isProfil)
 VALUES
-('louis.png','louis.deveze@edu.ece.fr', 1),
-('louis_fond.png','louis.deveze@edu.ece.fr', 0),
-('paul.png','paul.chasseloup@edu.ece.fr', 1),
-('paul_fond.png','paul.chasseloup@edu.ece.fr', 0),
-('tom.png','tom.jouvet@edu.ece.fr', 1),
-('tom_fond.png','tom.jouvet@edu.ece.fr', 0);
+('Pictures/Vendeurs/louis.png','louis.deveze@edu.ece.fr', 1),
+('Pictures/Vendeurs/louis_fond.png','louis.deveze@edu.ece.fr', 0),
+('Pictures/Vendeurs/paul.png','paul.chasseloup@edu.ece.fr', 1),
+('Pictures/Vendeurs/paul_fond.png','paul.chasseloup@edu.ece.fr', 0),
+('Pictures/Vendeurs/tom.png','tom.jouvet@edu.ece.fr', 1),
+('Pictures/Vendeurs/tom_fond.png','tom.jouvet@edu.ece.fr', 0);
 INSERT INTO Admin (Pseudo,Password)
 VALUES
 ('root','root');
