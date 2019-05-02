@@ -24,7 +24,7 @@
 
 			
 			<!-- Brand image -->
-			<a class="navbar-brand" href="home.html" id="brand">
+			<a class="navbar-brand" href="home.php" id="brand">
 				<img src="Pictures/Logo.png" width="130px" height="60px">
 			</a>
 
@@ -32,10 +32,10 @@
 			<!--  Menu -->
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="">Admin</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
-					<li class="nav-item"><a class="nav-link" href="compte_client.html">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
-					<li class="nav-item"><a class="nav-link" href="panier.html">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
+					<li class="nav-item"><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="panier.php">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -45,12 +45,12 @@
 			<!-- Sidebar -->
 			<div class="bg-light border-right" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
-					<a href="categories.html" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
-					<a href="livres.html" class="list-group-item list-group-item-action bg-light">Livres</a>
-					<a href="musique.html" class="list-group-item list-group-item-action bg-light">Musique</a>
-					<a href="sports.html" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
-					<a href="vetements.html" class="list-group-item list-group-item-action bg-light">Vêtements</a>
-					<a href="ventes_flash.html" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
+					<a href="categories.php" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
+					<a href="livres.php" class="list-group-item list-group-item-action bg-light">Livres</a>
+					<a href="musique.php" class="list-group-item list-group-item-action bg-light">Musique</a>
+					<a href="sports.php" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
+					<a href="vetements.php" class="list-group-item list-group-item-action bg-light">Vêtements</a>
+					<a href="ventes_flash.php" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
 				</div>
 			</div>
 
@@ -63,46 +63,46 @@
 				<!-- Text decoration to none pour enlever le surlignage du lien -->
 					
 					<!-- Lien pour les categories -->
-					<a href="categories.html" style="text-decoration: none"><h1>Catégories</h1></a><br>
+					<a href="categories.php" style="text-decoration: none"><h1>Catégories</h1></a><br>
 						
 					<div class="card-deck" id="categories" style="width: 85%; margin-bottom: 4rem; margin-left: auto; margin-right: auto; text-align: center">
 						<!--  Livre -->
 						<div class="card" >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Livres</a> </div>
+							<div class="card-header"> <a class="card-title" href="livres.php" style="font-size: 1.2rem; text-decoration:none; color: black">Livres</a> </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Livres.png" alt="Card image">
 								<p class="card-text" style="font-size: 0.75rem; text-align: left">Venez découvrir notre large sélection de livres pour les petits comme pour les grands</p>
-								<a href="livres.html" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
+								<a href="livres.php" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
 							</div>
 						</div>						
 						
 						<!-- Musique -->
 						<div class="card " >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Musique</a>  </div>
+							<div class="card-header"> <a class="card-title" href="musique.php" style="font-size: 1.2rem; text-decoration:none; color: black">Musique</a>  </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Musique.png" alt="Card image">
 								<p class="card-text" style="font-size: 0.75rem; text-align: left">Ecoutez notre sélection de musiques et nos divers artistes sélectionnés rien que pour vous</p>
-								<a href="musique.html" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
+								<a href="musique.php" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
 							</div>
 						</div>						
 						
 						<!-- Sport & Loisirs -->
 						<div class="card " >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Sports & Loisirs</a>  </div>
+							<div class="card-header"> <a class="card-title" href="sports.php" style="font-size: 1.2rem; text-decoration:none; color: black">Sports & Loisirs</a>  </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Sports.png" alt="Card image">
 								<p class="card-text" style="font-size: 0.75rem; text-align: left">Gardez la forme avec notre panel d'équipements de sports et articles de loisirs en plein air </p>
-								<a href="sports.html" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
+								<a href="sports.php" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
 							</div>
 						</div>						
 						
 						<!-- Vetements -->
 						<div class="card" >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Vêtements</a>  </div>
+							<div class="card-header"> <a class="card-title" href="vetements.php" style="font-size: 1.2rem; text-decoration:none; color: black">Vêtements</a>  </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Vetements.png" alt="Card image">
 								<p class="card-text" style="font-size: 0.75rem; text-align: left">Affichez un style unique avec notre selection mode de première qualité</p>
-								<a href="vetements.html" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
+								<a href="vetements.php" class="btn btn-secondary" style="font-size: 0.75rem">Découvrir</a>
 							</div>
 						</div>
 						

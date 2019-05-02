@@ -6,19 +6,19 @@
 	$db_found=mysqli_select_db($db_handle,$database);
 	if($db_found){	
 		// on Capte le best seller livre
-		$sql = "SELECT nom, description, prix, Vendu FROM item WHERE Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Livres')"; 
+		$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Livres')"; 
 		$req = mysqli_query($db_handle, $sql); 
 		$bslivres = mysqli_fetch_assoc($req); 
 		// on Capte le best seller musique
-		$sql = "SELECT nom, description, prix, Vendu FROM item WHERE Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Musique')"; 
+		$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Musique')"; 
 		$req = mysqli_query($db_handle, $sql); 
 		$bsmusique = mysqli_fetch_assoc($req); 
 		// on Capte le best seller sports
-		$sql = "SELECT nom, description, prix, Vendu FROM item WHERE Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Sports')"; 
+		$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Sports')"; 
 		$req = mysqli_query($db_handle, $sql); 
 		$bssports = mysqli_fetch_assoc($req); 
 		// on Capte le best seller vetements
-		$sql = "SELECT nom, description, prix, Vendu FROM item WHERE Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Vetements')"; 
+		$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Vendu=(SELECT MAX(Vendu) FROM item WHERE Categorie='Vetements')"; 
 		$req = mysqli_query($db_handle, $sql); 
 		$bsvetements = mysqli_fetch_assoc($req); 
 	}
@@ -94,7 +94,7 @@
 						<!-- Best seller Livre -->
 						<div class="card" >
 							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center"><?php echo($bslivres['nom']); ?></h4> </div>
-							<img class="card-img" src="" alt="Card image">
+							<img class="card-img" src="<?php echo($bslivres['nom_img']); ?>" alt="Card image">
 							<div class="card-body" >
 								<p class="card-text" ><?php echo($bslivres['description']); ?></p>
 								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
@@ -105,7 +105,7 @@
 						<!-- Best seller Musique -->
 						<div class="card" >
 							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center"><?php echo($bsmusique['nom']); ?></h4> </div>
-							<img class="card-img" src="" alt="Card image">
+							<img class="card-img" src="<?php echo($bsmusique['nom_img']); ?>" alt="Card image">
 							<div class="card-body" >
 								<p class="card-text" ><?php echo($bsmusique['description']); ?></p>
 								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
@@ -116,7 +116,7 @@
 						<!-- Best seller Sport -->
 						<div class="card " >
 							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center"><?php echo($bssports['nom']); ?></h4> </div>
-							<img class="card-img" src="" alt="Card image">
+							<img class="card-img" src="<?php echo($bssports['nom_img']); ?>" alt="Card image">
 							<div class="card-body" >
 								<p class="card-text" ><?php echo($bssports['description']); ?></p>
 								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
@@ -127,7 +127,7 @@
 						<!-- Best seller Vetements -->
 						<div class="card " >
 							<div class="card-header"> <h4 class="card-title" style="font-size: 1.2rem; text-align: center"><?php echo($bsvetements['nom']); ?></h4> </div>
-							<img class="card-img" src="" alt="Card image">
+							<img class="card-img" src="<?php echo($bsvetements['nom_img']); ?>" alt="Card image">
 							<div class="card-body" >
 								<p class="card-text" ><?php echo($bsvetements['description']); ?></p>
 								<a href="#" class="btn btn-secondary" style="font-size: 0.75rem">Plus d'informations</a>
@@ -143,7 +143,7 @@
 					<div class="card-deck" id="categories" style="width: 85%; margin-bottom: 4rem; margin-left: auto; margin-right: auto; text-align: center">
 						<!--  Livre -->
 						<div class="card" >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Livres</a> </div>
+							<div class="card-header"> <a class="card-title" href="Livres.php" style="font-size: 1.2rem; text-decoration:none; color: black">Livres</a> </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Livres.png" alt="Card image">
 							</div>
@@ -151,7 +151,7 @@
 						
 						<!-- Musique -->
 						<div class="card " >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Musique</a>  </div>
+							<div class="card-header"> <a class="card-title" href="Musique.php" style="font-size: 1.2rem; text-decoration:none; color: black">Musique</a>  </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Musique.png" alt="Card image">
 							</div>
@@ -159,7 +159,7 @@
 						
 						<!-- Sport & Loisirs -->
 						<div class="card " >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Sports & Loisirs</a>  </div>
+							<div class="card-header"> <a class="card-title" href="Sports.php" style="font-size: 1.2rem; text-decoration:none; color: black">Sports & Loisirs</a>  </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Sports.png" alt="Card image">
 							</div>
@@ -167,7 +167,7 @@
 						
 						<!-- Vetements -->
 						<div class="card" >
-							<div class="card-header"> <a class="card-title" href="#" style="font-size: 1.2rem; text-decoration:none; color: black">Vêtements</a>  </div>
+							<div class="card-header"> <a class="card-title" href="Vetements.php" style="font-size: 1.2rem; text-decoration:none; color: black">Vêtements</a>  </div>
 							<div class="card-body" >
 								<img class="card-img" src="Pictures/Vetements.png" alt="Card image">
 							</div>

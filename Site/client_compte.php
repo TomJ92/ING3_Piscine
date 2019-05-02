@@ -4,6 +4,19 @@ session_start();
 if(empty($_SESSION['Email_client']))
 {
 	header('Location: client_connexion.php');
+}else{
+	//Connection to the database
+	$database='commerce';
+	$db_handle=mysqli_connect('localhost','root','');
+	//Connection to database
+	$db_found=mysqli_select_db($db_handle,$database);
+	if($db_found){	
+		// on Recherche les infos
+		$sql = "SELECT * FROM client WHERE Email_client LIKE '".$_SESSION['Email_client']."'";
+		$req = mysqli_query($db_handle, $sql);
+		$data = mysqli_fetch_assoc($req);
+	}
+	mysqli_close($db_handle);
 }
 ?>
 <html>
@@ -80,11 +93,11 @@ if(empty($_SESSION['Email_client']))
 								
 								<div class="card-body bg-light">
 									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Nom : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="nom">Devèze</p><br>
+									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="nom"><?php echo($data['Nom']); ?></p><br>
 									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Prénom : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="prenom">Louis</p><br>
+									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="prenom"><?php echo($data['Prenom']); ?></p><br>
 									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">E-mail : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="email">louis.deveze@edu.ece.fr</p><br>
+									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="email"><?php echo($data['Email_client']); ?></p><br>
 								</div>
 							</div><br>
 							<!-- Carte enregistrée-->
@@ -95,7 +108,7 @@ if(empty($_SESSION['Email_client']))
 								<div class="card-body bg-light">
 									<p style="font-weight: bold; color: #696969; font-size:1.25rem;">
 										<img  src="Pictures/Mastercard.png" width="100" height="70" alt="" id="carte"> 
-										|  Louis DEVEZE  |  Carte : 1324 XXXX XXXX XXXX
+										|  <?php echo($data['Nom_carte']); ?>  |  Carte : <?php echo(substr($data['Numero_carte'],0, 4)); ?> XXXX XXXX XXXX
 									</p>
 								</div>
 							</div><br>
@@ -109,16 +122,14 @@ if(empty($_SESSION['Email_client']))
 								</div>
 								
 								<div class="card-body bg-light">
-									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Adresse 1 : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="adresse1">33 Rue du Professeur Guyon</p><br>
-									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Adresse 2 : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="adresse2">/</p><br>
+									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Adresse : </h3> 
+									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="adresse"><?php echo($data['Adresse']); ?></p><br>
 									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Ville : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="ville">Louveciennes</p><br>
+									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="ville"><?php echo($data['Ville']); ?></p><br>
 									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Code Postale : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="poste">78430</p><br>
+									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="poste"><?php echo($data['Code_postal']); ?></p><br>
 									<h3 style="font-weight: bold; color: black; font-size:1.4rem; display: inline-block">Pays : </h3> 
-									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="pays">France</p><br>
+									<p style="font-weight: bold; color: #696969; font-size:1.25rem; display: inline-block" id="pays"><?php echo($data['Pays']); ?></p><br>
 								</div>
 							</div><br>
 						</div>

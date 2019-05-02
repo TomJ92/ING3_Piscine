@@ -1,50 +1,10 @@
-<?php 
-	$nom = isset($_POST["nom"])? $_POST["nom"] : "";
-	$prenom = isset($_POST["prenom"])? $_POST["prenom"] : "";
-	$mail = isset($_POST["mail"])? $_POST["mail"] : "";
-	$pseudo = isset($_POST["pseudo"])? $_POST["pseudo"] : "";
-	$validation = false;
-	$database='commerce';
-	$db_handle=mysqli_connect('localhost','root','');
-	$db_found=mysqli_select_db($db_handle,$database);
-	
-	//si il y a un champ vide
-	if(empty($nom)||empty($mail)||empty($prenom)||empty($pseudo))
-	{
-		$message =' Un champ est vide, remplissez tous les champs s\'il-vous-plaît' ;
-	}
-	//aucun champ vide
-	else
-	{
-		//si on trouve la database
-		if($db_found)
-		{
-			//Si tous les champs sont valides
-			if(!empty($nom) && !empty($prenom) && !empty($mail) && !empty($pseudo)){
-				
-				$sql=" INSERT INTO `vendeur` (`Email_ECE`, `Pseudo`, `Nom`, `Prenom`) VALUES ('".$mail."','".$pseudo."','".$nom."','".$prenom."')";
-				//on effectue la commande SQL
-				mysqli_query($db_handle,$sql);
-				header('Location: compte_admin.php');
-				$message = "";
-			}
-		}
-		else
-		{
-			$message= 'BDD non trouvé';
-		}
-	}
-	
-	mysqli_close($db_handle);
- ?>
-
 <html>
 	<head>
-		<title>ECE Market Place | Consulter vendeurs</title>
+		<title>ECE Market Place | Livres</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
-		<link href="styleVenteFlash.css" rel="stylesheet" type="text/css"/>
+		<link href="styleHome.css" rel="stylesheet" type="text/css"/>
 		
 		<!-- Bootstrap content -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -56,6 +16,7 @@
 	
 	<body>
 	
+		
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navigation">	
 						
 			<!-- bouton de toggle du menu -->
@@ -71,7 +32,7 @@
 			<!--  Menu -->
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
 					<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
 					<li class="nav-item"><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
 					<li class="nav-item"><a class="nav-link" href="panier.php">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
@@ -94,57 +55,54 @@
 			</div>
 
 		<!-- /#sidebar-wrapper -->
-		
+
 		<!-- Page Content -->
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Ajouter un vendeur</h1><br>				
+				<!-- Text decoration to none pour enlever le surlignage du lien -->
 					
-					<!-- Table de recherche -->
-					<div style="text-align: center">
-						<form action="admin_ajouter_vendeurs.php" method="post">
-							<div class="card" style="width: 70%; margin:auto;">
+					<!-- Lien pour la page livres -->
+					<a href="livres.php" style="text-decoration: none" ><h1>Livres</h1></a>
+					
+					<div class="card-columns" id="flash" style="width: 75%; margin: auto;">
+						<!-- on decrit les differentes cartes livre à partir de la base de donnée-->
+						<?php
+							//Connection to the database
+							$database='commerce';
+							$db_handle=mysqli_connect('localhost','root','');
+							//Connection to database
+							$db_found=mysqli_select_db($db_handle,$database);
+							if($db_found){	
 								
-								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Saisir les informations necessaires</h3>
-								</div>
-								
-								<div class="card-body bg-light">
-									<!-- Nom -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Nom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le nom " name="nom" />
-									</div>
-									<!-- Prenom -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Prénom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le nom " name="prenom" />
-									</div>
-									<!-- email -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Email :</p>
-										<input type="email" class="form-control mb-2 mr-sm-2" placeholder="Entrez l'email " name="mail" />
-									</div>
-									<!-- Pseudo -->
-									<div style="display: inline-block; width: 100%;">
-										<p style="text-align: left;">Pseudo :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le pseudo " name="pseudo" />
-									</div>
-									<!-- Validation -->
-									<div style="text-align: center">
-										<h3 style=" font-size: 1.25rem "> <?php echo($message); ?><h3>
-										<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Ajouter</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>			
+								// on Capte la collection de livre
+								$sql = "SELECT item.nom, item.description, item.prix, imgitem.nom_img FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND Categorie='Livres' ORDER BY item.vendu DESC"; 
+								$req = mysqli_query($db_handle, $sql); 
+								while($data=mysqli_fetch_assoc($req))
+								{
+									echo("<div class=\"card\" ><div class=\"card-header\"> <h4 class=\"card-title\" style=\"font-size: 1.2rem; text-align: center\">");
+									echo($data['nom']);
+									echo("</h4> </div><img class=\"card-img\" src=\"");
+									echo($data['nom_img']);
+									echo("\" alt=\"Card image\"><div class=\"card-body\" ><p class=\"card-text\" style=\"font-size: 0.75rem\">");
+									echo($data['description']);
+									echo("</p><a href=\"#\" class=\"btn btn-secondary\" style=\"font-size: 0.75rem\">Plus d'informations</a><p style=\"display: inline-block; padding-left: 2rem; font-size: 1.5rem; font-weight: bold;\">");
+									echo($data['prix']);
+									echo("€</p></div></div>");
+								}
+							}	
+							mysqli_close($db_handle);
+						?>
+						
+						
+					</div>					
 				</div>
+				
 			</div>
 			<!-- /#page-content-wrapper -->
 		</div>
 		<!-- /#wrapper -->
+
 
 		<!-- JS Code to Toggle Menu -->
 		<script>
