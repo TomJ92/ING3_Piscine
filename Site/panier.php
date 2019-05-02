@@ -1,3 +1,19 @@
+<?php
+	session_name('Client');
+	session_start();
+	if(empty($_SESSION['Email_client']))
+	{
+		header('Location: client_connexion.php');
+	}else{
+		//Connection to the database
+		$database='commerce';
+		$db_handle=mysqli_connect('localhost','root','');
+		//Connection to database
+		$db_found=mysqli_select_db($db_handle,$database);
+
+	}
+?>
+
 <html>
 	<head>
 		<title>ECE Market Place | Panier </title>
@@ -74,27 +90,27 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row"><img src="Pictures/Musique.png" style="width:6rem; height:6rem" alt=""></th>
-								<td class="align-middle">Album de Coldplay</td>
-								<td class="align-middle"><h5 style="font-weight: bold">12 €</h5></td>
-								<td class="align-middle">1</td>
-								<td class="align-middle"><button type="button" class="btn btn-outline-danger">Supprimer cet article</button></td>
-							</tr>
-							<tr>
-								<th scope="row"><img class="card-img" src="Pictures/Livres.png" style="width:6rem; height:6rem" alt="Card image"></th>
-								<td class="align-middle">Game of thrones</td>
-								<td class="align-middle"><h5 style="font-weight: bold">18 €</h5></td>
-								<td class="align-middle">1</td>
-								<td class="align-middle"><button type="button" class="btn btn-outline-danger">Supprimer cet article</button></td>
-							</tr>
-							<tr>
-								<th scope="row"><img class="card-img" src="Pictures/Sports.png" style="width:6rem; height:6rem" alt="Card image"></th>
-								<td class="align-middle">Ballon de foot</td>
-								<td class="align-middle"><h5 style="font-weight: bold">5 €</h5></td>
-								<td class="align-middle">5</td>
-								<td class="align-middle"><button type="button" class="btn btn-outline-danger">Supprimer cet article</button></td>
-							</tr>
+							<?php
+								if($db_found){	
+									// on Recherche les infos
+									$sql = "SELECT * FROM client WHERE Email_client LIKE '".$_SESSION['Email_client']."'";
+									$req = mysqli_query($db_handle, $sql);
+									$data = mysqli_fetch_assoc($req);
+									while($data=mysqli_fetch_assoc($req))
+									{
+										echo("<tr>");
+										echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
+										echo("<td class=\"align-middle\">".$data['Nom']."</td>");
+										echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
+										echo("<td class=\"align-middle\">".$data['Description']."</td>");
+										echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
+										echo("<td class=\"align-middle\">".$data['Quantite']."</td>");
+										echo("<td class=\"align-middle\">".$data['Vendu']."</td>");
+										echo("</tr>");
+									}
+								}
+								mysqli_close($db_handle);
+							?>
 						</tbody>
 					</table><br>
 					<div id="commande" style = "text-align: center">

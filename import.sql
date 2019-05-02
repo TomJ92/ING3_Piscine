@@ -71,7 +71,7 @@ CREATE TABLE  IF NOT EXISTS Vendre
 (
 	Email_ECE VARCHAR(255),
 	Id_item INT,
-	Quantite INT,
+	Quantite_vendeur INT,
 	FOREIGN KEY (Email_ECE) REFERENCES Vendeur(Email_ECE),
 	FOREIGN KEY (Id_item) REFERENCES Item(Id_item),
 	PRIMARY KEY (Email_ECE,Id_item)
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS Panier
 (
 	Email_client VARCHAR(255),
 	Id_item INT,
-	Quantite INT,
+	Quantite_panier INT,
 	FOREIGN KEY (Email_client) REFERENCES CLient(Email_client),
 	FOREIGN KEY (Id_item) REFERENCES Item(Id_item),
 	PRIMARY KEY (Email_client,Id_item)
@@ -215,13 +215,13 @@ INSERT INTO Carte_bancaire(Numero_carte,Type_carte,Nom_carte,Date_carte,Code_car
 VALUES
 ("5436271829302935",'Visa','Tom Jouvet','1998-06-03',333);
 
-INSERT INTO Vendre(Email_ECE,Id_item,Quantite)
+INSERT INTO Vendre(Email_ECE,Id_item,Quantite_vendeur)
 VALUES
 ('tom.jouvet@edu.ece.fr',4,1),
 ('paul.chasseloup@edu.ece.fr',2,5),
 ('louis.deveze@edu.ece.fr',1,2);
 
-INSERT INTO Panier(Email_client,Id_item,Quantite)
+INSERT INTO Panier(Email_client,Id_item,Quantite_panier)
 VALUES
 ('tomjouvet@gmail.com',2,3),
 ('iron.throne@gmail.com',4,1);
