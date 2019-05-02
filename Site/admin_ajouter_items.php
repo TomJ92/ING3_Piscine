@@ -72,12 +72,7 @@
 				$req = mysqli_query($db_handle,$sql);
 				
 			}
-			
-			//$sql=" INSERT INTO `vendeur` (`Email_ECE`, `Pseudo`, `Nom`, `Prenom`) VALUES ('".$mail."','".$pseudo."','".$nom."','".$prenom."')";
-			//on effectue la commande SQL
-			//mysqli_query($db_handle,$sql);
-			//Redirection vers la page d'accueil admin
-			//header('Location: compte_admin.php');
+			header('Location: admin_compte.php');
 		}
 	}
 	mysqli_close($db_handle);
