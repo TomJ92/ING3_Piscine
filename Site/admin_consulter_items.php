@@ -87,6 +87,7 @@
 								<th scope="col">Description</th>
 								<th scope="col">Prix Unitaire</th>
 								<th scope="col">Quantité Totale</th>
+								<th scope="col">Quantité Vendu</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -100,46 +101,49 @@
 								if($db_found){	
 									if(empty($research)){
 										// on select dans la base
-										$sql = "SELECT * FROM item"; 
+										$sql = "SELECT * FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' ORDER BY item.quantite DESC"; 
 										$req = mysqli_query($db_handle, $sql); 
 										while($data=mysqli_fetch_assoc($req))
 										{
 											echo("<tr>");
-											echo("<td class=\"align-middle\"></td>");
+											echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
 											echo("<td class=\"align-middle\">".$data['Nom']."</td>");
 											echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
 											echo("<td class=\"align-middle\">".$data['Description']."</td>");
 											echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
 											echo("<td class=\"align-middle\">".$data['Quantite']."</td>");
+											echo("<td class=\"align-middle\">".$data['Vendu']."</td>");
 											echo("</tr>");
 										}
 									}else{
 										// on select dans la base
-										$sql = "SELECT * FROM item WHERE Nom = '".$research."'"; 
+										$sql = "SELECT * FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND item.nom = '".$research."' ORDER BY item.quantite DESC " ; 
 										$req = mysqli_query($db_handle, $sql); 
 										while($data=mysqli_fetch_assoc($req))
 										{
 											echo("<tr>");
-											echo("<td class=\"align-middle\"></td>");
+											echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
 											echo("<td class=\"align-middle\">".$data['Nom']."</td>");											
 											echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
 											echo("<td class=\"align-middle\">".$data['Description']."</td>");
 											echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
 											echo("<td class=\"align-middle\">".$data['Quantite']."</td>");
+											echo("<td class=\"align-middle\">".$data['Vendu']."</td>");
 											echo("</tr>");
 										}
 										// on select dans la base
-										$sql = "SELECT * FROM item WHERE Categorie = '".$research."'"; 
+										$sql = "SELECT * FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND item.categorie = '".$research."' ORDER BY item.quantite DESC "; 
 										$req = mysqli_query($db_handle, $sql); 
 										while($data=mysqli_fetch_assoc($req))
 										{
 											echo("<tr>");
-											echo("<td class=\"align-middle\"></td>");
+											echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
 											echo("<td class=\"align-middle\">".$data['Nom']."</td>");											
 											echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
 											echo("<td class=\"align-middle\">".$data['Description']."</td>");
 											echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
 											echo("<td class=\"align-middle\">".$data['Quantite']."</td>");
+											echo("<td class=\"align-middle\">".$data['Vendu']."</td>");
 											echo("</tr>");
 										}
 									}
