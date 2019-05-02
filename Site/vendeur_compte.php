@@ -1,10 +1,27 @@
 <?php
-session_name('Vendeur');
-session_start();
-if(empty($_SESSION['Email_ECE']))
-{
-	header('Location: vendeur_connexion.php');
-}
+	session_name('Vendeur');
+	session_start();
+	if(empty($_SESSION['Email_ECE']))
+	{
+		header('Location: vendeur_connexion.php');
+	}else{
+		//Connection to the database
+		$database='commerce';
+		$db_handle=mysqli_connect('localhost','root','');
+		//Connection to database
+		$db_found=mysqli_select_db($db_handle,$database);
+		if($db_found){	
+			// on Recherche les infos
+			$sql = "SELECT * FROM vendeur INNER JOIN imgvendeur ON vendeur.Email_ECE = imgvendeur.Email_ECE WHERE vendeur.Email_ECE LIKE '".$_SESSION['Email_ECE']."'AND imgvendeur.isProfil LIKE '1'";
+			$req = mysqli_query($db_handle, $sql);
+			$data = mysqli_fetch_assoc($req);
+			
+			$sql = "SELECT imgvendeur.Nom_vendeur FROM vendeur INNER JOIN imgvendeur ON vendeur.Email_ECE = imgvendeur.Email_ECE WHERE vendeur.Email_ECE LIKE '".$_SESSION['Email_ECE']."'AND imgvendeur.isProfil LIKE '0'";
+			$req = mysqli_query($db_handle, $sql);
+			$data2 = mysqli_fetch_assoc($req);
+		}
+	mysqli_close($db_handle);
+	}
 ?>
 <html>
 	<head>
@@ -67,7 +84,7 @@ if(empty($_SESSION['Email_ECE']))
 		<!-- Page Content -->
 
 			<div id="page-content-wrapper" >
-				<div class="container-fluid" style=" background-image: url('Pictures/background.jpg')">
+				<div class="container-fluid" style=" background-image: url('<?php echo($data2['Nom_vendeur']); ?>')">
 					<h1 style="font-weight: bold; text-align: center; color:black">Mes informations</h1><br>
 					<!-- Informations -->
 					<div id="identifiants" style="text-align: center; display: inline-block; width: 48%">
@@ -78,14 +95,14 @@ if(empty($_SESSION['Email_ECE']))
 								</div>
 								
 								<div class="card-body bg-light">
-									<img class="card-img" src="Pictures/Louis.jpg" alt="Card image" style="width:200px; height:200px; ">
+									<img class="card-img" src="<?php echo($data['Nom_vendeur']); ?>" alt="Card image" style="width:200px; height:200px; ">
 									<div>
 										<div>
 											<div style="width:48%; display: inline-block">
 												<h3 style="font-weight: bold; color: black; font-size:1.4rem; text-align: left">Nom : </h3> 
 											</div>
 											<div style="width:48%; display: inline-block">
-												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="nom">Devèze</h3>
+												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="nom"><?php echo($data['Nom']); ?></h3>
 											</div>
 										</div>
 										<div>
@@ -93,7 +110,7 @@ if(empty($_SESSION['Email_ECE']))
 												<h3 style="font-weight: bold; color: black; font-size:1.4rem; text-align: left">Pseudo : </h3> 
 											</div>
 											<div style="width:48%; display: inline-block">
-												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="pseudo">Xx_DarkSasukeDu78_xX</h3>
+												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="pseudo"><?php echo($data['Pseudo']); ?></h3>
 											</div>
 										</div>
 										<div>
@@ -101,7 +118,7 @@ if(empty($_SESSION['Email_ECE']))
 												<h3 style="font-weight: bold; color: black; font-size:1.4rem; text-align: left">E-mail : </h3> 
 											</div>
 											<div style="width:48%; display: inline-block">
-												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="email">louis.deveze@edu.ece.fr</h3>
+												<h3 style="font-weight: bold; color: #696969; font-size:1.25rem; text-align: left" id="email"><?php echo($data['Email_ECE']); ?></h3>
 											</div>
 										</div>
 										

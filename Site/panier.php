@@ -10,7 +10,7 @@
 		$db_handle=mysqli_connect('localhost','root','');
 		//Connection to database
 		$db_found=mysqli_select_db($db_handle,$database);
-
+		$prix_total = 0;
 	}
 ?>
 
@@ -40,7 +40,7 @@
 
 			
 			<!-- Brand image -->
-			<a class="navbar-brand" href="home.html" id="brand">
+			<a class="navbar-brand" href="home.php" id="brand">
 				<img src="Pictures/Logo.png" width="130px" height="60px">
 			</a>
 
@@ -48,10 +48,10 @@
 			<!--  Menu -->
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="">Admin</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Vendre</a></li>
-					<li class="nav-item"><a class="nav-link" href="compte_client.html">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
-					<li class="nav-item active"><a class="nav-link" href="panier.html">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
+					<li class="nav-item"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
+					<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
+					<li class="nav-item"><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
+					<li class="nav-item active"><a class="nav-link" href="panier.php">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -61,12 +61,12 @@
 		<!-- Sidebar -->
 			<div class="bg-light border-right" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
-					<a href="categories.html" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
-					<a href="livres.html" class="list-group-item list-group-item-action bg-light">Livres</a>
-					<a href="musique.html" class="list-group-item list-group-item-action bg-light">Musique</a>
-					<a href="sports.html" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
-					<a href="vetements.html" class="list-group-item list-group-item-action bg-light">Vêtements</a>
-					<a href="ventes_flash.html" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
+					<a href="categories.php" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
+					<a href="livres.php" class="list-group-item list-group-item-action bg-light">Livres</a>
+					<a href="musique.php" class="list-group-item list-group-item-action bg-light">Musique</a>
+					<a href="sports.php" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
+					<a href="vetements.php" class="list-group-item list-group-item-action bg-light">Vêtements</a>
+					<a href="ventes_flash.php" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
 				</div>
 			</div>
 		<!-- /#sidebar-wrapper -->
@@ -79,34 +79,32 @@
 					
 					<!-- Lien pour les categories -->
 					<h1 style="text-align:center ">Mon Panier</h1><br>
-					<table class="table table-striped vertical-align: middle" style="width:80%; margin: auto">
+					<table class="table table-striped vertical-align: middle" style="width:70%; margin: auto">
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Image</th>
 								<th scope="col">Article</th>
 								<th scope="col">Prix Unitaire</th>
 								<th scope="col">Quantité</th>
-								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
 								if($db_found){	
 									// on Recherche les infos
-									$sql = "SELECT * FROM client WHERE Email_client LIKE '".$_SESSION['Email_client']."'";
+									
+									$sql = "SELECT item.nom, imgitem.Nom_img, item.Prix, panier.Quantite_panier FROM item INNER JOIN panier ON panier.Id_item = item.Id_item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND panier.Email_client = '".$_SESSION['Email_client']."'";
 									$req = mysqli_query($db_handle, $sql);
-									$data = mysqli_fetch_assoc($req);
+									
 									while($data=mysqli_fetch_assoc($req))
 									{
 										echo("<tr>");
 										echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
-										echo("<td class=\"align-middle\">".$data['Nom']."</td>");
-										echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
-										echo("<td class=\"align-middle\">".$data['Description']."</td>");
+										echo("<td class=\"align-middle\">".$data['nom']."</td>");
 										echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
-										echo("<td class=\"align-middle\">".$data['Quantite']."</td>");
-										echo("<td class=\"align-middle\">".$data['Vendu']."</td>");
+										echo("<td class=\"align-middle\">".$data['Quantite_panier']."</td>");
 										echo("</tr>");
+										$prix_total += $data['Prix']*$data['Quantite_panier'];
 									}
 								}
 								mysqli_close($db_handle);
@@ -114,8 +112,8 @@
 						</tbody>
 					</table><br>
 					<div id="commande" style = "text-align: center">
-						<a href="livraison.html"><button type="button" class="btn btn-success" style="font-size: 1.5rem;">Passer ma commande</button></a>
-						<h3 style ="display: inline-block; margin-left: 5rem; font-weight: bold;"> Prix Total : 55 €</h3>
+						<a href="livraison.php"><button type="button" class="btn btn-success" style="font-size: 1.5rem;">Passer ma commande</button></a>
+						<h3 style ="display: inline-block; margin-left: 5rem; font-weight: bold;"> Prix Total : <?php echo($prix_total); ?> €</h3>
 					
 					</div>
 						

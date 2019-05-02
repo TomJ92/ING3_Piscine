@@ -62,7 +62,7 @@
 				<div class="container-fluid">
 					<h1 style="font-weight: bold; text-align: center;">Bienvenue chez ECE Market Place!</h1><br>
 					<!-- Inscription-->
-					<form class="form" action="/action_page.php">
+					<form class="form" action="/action_page.php" method="post">
 						<div style="display: inline-block; width: 45%;">
 							<div class="card" style="width: 100%; margin:auto;">
 								<!-- Informations personelle -->
@@ -72,27 +72,27 @@
 								<div class="card-body bg-light">
 									<div style="display: inline-block; width: 45%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Nom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Nom" id="nom" >
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Nom" name="nom" >
 									</div>
 									<div style="display: inline-block; width: 45%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Prénom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Prénom" id="prenom" >
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Prénom" name="prenom" >
 									</div>
 									<div style="display: inline-block; width: 45%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">E-Mail :</p>
-										<input type="email" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre E-mail" id="email">
+										<input type="email" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre E-mail" name="email">
 									</div>
 									<div style="display: inline-block; width: 45%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Téléphone :</p>
-										<input type="tel" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Numero de Telephone" id="phone">
+										<input type="tel" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Numero de Telephone" name="phone">
 									</div>
 									<div style="display: inline-block; width: 45%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Mot de passe :</p>
-										<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre mot de passe" id="mdp1">
+										<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre mot de passe" name="mdp1">
 									</div>
 									<div style="display: inline-block; width: 45%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Répétez Mot de passe :</p>
-										<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Répétez votre mot de passe" id="mdp2">
+										<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Répétez votre mot de passe" name="mdp2">
 									</div>
 								</div>
 							</div><br>
@@ -104,23 +104,23 @@
 								<div class="card-body bg-light">
 									<div style="display: inline-block; width: 45%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Adresse Ligne 1 :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Adresse" id="nom" >
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Adresse" name="nom" >
 									</div>
 									<div style="display: inline-block; width: 45%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Adresse Ligne 2 :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Adresse" id="prenom" >
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Adresse" name="prenom" >
 									</div>
 									<div style="display: inline-block; width: 30%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Ville :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Ville" id="ville">
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Ville" name="ville">
 									</div>
 									<div style="display: inline-block; width: 30%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Code Postal :</p>
-										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Code Postal" id="poste">
+										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Code Postal" name="poste">
 									</div>
 									<div style="display: inline-block; width: 30%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Pays :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Réentrez votre Pays" id="pays">
+										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Réentrez votre Pays" name="pays">
 									</div>
 								</div>
 							</div><br>
