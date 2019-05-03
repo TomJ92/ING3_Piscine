@@ -108,7 +108,7 @@ if(empty($_SESSION['Email_client']))
 								<div class="card-body bg-light">
 									<p style="font-weight: bold; color: #696969; font-size:1.25rem;">
 										<img  src="Pictures/Mastercard.png" width="100" height="70" alt="" id="carte"> 
-										|  <?php echo($data['Nom_carte']); ?>  |  Carte : <?php echo(substr($data['Numero_carte'],0, 4)); ?> XXXX XXXX XXXX
+										|  <?php echo($data['Nom_carte']); ?>  |  Carte : XXXX XXXX XXXX <?php echo(substr($data['Numero_carte'],12, 15)); ?> 
 									</p>
 								</div>
 							</div><br>

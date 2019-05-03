@@ -25,7 +25,13 @@
 				$sql=" INSERT INTO `vendeur` (`Email_ECE`, `Pseudo`, `Nom`, `Prenom`) VALUES ('".$mail."','".$pseudo."','".$nom."','".$prenom."')";
 				//on effectue la commande SQL
 				mysqli_query($db_handle,$sql);
-				header('Location: compte_admin.php');
+				$sql="INSERT INTO imgvendeur (Nom_vendeur, Email_ECE, isProfil) VALUES ('".$mail."1.png','".$mail."','1')";
+				
+				mysqli_query($db_handle,$sql);
+				$sql="INSERT INTO imgvendeur (Nom_vendeur, Email_ECE, isProfil) VALUES ('".$mail."0.png','".$mail."','0')";
+			
+				mysqli_query($db_handle,$sql);
+				header('Location: admin_compte.php');
 				$message = "";
 			}
 		}
