@@ -108,6 +108,10 @@
 										<input type="email" class="form-control mb-2 mr-sm-2" readonly value="<?php echo($data['Email_Client']);?>" name="email" >
 									</div>
 									<div style="display: inline-block; width: 45%;">
+										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Téléphone :</p>
+										<input type="tel" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Numero de Telephone" value="<?php echo($data['Telephone']);?>" name="phone">
+									</div>
+									<div style="display: inline-block; width: 45%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Mot de passe :</p>
 										<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre mot de passe" name="mdp1">
 									</div>
