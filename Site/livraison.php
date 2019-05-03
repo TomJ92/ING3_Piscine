@@ -13,6 +13,8 @@ session_start();
 		$data = mysqli_fetch_assoc($req);
 	}
 	mysqli_close($db_handle);
+session_write_close();
+$message='';
 //si on choisit l'adresse actuelle
 if(isset($_POST['actuel']))
 {
@@ -25,7 +27,9 @@ if(isset($_POST['actuel']))
 	$_SESSION['Ville']=$data['Ville'];
 	$_SESSION['Code_postal']=$data['Code_postal'];
 	$_SESSION['Pays']=$data['Pays'];
+	session_write_close();
 	header('Location: paiement.php');
+
 }
 if(isset($_POST['nouvelle']))
 {
@@ -34,10 +38,23 @@ if(isset($_POST['nouvelle']))
 	$phone = isset($_POST["phone"])? $_POST["phone"] : "";
 	$adresse1 = isset($_POST["adresse1"])? $_POST["adresse1"] : "";
 	$adresse2 = isset($_POST["adresse2"])? $_POST["adresse2"] : "";
-	$adresse = $adresse1.", ".$adresse2;
+	if(!empty($adresse2))
+		{
+		$adresse=$adresse1.", ".$adresse2;
+		}
+		else
+		{
+			$adresse=$adresse1;
+		}
 	$ville = isset($_POST["ville"])? $_POST["ville"] : "";
 	$code_postal = isset($_POST["code_postal"])? $_POST["code_postal"] : "";
 	$pays = isset($_POST["pays"])? $_POST["pays"] : "";
+	if(empty($nom)||empty($prenom)||empty($phone)||empty($adresse1)||empty($ville)||empty($code_postal)||empty($pays))
+	{
+		$message='<p> Un champ est vide, remplissez tous les champs s\'il-vous-plaît </p>';
+	}
+	else
+	{
 	session_name('Livraison');
 	session_start();
 	$_SESSION['Nom']=$nom;
@@ -47,7 +64,9 @@ if(isset($_POST['nouvelle']))
 	$_SESSION['Ville']=$ville;
 	$_SESSION['Code_postal']=$code_postal;
 	$_SESSION['Pays']=$pays;
+	session_write_close();
 	header('Location: paiement.php');
+	}
 }
 ?>
 <html>
@@ -175,6 +194,8 @@ if(isset($_POST['nouvelle']))
 								</div>
 								
 								<p style="text-align: right; margin-top: 2rem;"><a href="paiement.php" ><button type="submit" name="nouvelle" class="btn btn-success" style="font-size: 1.5rem;">Livrer à cette adresse</button></a></p>
+								<?php
+								echo $message;  ?>
 							
 							</form> 
 							

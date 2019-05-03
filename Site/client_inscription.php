@@ -85,7 +85,44 @@ if($val1&&$val2&&$val3&&$val4&&$val5&&$val6)
 {
 	if($db_found)
 	{
-		$adresse=$adresse1.$adresse2;
+		if(!empty($adresse2))
+		{
+			$adresse=$adresse1.", ".$adresse2;
+		}
+		else
+		{
+			$adresse=$adresse1;
+		}	
+		switch($mois_carte)
+		{
+			case "01" : 
+			$mois_carte=1;
+			break;
+			case "02" : 
+			$mois_carte=2;
+			break;
+			case "03" : 
+			$mois_carte=3;
+			break;
+			case "04" : 
+			$mois_carte=4;
+			break;	
+			case "05" : 
+			$mois_carte=5;
+			break;	
+			case "06" : 
+			$mois_carte=6;
+			break;
+			case "07" : 
+			$mois_carte=7;
+			break;
+			case "08" : 
+			$mois_carte=8;
+			break;
+			case "09" : 
+			$mois_carte=9;
+			break;
+		}
 		if($mois_carte<10)
 		{
 			$date_carte=$annee_carte ."-0". $mois_carte . "-01";
@@ -98,7 +135,7 @@ if($val1&&$val2&&$val3&&$val4&&$val5&&$val6)
 		$result=mysqli_query($db_handle,$sql);
 		if(mysqli_num_rows($result)!=0)
 		{
-				$val_mail=true;
+			$val_mail=true;
 		}
 		if($val_mail)
 		{
@@ -106,26 +143,26 @@ if($val1&&$val2&&$val3&&$val4&&$val5&&$val6)
 		}
 		else
 		{
-		$sql="INSERT INTO Client(Email_client,Nom,Prenom,Password,Adresse,Ville,Code_postal,Pays,Telephone,Type_carte,Numero_carte,Nom_carte,Date_carte,Code_carte) VALUES('$email','$nom','$prenom','$mdp1','$adresse','$ville','$code_postal','$pays','$phone','$card_type','$numero_carte','$nom_carte','$date_carte','$cvv')";
-		$result=mysqli_query($db_handle,$sql);
-		$message="<p> Inscription confirmée </p>";
-		$_SESSION['Email_client']=$email;
-		$_SESSION['Nom']=$nom;
-		$_SESSION['Prenom']=$prenom;
-		$_SESSION['Password']=$mdp1;
-		$_SESSION['Adresse']=$adresse;
-		$_SESSION['Ville']=$ville;
-		$_SESSION['Code_postal']=$code_postal;
-		$_SESSION['Pays']=$pays;
-		$_SESSION['Telephone']=$phone;
-		$_SESSION['Type_carte']=$card_type;
-		$_SESSION['Numero_carte']=$numero_carte;
-		$_SESSION['Nom_carte']=$nom_carte;
-		$_SESSION['Date_carte']=$date_carte;
-		$_SESSION['Code_carte']=$cvv;
+			$sql="INSERT INTO Client(Email_client,Nom,Prenom,Password,Adresse,Ville,Code_postal,Pays,Telephone,Type_carte,Numero_carte,Nom_carte,Date_carte,Code_carte) VALUES('$email','$nom','$prenom','$mdp1','$adresse','$ville','$code_postal','$pays','$phone','$card_type','$numero_carte','$nom_carte','$date_carte','$cvv')";
+			$result=mysqli_query($db_handle,$sql);
+			$message="<p> Inscription confirmée </p>";
+			$_SESSION['Email_client']=$email;
+			$_SESSION['Nom']=$nom;
+			$_SESSION['Prenom']=$prenom;
+			$_SESSION['Password']=$mdp1;
+			$_SESSION['Adresse']=$adresse;
+			$_SESSION['Ville']=$ville;
+			$_SESSION['Code_postal']=$code_postal;
+			$_SESSION['Pays']=$pays;
+			$_SESSION['Telephone']=$phone;
+			$_SESSION['Type_carte']=$card_type;
+			$_SESSION['Numero_carte']=$numero_carte;
+			$_SESSION['Nom_carte']=$nom_carte;
+			$_SESSION['Date_carte']=$date_carte;
+			$_SESSION['Code_carte']=$cvv;
 
 
-		header('Location: client_compte.php');
+			header('Location: client_compte.php');
 		}	
 	}
 	else
@@ -136,208 +173,208 @@ if($val1&&$val2&&$val3&&$val4&&$val5&&$val6)
 mysqli_close($db_handle);
 ?>
 <html>
-	<head>
-		<title>ECE Market Place | Inscription Client</title>
-		<meta charset="utf-8"/>
-		
-		<!-- Feuilles de style CSS -->
-		<link href="styleHome.css" rel="stylesheet" type="text/css"/>
-		
-		<!-- Bootstrap content -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<head>
+	<title>ECE Market Place | Inscription Client</title>
+	<meta charset="utf-8"/>
 
-	</head>
+	<!-- Feuilles de style CSS -->
+	<link href="styleHome.css" rel="stylesheet" type="text/css"/>
+
+	<!-- Bootstrap content -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
 	
-	<body>
-	
+
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navigation">	
+
+		<!-- bouton de toggle du menu -->
+		<button class="btn btn-light" id="toggler">Menu</button>
+
+
+		<!-- Brand image -->
+		<a class="navbar-brand" href="home.php" id="brand">
+			<img src="Pictures/Logo.png" width="130px" height="60px">
+		</a>
+
+
+		<!--  Menu -->
+		<div class="collapse navbar-collapse justify-content-end">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
+				<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
+				<li class="nav-item"><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
+				<li class="nav-item"><a class="nav-link" href="panier.php">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="d-flex" id="wrapper">
 		
-		<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="navigation">	
-						
-			<!-- bouton de toggle du menu -->
-			<button class="btn btn-light" id="toggler">Menu</button>
-
-			
-			<!-- Brand image -->
-			<a class="navbar-brand" href="home.php" id="brand">
-				<img src="Pictures/Logo.png" width="130px" height="60px">
-			</a>
-
-
-			<!--  Menu -->
-			<div class="collapse navbar-collapse justify-content-end">
-				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
-					<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
-					<li class="nav-item"><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
-					<li class="nav-item"><a class="nav-link" href="panier.php">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
-				</ul>
+		<!-- Sidebar -->
+		<div class="bg-light border-right" id="sidebar-wrapper">
+			<div class="list-group list-group-flush">
+				<a href="categories.php" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
+				<a href="livres.php" class="list-group-item list-group-item-action bg-light">Livres</a>
+				<a href="musique.php" class="list-group-item list-group-item-action bg-light">Musique</a>
+				<a href="sports.php" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
+				<a href="vetements.php" class="list-group-item list-group-item-action bg-light">Vêtements</a>
+				<a href="ventes_flash.php" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
 			</div>
-		</nav>
-		
-		<div class="d-flex" id="wrapper">
-		
-			<!-- Sidebar -->
-			<div class="bg-light border-right" id="sidebar-wrapper">
-				<div class="list-group list-group-flush">
-					<a href="categories.php" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
-					<a href="livres.php" class="list-group-item list-group-item-action bg-light">Livres</a>
-					<a href="musique.php" class="list-group-item list-group-item-action bg-light">Musique</a>
-					<a href="sports.php" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
-					<a href="vetements.php" class="list-group-item list-group-item-action bg-light">Vêtements</a>
-					<a href="ventes_flash.php" class="list-group-item list-group-item-action bg-light"><h3>Ventes Flash</h3></a>
-				</div>
-			</div>
+		</div>
 
 		<!-- /#sidebar-wrapper -->
 		
 		<!-- Page Content -->
 
-			<div id="page-content-wrapper">
-				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Bienvenue chez ECE Market Place!</h1><br>
-					<!-- Inscription-->
-					<form class="form" action="client_inscription.php" method="post">
-						<div style="display: inline-block; width: 45%;">
-							<div class="card" style="width: 100%; margin:auto;">
-								<!-- Informations personelle -->
-								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Informations personnelles</h3>
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<h1 style="font-weight: bold; text-align: center;">Bienvenue chez ECE Market Place!</h1><br>
+				<!-- Inscription-->
+				<form class="form" action="client_inscription.php" method="post">
+					<div style="display: inline-block; width: 45%;">
+						<div class="card" style="width: 100%; margin:auto;">
+							<!-- Informations personelle -->
+							<div class="card-header bg-light">
+								<h3 style="font-weight: bold; font-size: 1.5rem ">Informations personnelles</h3>
+							</div>
+							<div class="card-body bg-light">
+								<div style="display: inline-block; width: 45%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Nom :</p>
+									<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Nom" name="nom" >
 								</div>
-								<div class="card-body bg-light">
-									<div style="display: inline-block; width: 45%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Nom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Nom" name="nom" >
-									</div>
-									<div style="display: inline-block; width: 45%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Prénom :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Prénom" name="prenom" >
-									</div>
-									<div style="display: inline-block; width: 45%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">E-Mail :</p>
-										<input type="email" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre E-mail" name="email">
-									</div>
-									<div style="display: inline-block; width: 45%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Téléphone :</p>
-										<input type="tel" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Numero de Telephone" name="phone">
-									</div>
-									<div style="display: inline-block; width: 45%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Mot de passe :</p>
-										<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre mot de passe" name="mdp1">
-									</div>
-									<div style="display: inline-block; width: 45%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Répétez Mot de passe :</p>
-										<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Répétez votre mot de passe" name="mdp2">
-									</div>
-									<?php echo $message1;  ?>
+								<div style="display: inline-block; width: 45%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Prénom :</p>
+									<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Prénom" name="prenom" >
 								</div>
-							</div><br>
-							<div class="card" style="width: 100%; margin:auto;;">
-								<!-- Domicile -->
-								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Domicile</h3>
+								<div style="display: inline-block; width: 45%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">E-Mail :</p>
+									<input type="email" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre E-mail" name="email">
 								</div>
-								<div class="card-body bg-light">
-									<div style="display: inline-block; width: 45%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Adresse Ligne 1 :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Adresse" name="adresse1" >
-									</div>
-									<div style="display: inline-block; width: 45%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Adresse Ligne 2 :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Adresse" name="adresse2" >
-									</div>
-									<div style="display: inline-block; width: 30%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Ville :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Ville" name="ville">
-									</div>
-									<div style="display: inline-block; width: 30%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Code Postal :</p>
-										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Code Postal" name="code_postal">
-									</div>
-									<div style="display: inline-block; width: 30%;">
-										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Pays :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Réentrez votre Pays" name="pays">
-									</div>
-									<?php echo $message2;  ?>
+								<div style="display: inline-block; width: 45%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Téléphone :</p>
+									<input type="tel" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Numero de Telephone" name="phone">
 								</div>
-							</div><br>
-						</div>
-						<div style="display: inline-block; vertical-align: top; width: 45%;  margin-left: 5%">
-							
-							<!-- Informations de Paiement -->
-							<div class="card" style="width: 100%; margin:auto;">
-								
-								<div class="card-header bg-light">
-									<h3 style="font-weight: bold; font-size: 1.5rem ">Informations de Paiement</h3>
+								<div style="display: inline-block; width: 45%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Mot de passe :</p>
+									<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre mot de passe" name="mdp1">
 								</div>
-								<div class="card-body bg-light">
-									<div style="display: inline-block; width: 35%;">
-										<p style="text-align: left;">Titulaire de la carte :</p>
-										<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le nom du titulaire de la carte" name="nom_carte" >
-									</div>
-									<div style="display: inline-block; width: 60%;">
-										<p style="text-align: left;">Numéro de carte :</p>
-										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre numéro de carte" name="numero_carte">
-									</div>
-									<div style="display: inline-block; width: 25%;">
-										<p style="text-align: left;">Type de carte :</p>
-										<select class="form-control" name="card_type">
-											<option>Mastercard</option>
-											<option>Visa</option>
-											<option>American Express</option>
-											<option>Paypal</option>
-										</select>						
-									</div>
-									<div style="display: inline-block; width: 5%;"></div>
-									<div style="display: inline-block; width: 30%;">
-										<p style="text-align: left;">CVV :</p>
-										<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre CVV" name="cvv">
-									</div>
-									<div style="display: inline-block; width: 5%;"></div>
-									<div style="display: inline-block; width: 30%;">
-										<p style="text-align: left;">Date d'expiration :</p>
-										<div style="display: inline-block; width: 30%; "><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Mois" name="mois_carte"></div>
-										<div style="display: inline-block; "><p>/</p></div>
-										<div style="display: inline-block; width: 30%; "><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Année" name="annee_carte"></div>
-									</div>
-									<?php echo $message3; ?>
+								<div style="display: inline-block; width: 45%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Répétez Mot de passe :</p>
+									<input type="password" class="form-control mb-2 mr-sm-2" placeholder="Répétez votre mot de passe" name="mdp2">
 								</div>
-							</div><br>
-							<!-- S'inscrire -->
-							<div style="font-weight: bold; font-size: 1.25rem"> Prêt à rejoindre notre communauté !</div>
-							<div style="margin-top: 2rem;"><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">S'inscrire</button></div>
-							<?php echo $message;  ?>
-							
-						</div>
-					</form>
-				</div>
+								<?php echo $message1;  ?>
+							</div>
+						</div><br>
+						<div class="card" style="width: 100%; margin:auto;;">
+							<!-- Domicile -->
+							<div class="card-header bg-light">
+								<h3 style="font-weight: bold; font-size: 1.5rem ">Domicile</h3>
+							</div>
+							<div class="card-body bg-light">
+								<div style="display: inline-block; width: 45%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Adresse Ligne 1 :</p>
+									<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Adresse" name="adresse1" >
+								</div>
+								<div style="display: inline-block; width: 45%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Adresse Ligne 2 :</p>
+									<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Adresse" name="adresse2" >
+								</div>
+								<div style="display: inline-block; width: 30%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Ville :</p>
+									<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Ville" name="ville">
+								</div>
+								<div style="display: inline-block; width: 30%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Code Postal :</p>
+									<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Code Postal" name="code_postal">
+								</div>
+								<div style="display: inline-block; width: 30%;">
+									<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Pays :</p>
+									<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Réentrez votre Pays" name="pays">
+								</div>
+								<?php echo $message2;  ?>
+							</div>
+						</div><br>
+					</div>
+					<div style="display: inline-block; vertical-align: top; width: 45%;  margin-left: 5%">
+
+						<!-- Informations de Paiement -->
+						<div class="card" style="width: 100%; margin:auto;">
+
+							<div class="card-header bg-light">
+								<h3 style="font-weight: bold; font-size: 1.5rem ">Informations de Paiement</h3>
+							</div>
+							<div class="card-body bg-light">
+								<div style="display: inline-block; width: 35%;">
+									<p style="text-align: left;">Titulaire de la carte :</p>
+									<input type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez le nom du titulaire de la carte" name="nom_carte" >
+								</div>
+								<div style="display: inline-block; width: 60%;">
+									<p style="text-align: left;">Numéro de carte :</p>
+									<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre numéro de carte" name="numero_carte">
+								</div>
+								<div style="display: inline-block; width: 25%;">
+									<p style="text-align: left;">Type de carte :</p>
+									<select class="form-control" name="card_type">
+										<option>Mastercard</option>
+										<option>Visa</option>
+										<option>American Express</option>
+										<option>Paypal</option>
+									</select>						
+								</div>
+								<div style="display: inline-block; width: 5%;"></div>
+								<div style="display: inline-block; width: 30%;">
+									<p style="text-align: left;">CVV :</p>
+									<input type="number" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre CVV" name="cvv">
+								</div>
+								<div style="display: inline-block; width: 5%;"></div>
+								<div style="display: inline-block; width: 30%;">
+									<p style="text-align: left;">Date d'expiration :</p>
+									<div style="display: inline-block; width: 30%; "><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Mois" name="mois_carte"></div>
+									<div style="display: inline-block; "><p>/</p></div>
+									<div style="display: inline-block; width: 30%; "><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Année" name="annee_carte"></div>
+								</div>
+								<?php echo $message3; ?>
+							</div>
+						</div><br>
+						<!-- S'inscrire -->
+						<div style="font-weight: bold; font-size: 1.25rem"> Prêt à rejoindre notre communauté !</div>
+						<div style="margin-top: 2rem;"><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">S'inscrire</button></div>
+						<?php echo $message;  ?>
+
+					</div>
+				</form>
 			</div>
-			<!-- /#page-content-wrapper -->
 		</div>
-		<!-- /#wrapper -->
+		<!-- /#page-content-wrapper -->
+	</div>
+	<!-- /#wrapper -->
 
 
-		<!-- JS Code to Toggle Menu -->
-		<script>
+	<!-- JS Code to Toggle Menu -->
+	<script>
 		$("#toggler").click(function(e) {
 			$("#wrapper").toggleClass("toggled");
 		});
-		</script>
-		
+	</script>
 
-		
-		<!-- Footer Navbar --> 
-		<footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom" id="footer">
-			<div class="collapse navbar-collapse justify-content-end">
-				  <!-- Navbar text-->
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a  href="mailto:louis.deveze@edu.ece.fr"><h5>Contact</h5></a>
-					</li>
-				</ul>
-			</div>
-		</footer> 
-	</body>
+
+
+	<!-- Footer Navbar --> 
+	<footer class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom" id="footer">
+		<div class="collapse navbar-collapse justify-content-end">
+			<!-- Navbar text-->
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a  href="mailto:louis.deveze@edu.ece.fr"><h5>Contact</h5></a>
+				</li>
+			</ul>
+		</div>
+	</footer> 
+</body>
 </html>
