@@ -160,8 +160,7 @@ if($val1&&$val2&&$val3&&$val4&&$val5&&$val6)
 			$_SESSION['Nom_carte']=$nom_carte;
 			$_SESSION['Date_carte']=$date_carte;
 			$_SESSION['Code_carte']=$cvv;
-
-
+			session_write_close();
 			header('Location: client_compte.php');
 		}	
 	}
