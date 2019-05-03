@@ -1,6 +1,7 @@
 <?php
 	//Get the Search request
 	$research = isset($_POST["search"])? $_POST["search"] : "";
+	echo($research);
 	//Connection to the database
 	$database='commerce';
 	$db_handle=mysqli_connect('localhost','root','');
@@ -11,7 +12,7 @@
 
 <html>
 	<head>
-		<title>ECE Market Place | Consulter vendeurs</title>
+		<title>ECE Market Place | Supprimer vendeur</title>
 		<meta charset="utf-8"/>
 		
 		<!-- Feuilles de style CSS -->
@@ -34,7 +35,7 @@
 
 			
 			<!-- Brand image -->
-			<a class="navbar-brand" href="home.php" id="brand">
+			<a class="navbar-brand" href="home.html" id="brand">
 				<img src="Pictures/Logo.png" width="130px" height="60px">
 			</a>
 
@@ -70,23 +71,23 @@
 
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<h1 style="font-weight: bold; text-align: center;">Liste actuelle des vendeurs</h1><br>
+					<h1 style="font-weight: bold; text-align: center;">Supprimer des vendeurs de la liste</h1><br>
 					<!-- Recherche -->
 					<div style="text-align: center">
-						<form action="admin_consulter_vendeurs.php" method="post">
-						
-							<div style="display: inline-block"><input type="text" class="form-control form-control-lg mb-2 mr-sm-2" placeholder="Rechercher un Vendeur" name="search" ></div>
+						<form action="admin_supprimer_vendeurs.php" method="Post">
+							<div style="display: inline-block"><input type="text" class="form-control form-control-lg mb-2 mr-sm-2" placeholder="Rechercher un Item" name="search" ></div>
 							<div style="display: inline-block; width:2%"></div>
 							<div style="display: inline-block"><button type="submit" class="btn btn-secondary" style="font-size: 1.5rem;">Rechercher</button></div>
-							<div style="display: inline-block; width:2%"></div>
-							<div style="display: inline-block;"><a href="admin_ajouter_vendeurs.php" style="text-decoration: none;"><button type="button" class="btn btn-success" style="font-size: 1.5rem;">Ajouter</button></a></div>
-							<div style="display: inline-block; width:2%"></div>
-							<div style="display: inline-block;"><a href="admin_supprimer_vendeurs.php" style="text-decoration: none;"><button type="button" class="btn btn-danger" style="font-size: 1.5rem;">Supprimer</button></a></div>
 						</form>
-					</div>		
+						<form action="suppression_vendeurs.php" method="Post">
+						<div style=" display:inline-block">
+							<div style="display: inline-block"><button type="submit" name="submit_sup" class="btn btn-danger" style="font-size: 1.5rem;">Supprimer des Items</button></a></div>
+						</div>	
+					</div>					
+					
 					<!-- Table de recherche -->
 					<div style="text-align: center">
-						<form action="admin_consulter_vendeurs.php">
+						
 							<table class="table table-striped " style="width:80%; margin: auto">
 								<thead class="thead-dark">
 									<tr>
@@ -94,49 +95,50 @@
 										<th scope="col">Pseudo</th>
 										<th scope="col">Nom</th>
 										<th scope="col">Prenom</th>
+										<th scope="col">Supprimer</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php
-									if($db_found){	
-									
-										if(empty($research)){
-											// on select dans la base
-											$sql = "SELECT * FROM vendeur"; 
-											$req = mysqli_query($db_handle, $sql); 
-											while($data=mysqli_fetch_assoc($req))
-											{
-												echo("<tr>");
-												echo("<td class=\"align-middle\">".$data['Email_ECE']."</td>");
-												echo("<td class=\"align-middle\">".$data['Pseudo']."</td>");
-												echo("<td class=\"align-middle\">".$data['Nom']."</td>");
-												echo("<td class=\"align-middle\">".$data['Prenom']."</td>");
-												echo("</tr>");
+										if($db_found){	
+										
+											if(empty($research)){
+												// on select dans la base
+												$sql = "SELECT * FROM vendeur"; 
+												$req = mysqli_query($db_handle, $sql); 
+												while($data=mysqli_fetch_assoc($req))
+												{
+													echo("<tr>");
+													echo("<td class=\"align-middle\">".$data['Email_ECE']."</td>");
+													echo("<td class=\"align-middle\">".$data['Pseudo']."</td>");
+													echo("<td class=\"align-middle\">".$data['Nom']."</td>");
+													echo("<td class=\"align-middle\">".$data['Prenom']."</td>");
+													echo('<td class="align-middle"><input class="form-check-input" type="checkbox" value="'.$data['Email_ECE'].'" name="supprimer[]">Supprimer</td>');
+													echo("</tr>");
+												}
+											}else{
+												// on select dans la base
+												$sql = "SELECT * FROM vendeur WHERE Email_ECE = '".$research."' OR Pseudo = '".$research."' OR Nom = '".$research."' OR Prenom = '".$research."'"; 
+												
+												$req = mysqli_query($db_handle, $sql); 
+												while($data=mysqli_fetch_assoc($req))
+												{
+													echo("<tr>");
+													echo("<td class=\"align-middle\">".$data['Email_ECE']."</td>");
+													echo("<td class=\"align-middle\">".$data['Pseudo']."</td>");
+													echo("<td class=\"align-middle\">".$data['Nom']."</td>");
+													echo("<td class=\"align-middle\">".$data['Prenom']."</td>");
+													echo('<td class="align-middle"><input class="form-check-input" type="checkbox" value="'.$data['Email_ECE'].'" name="supprimer[]">Supprimer</td>');
+													echo("</tr>");
+												}
 											}
-										}else{
-											// on select dans la base
-											$sql = "SELECT * FROM vendeur WHERE Email_ECE = '".$research."' OR Pseudo = '".$research."' OR Nom = '".$research."' OR Prenom = '".$research."'"; 
-											$req = mysqli_query($db_handle, $sql); 
-											while($data=mysqli_fetch_assoc($req))
-											{
-												echo("<tr>");
-												echo("<td class=\"align-middle\">".$data['Email_ECE']."</td>");
-												echo("<td class=\"align-middle\">".$data['Pseudo']."</td>");
-												echo("<td class=\"align-middle\">".$data['Nom']."</td>");
-												echo("<td class=\"align-middle\">".$data['Prenom']."</td>");
-												echo("</tr>");
-											}
-											
-										}
-									}	
-									mysqli_close($db_handle);
+										}	
+										mysqli_close($db_handle);
 									?>
 								</tbody>
 							</table><br>
-
 						</form>
-					</div>		
-	
+					</div>			
 				</div>
 			</div>
 			<!-- /#page-content-wrapper -->
