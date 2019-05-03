@@ -86,7 +86,14 @@ if($val1&&$val2&&$val3&&$val4&&$val5&&$val6)
 	if($db_found)
 	{
 		$adresse=$adresse1.$adresse2;
-		$date_carte=$annee_carte ."-0". $mois_carte . "-01";
+		if($mois_carte<10)
+		{
+			$date_carte=$annee_carte ."-0". $mois_carte . "-01";
+		}
+		else if ($mois_carte>9)
+		{
+			$date_carte=$annee_carte ."-". $mois_carte . "-01";
+		}
 		$sql="SELECT * FROM Client WHERE Email_client LIKE '%$email'";
 		$result=mysqli_query($db_handle,$sql);
 		if(mysqli_num_rows($result)!=0)
@@ -103,6 +110,21 @@ if($val1&&$val2&&$val3&&$val4&&$val5&&$val6)
 		$result=mysqli_query($db_handle,$sql);
 		$message="<p> Inscription confirmée </p>";
 		$_SESSION['Email_client']=$email;
+		$_SESSION['Nom']=$nom;
+		$_SESSION['Prenom']=$prenom;
+		$_SESSION['Password']=$mdp1;
+		$_SESSION['Adresse']=$adresse;
+		$_SESSION['Ville']=$ville;
+		$_SESSION['Code_postal']=$code_postal;
+		$_SESSION['Pays']=$pays;
+		$_SESSION['Telephone']=$phone;
+		$_SESSION['Type_carte']=$card_type;
+		$_SESSION['Numero_carte']=$numero_carte;
+		$_SESSION['Nom_carte']=$nom_carte;
+		$_SESSION['Date_carte']=$date_carte;
+		$_SESSION['Code_carte']=$cvv;
+
+
 		header('Location: client_compte.php');
 		}	
 	}
