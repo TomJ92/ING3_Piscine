@@ -23,6 +23,13 @@
 	$mois = $_POST['mois'];
 	$annee = $_POST['annee'];
 	
+	if($mois<10){
+		$date_carte=$annee ."-0". $mois . "-01";
+	}
+	else if ($mois>9){
+		$date_carte=$annee ."-". $mois . "-01";
+	}
+	
 	session_name('Client');
 	session_start();
 	$database='commerce';
@@ -116,9 +123,16 @@
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($phone!=$_SESSION['Telephone']){
+			if($date_carte!=$_SESSION['Date_carte']){
 				// lancement de la requête
-				$sql = "UPDATE Client SET Telephone='$phone' WHERE Email_Client='$email'";
+				$sql = "UPDATE Client SET Date_carte='$date_carte' WHERE Email_Client='$email'";
+				// on exécute la requête (mysql_query)
+				mysqli_query($db_handle,$sql);
+			}
+			
+			if($cvv!=$_SESSION['Code_carte']){
+				// lancement de la requête
+				$sql = "UPDATE Client SET Code_carte='$cvv' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
