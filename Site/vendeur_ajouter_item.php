@@ -171,11 +171,9 @@
 												echo("</tr>");
 												echo('<input type="hidden" name="ids[]" value="'.$data['Id_item'].'" placeholder="Nb"/>');
 												echo('<input type="hidden" name="quantite[]" value="'.$quantite.'" placeholder="Nb"/>');
-											}
-											
+											}	
 										}
-									}
-											
+									}	
 									mysqli_close($db_handle);
 								?>
 							</tbody>
