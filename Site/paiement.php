@@ -182,10 +182,10 @@ if(isset($_POST['actuel'])||isset($_POST['nouvelle']))
 
 
 
-			/*
+			
 			///Email
-		session_name('Paiement');
-		session_start();
+			session_name('Paiement');
+			session_start();
 			$message2="<p> Achat validé, carte vérifiée </p>";
 			///Récupérer des infos
 			$numero_carte_livraison=$_SESSION['Numero_carte'];
@@ -211,6 +211,7 @@ if(isset($_POST['actuel'])||isset($_POST['nouvelle']))
 			$data3 = mysqli_fetch_assoc($req);
 			$nom_client_livraison = $data3['Nom'];
 			$prenom_client_livraison = $data3['Prenom'];
+			/*
 
 			if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
 			{
@@ -219,13 +220,13 @@ if(isset($_POST['actuel'])||isset($_POST['nouvelle']))
 			else
 			{
 				$passage_ligne = "\n";
-			}
+			}**/
 			//=====Déclaration des messages au format texte et au format HTML.
 			$message_txt = "Bonjour ".$prenom_client_livraison." ".$nom_client_livraison.", voilà le récapitulatif de votre achat : Carte bleue utilisée : "."|  ".$nom_carte_livraison."  |  ".$type_carte_livraison.": ".substr($numero_carte_livraison,0, 4)." XXXX XXXX XXXX".". Adresse utilisée : ".$prenom_livraison." ".$nom_livraison." ".$adresse_livraison.", ".$code_postal_livraison.", ".$ville_livraison.", ".$pays_livraison.". Nous vous contacterons au numéro suivant : ".$phone_livraison.".";
 			$message_html = "<html><head></head><body><p>"."Bonjour ".$prenom_client_livraison." ".$nom_client_livraison.", voilà le récapitulatif de votre achat :<br> Carte bleue utilisée : "."|  ".$nom_carte_livraison."  |  ".$type_carte_livraison.": ".substr($numero_carte_livraison,0, 4)." XXXX XXXX XXXX".".<br> Adresse utilisée : ".$prenom_livraison." ".$nom_livraison." ".$adresse_livraison.", ".$code_postal_livraison.", ".$ville_livraison.", ".$pays_livraison.".<br> Nous vous contacterons au numéro suivant : ".$phone_livraison."."."</p></body></html>";
 			$message2 = $message_html;
 			//==========
-
+			/*
 			//=====Création de la boundary
 			$boundary = "-----=".md5(rand());
 			//==========
@@ -270,6 +271,8 @@ if(isset($_POST['actuel'])||isset($_POST['nouvelle']))
 			mail($mail,$sujet,$message,$header);
 			//==========
 			*/
+			/*echo "<script language=\"javascript\"> if(alert('".$message_txt."')) document.location.href=\"home.php\"
+			; </script>";*/
 		}
 		else
 		{
@@ -356,7 +359,7 @@ if(isset($_POST['actuel'])||isset($_POST['nouvelle']))
 							
 							<p style="font-weight: bold; color: #696969; font-size:1.25rem;">
 								<img  src="Pictures/Mastercard.png" width="100" height="70" alt="" id="carte"> 
-								<?php echo "|  ".$data['Prenom']." ".$data['Nom']."  |  Carte : ".substr($data['Numero_carte'],0, 4) ?> XXXX XXXX XXXX
+								<?php echo "|  ".$data['Nom_carte']."  |  Carte : ".substr($data['Numero_carte'],0, 4) ?> XXXX XXXX XXXX
 							</p>
 							<p style="text-align: right;"><a href="paiement.php"><button type="submit" name="actuel" class="btn btn-success" style="font-size: 1.5rem;">Utiliser cette carte</button></a></p>
 						</div>
