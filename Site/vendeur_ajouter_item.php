@@ -127,7 +127,7 @@
 												echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
 												echo("<td class=\"align-middle\">".$data['Description']."</td>");
 												echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
-												echo("<td class=\"align-middle\">".$data['Quantite_vendeur']."€</td>");
+												echo("<td class=\"align-middle\">".$data['Quantite_vendeur']."</td>");
 												echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="qte ajouts" value="0" name="ajouter[]">');
 												echo("</tr>");
 												echo('<input type="hidden" name="ids[]" value="'.$data['Id_item'].'" placeholder="Nb"/>');
