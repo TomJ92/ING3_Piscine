@@ -95,7 +95,7 @@ if(empty($_SESSION['Email_client']))
 							if($db_found){	
 									// on Recherche les infos
 
-								$sql = "SELECT item.nom, imgitem.Nom_img, item.Prix, panier.Quantite_panier FROM item INNER JOIN panier ON panier.Id_item = item.Id_item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND panier.Email_client = '".$_SESSION['Email_client']."'";
+								$sql = "SELECT item.Id_item, item.nom, imgitem.Nom_img, item.Prix, panier.Quantite_panier FROM item INNER JOIN panier ON panier.Id_item = item.Id_item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND panier.Email_client = '".$_SESSION['Email_client']."'";
 								$req = mysqli_query($db_handle, $sql);
 								while($data=mysqli_fetch_assoc($req))
 								{
@@ -106,8 +106,8 @@ if(empty($_SESSION['Email_client']))
 									echo("<td class=\"align-middle\">".$data['Quantite_panier']."</td>");
 									echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" name="supprimer[]" value="0" placeholder="Nb"/></td>');
 									echo("</tr>");
-									echo('<input type="text" name="ids[]" value="'.$data['id_item'].'" placeholder="Nb"/>');
-									echo('<input type="text" name="quantite[]" value="'.$data['Quantite_panier'].'" placeholder="Nb"/>');
+									echo('<input type="hidden" name="ids[]" value="'.$data['Id_item'].'" placeholder="Nb"/>');
+									echo('<input type="hidden" name="quantite[]" value="'.$data['Quantite_panier'].'" placeholder="Nb"/>');
 									$prix_total += $data['Prix']*$data['Quantite_panier'];
 								}
 							}
@@ -117,12 +117,10 @@ if(empty($_SESSION['Email_client']))
 					</table><br>
 					<div id="commande" style = "text-align: center">
 						<a href="livraison.php"><button type="button" class="btn btn-success" style="font-size: 1.5rem;">Passer ma commande</button></a>
+						<div style="display: inline-block"><button type="submit" name="submit_sup" class="btn btn-success" style="font-size: 1.5rem;">Valider Suppression</button></a></div>
 						<h3 style ="display: inline-block; margin-left: 5rem; font-weight: bold;"> Prix Total : <?php echo($prix_total); ?> €</h3>
-				</div>
-				<div style=" display:inline-block">
-							<div style="display: inline-block"><button type="submit" name="submit_sup" class="btn btn-success" style="font-size: 1.5rem;">Valider Suppression</button></a></div>
-						</div>
-											</form>
+					</div>
+				</form>
 
 
 			</div>
