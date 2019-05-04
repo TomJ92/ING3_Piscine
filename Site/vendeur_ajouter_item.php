@@ -90,10 +90,10 @@
 					
 					<form action="vendeur_ajouter_item2.php" method="post">
 						
-						<div style=" display:inline-block">
-							<div style="display: inline-block"><button type="submit" name="submit_ad" class="btn btn-success" style="font-size: 1.5rem;">Valider Ajouts</button></a></div>
+						<div style="text-align:center;">
+							<div style="display: inline-block; text-align: center;"><button type="submit" name="submit_ad" class="btn btn-success" style="font-size: 1.5rem;">Valider Ajouts</button></a></div>
 						</div>
-						
+						<br>
 						<table class="table table-striped " style="width:80%; margin: auto">
 							<thead class="thead-dark">
 								<tr>
@@ -102,6 +102,7 @@
 									<th scope="col">Categorie</th>
 									<th scope="col">Description</th>
 									<th scope="col">Prix Unitaire</th>
+									<th scope="col">Quantité en stock</th>
 									<th scope="col">Quantité a ajouter</th>
 								</tr>
 							</thead>
@@ -116,7 +117,7 @@
 									if($db_found){	
 										if(empty($research)){
 											// on select dans la base
-											$sql = "SELECT * FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' ORDER BY item.quantite DESC"; 
+											$sql = "SELECT * FROM vendre INNER JOIN item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND vendre.Email_ECE ='".$_SESSION['Email_ECE']."' ORDER BY item.quantite DESC "; 
 											$req = mysqli_query($db_handle, $sql); 
 											while($data=mysqli_fetch_assoc($req))
 											{
@@ -126,11 +127,11 @@
 												echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
 												echo("<td class=\"align-middle\">".$data['Description']."</td>");
 												echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
+												echo("<td class=\"align-middle\">".$data['Quantite_vendeur']."€</td>");
 												echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="qte ajouts" value="0" name="ajouter[]">');
 												echo("</tr>");
 												echo('<input type="hidden" name="ids[]" value="'.$data['Id_item'].'" placeholder="Nb"/>');
 												echo('<input type="hidden" name="quantite[]" value="'.$data['Quantite_vendeur'].'" placeholder="Nb"/>');
-												
 											}
 										}
 										else{
@@ -144,6 +145,7 @@
 												echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
 												echo("<td class=\"align-middle\">".$data['Description']."</td>");
 												echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
+												echo("<td class=\"align-middle\">".$data['Quantite_vendeur']."€</td>");
 												echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="qte ajouts" value="0" name="ajouter[]">');
 												echo("</tr>");
 												echo('<input type="hidden" name="ids[]" value="'.$data['Id_item'].'" placeholder="Nb"/>');
@@ -159,6 +161,7 @@
 												echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
 												echo("<td class=\"align-middle\">".$data['Description']."</td>");
 												echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
+												echo("<td class=\"align-middle\">".$data['Quantite_vendeur']."€</td>");
 												echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="qte ajouts" value="0" name="ajouter[]">');
 												echo("</tr>");
 												echo('<input type="hidden" name="ids[]" value="'.$data['Id_item'].'" placeholder="Nb"/>');

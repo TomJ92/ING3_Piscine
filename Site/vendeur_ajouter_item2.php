@@ -32,7 +32,7 @@
 				}
 			}
 			mysqli_close($db_handle);
-			header('Location: vendeur_supprimer_item.php');
+			header('Location: vendeur_ajouter_item.php');
 		}
 	}
 ?>
