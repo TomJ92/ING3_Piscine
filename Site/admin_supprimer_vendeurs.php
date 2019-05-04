@@ -35,7 +35,7 @@
 
 			
 			<!-- Brand image -->
-			<a class="navbar-brand" href="home.html" id="brand">
+			<a class="navbar-brand" href="home.php" id="brand">
 				<img src="Pictures/Logo.png" width="130px" height="60px">
 			</a>
 

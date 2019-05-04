@@ -136,7 +136,7 @@ if(empty($_SESSION['Email_client']))
 					</div>
 					<div id="informations" style="text-align: center; ">
 						<div style="display: inline-block; width:48%; text-align: center; ">
-							<a href="client_modifier.html" ><button type="button" class="btn btn-success" style="font-size: 1.5rem; display: inline-block">Modifier les Informations</button></a>
+							<a href="client_modifier.php" ><button type="button" class="btn btn-success" style="font-size: 1.5rem; display: inline-block">Modifier les Informations</button></a>
 						</div>
 						<div style="display: inline-block;  width:48%;   text-align: center; ">
 							<a href="client_logout.php" class="btn btn-danger" style="font-size: 1.5rem; display: inline-block">Se Déconnecter</a>

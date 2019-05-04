@@ -88,7 +88,7 @@
 				<!-- Text decoration to none pour enlever le surlignage du lien -->
 					
 					<!-- Lien pour les Ventes flash -->
-					<a href="ventes_flash.html" style="text-decoration: none" ><h1>Ventes Flash</h1></a>
+					<a href="ventes_flash.php" style="text-decoration: none" ><h1>Ventes Flash</h1></a>
 					
 					<div class="card-deck" id="flash" style="width: 85%; margin: auto;">
 						<!-- Best seller Livre -->
@@ -138,7 +138,7 @@
 					</div>
 					
 					<!-- Lien pour les categories -->
-					<a href="categories.html" style="text-decoration: none"><h1>Catégories</h1><a><br>
+					<a href="categories.php" style="text-decoration: none"><h1>Catégories</h1><a><br>
 						
 					<div class="card-deck" id="categories" style="width: 85%; margin-bottom: 4rem; margin-left: auto; margin-right: auto; text-align: center">
 						<!--  Livre -->

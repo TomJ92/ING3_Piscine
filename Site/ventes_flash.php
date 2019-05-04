@@ -39,7 +39,7 @@
 			<!-- Sidebar -->
 			<div class="bg-light border-right" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
-					<a href="categories.html" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
+					<a href="categories.php" class="list-group-item list-group-item-action bg-light"><h3>Catégories</h3></a>
 					<a href="livres.php" class="list-group-item list-group-item-action bg-light">Livres</a>
 					<a href="musique.php" class="list-group-item list-group-item-action bg-light">Musique</a>
 					<a href="sports.php" class="list-group-item list-group-item-action bg-light">Sports & Loisirs</a>
