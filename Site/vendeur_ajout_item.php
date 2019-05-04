@@ -27,11 +27,12 @@
 								$sql = "UPDATE item SET Quantite = Quantite+".$ajouter[$i]." WHERE Id_item='".$ids[$i]."'";
 								$req = mysqli_query($db_handle, $sql);
 							}
-							if($ajouter[$i] > 0 && empty($quantite))
+							if($ajouter[$i] > 0 && $quantite[$i] == 0)	
 							{
 								$new = $ajouter[$i];
 								echo("ajout de ".$ajouter[$i]." items d'id ".$ids[$i]."</br>");
-								$sql = "INSERT vendre SET Quantite_vendeur = '".$new."' WHERE Email_ECE = '".$_SESSION['Email_ECE']."' AND Id_item= ".$ids[$i] ;
+								$sql = "INSERT INTO vendre (Email_ECE, Id_item, Quantite_vendeur) VALUES ('".$_SESSION['Email_ECE']."', '".$ids[$i]."', '".$new."')" ;
+								echo($sql);
 								$req = mysqli_query($db_handle, $sql);
 								$sql = "UPDATE item SET Quantite = Quantite+".$ajouter[$i]." WHERE Id_item='".$ids[$i]."'";
 								$req = mysqli_query($db_handle, $sql);
