@@ -1,3 +1,17 @@
+<?php 
+	session_name('Vendeur');
+	session_start();
+	if(empty($_SESSION['Email_ECE']))
+	{
+		header('Location: vendeur_connexion.php');
+	}else{
+		// Database
+		$database='commerce';
+		$db_handle=mysqli_connect('localhost','root','');
+		$db_found=mysqli_select_db($db_handle,$database);
+	}
+?>
+
 <html>
 	<head>
 		<title>ECE Market Place | Vendeur Supprimer Items</title>
@@ -64,7 +78,7 @@
 					<h1 style="font-weight: bold; text-align: center;">Choisir la quantité a supprimer de votre stock de chaque article</h1><br>
 					<!-- Recherche -->
 					<div style="text-align: center">
-						<form>
+						<form action="vendeur_supprimer_item.php" method="post">
 							<div style="display: inline-block"><input type="text" class="form-control form-control-lg mb-2 mr-sm-2" placeholder="Rechercher un Item" id="prenom" ></div>
 							<div style="display: inline-block; width:2%"></div>
 							<div style="display: inline-block"><button type="submit" class="btn btn-success" style="font-size: 1.5rem;">Rechercher</button></div>
@@ -82,27 +96,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<th scope="row"><img class="card-img" src="Pictures/Musique.png" style="width:6rem; height:6rem" alt="Card image"></th>
-									<td class="align-middle">Album de Coldplay</td>
-									<td class="align-middle"><h5 style="font-weight: bold">12 €</h5></td>
-									<td class="align-middle"><h5 style="font-weight: bold">50</h5></td>
-									<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Nb"/></td>
-								</tr>
-								<tr>
-									<th scope="row"><img class="card-img" src="Pictures/Livres.png" style="width:6rem; height:6rem" alt="Card image"></th>
-									<td class="align-middle">Game of thrones</td>
-									<td class="align-middle"><h5 style="font-weight: bold">14 €</h5></td>
-									<td class="align-middle"><h5 style="font-weight: bold">200</h5></td>
-									<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Nb"/></td>
-								</tr>
-								<tr>
-									<th scope="row"><img class="card-img" src="Pictures/Sports.png" style="width:6rem; height:6rem" alt="Card image"></th>
-									<td class="align-middle">Ballon de foot</td>
-									<td class="align-middle"><h5 style="font-weight: bold">13 €</h5></td>
-									<td class="align-middle"><h5 style="font-weight: bold">128</h5></td>
-									<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="Nb"/></td>
-								</tr>
+								
 							</tbody>
 						</table>
 						
