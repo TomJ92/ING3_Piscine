@@ -16,15 +16,15 @@
 				if(!empty($ajouter) && !empty($ids)){
 					// Loop to store and display values of individual checked checkbox.
 					for($i =0 ; $i<count($ajouter) ; $i++){
+						echo("il faut ajouter ".$ajouter[$i]." item d'id ".$ids[$i].". Stock avant ajout = ".$quantite[$i]."</br>");
 						if(!empty($ajouter[$i])){
 							if($ajouter[$i] > 0)
 							{
 								$new = $quantite[$i]+$ajouter[$i];
-								echo("ajout de ".$ajouter[$i]." items d'id ".$ids[$i]);
+								echo("ajout de ".$ajouter[$i]." items d'id ".$ids[$i]."</br>");
 								$sql = "UPDATE vendre SET Quantite_vendeur = '".$new."' WHERE Email_ECE = '".$_SESSION['Email_ECE']."' AND Id_item= ".$ids[$i] ;
 								$req = mysqli_query($db_handle, $sql);
 								$sql = "UPDATE item SET Quantite = Quantite+".$ajouter[$i]." WHERE Id_item='".$ids[$i]."'";
-								echo($sql);
 								$req = mysqli_query($db_handle, $sql);
 							}
 						}
@@ -32,7 +32,7 @@
 				}
 			}
 			mysqli_close($db_handle);
-			header('Location: vendeur_ajouter_item.php');
+			//header('Location: vendeur_ajouter_item.php');
 		}
 	}
 ?>
