@@ -81,7 +81,7 @@
 						</form>
 						<form action="suppression_vendeurs.php" method="Post">
 						<div style=" display:inline-block">
-							<div style="display: inline-block"><button type="submit" name="submit_sup" class="btn btn-danger" style="font-size: 1.5rem;">Supprimer des Items</button></a></div>
+							<div style="display: inline-block"><button type="submit" name="submit_sup" class="btn btn-danger" style="font-size: 1.5rem;">Supprimer des Vendeurs</button></a></div>
 						</div>	
 					</div>					
 					
