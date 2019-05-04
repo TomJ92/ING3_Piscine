@@ -35,102 +35,101 @@
 	$database='commerce';
 	$db_handle=mysqli_connect('localhost','root','');
 	$db_found=mysqli_select_db($db_handle,$database);
+	$sql = "SELECT * FROM Client WHERE Email_Client = '".$_SESSION['Email_Client']."'";
+	$req = mysqli_query($db_handle, $sql);
+	$data = mysqli_fetch_assoc($req);
 	if($mdp1!=$mdp2){
 			echo "mdp diff";
 			header('Location: client_modifier.php');
 			exit();
 	}
-	if(empty($nom)||empty($prenom)||empty($email)||empty($mdp1)||empty($mdp2)||empty($adresse1)||empty($ville)||empty($poste)||empty($pays)||empty($nom_carte)||empty($num_carte)||empty($type_carte)||empty($cvv)||empty($mois)||empty($annee)){
-		header('Location: client_modifier.php');
-		exit();
-	}
 	else{
 		if($db_found){	
-			if($nom!=$_SESSION['Nom']){
+			if($nom!=$data['Nom']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Nom='$nom' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($prenom!=$_SESSION['Prenom']){
+			if($prenom!=$data['Prenom']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Prenom='$prenom' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($mdp1!=$_SESSION['Password']){
+			if($mdp1!=$data['Password']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Password='$mdp1' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($adresse!=$_SESSION['Adresse']){
+			if($adresse!=$data['Adresse']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Adresse='$adresse' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($ville!=$_SESSION['Ville']){
+			if($ville!=$data['Ville']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Ville='$ville' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($poste!=$_SESSION['Code_postal']){
+			if($poste!=$data['Code_postal']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Code_postal='$poste' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($pays!=$_SESSION['Pays']){
+			if($pays!=$data['Pays']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Pays='$pays' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($phone!=$_SESSION['Telephone']){
+			if($phone!=$data['Telephone']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Telephone='$phone' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($type_carte!=$_SESSION['Type_carte']){
+			if($type_carte!=$data['Type_carte']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Type_carte='$type_carte' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($num_carte!=$_SESSION['Numero_carte']){
+			if($num_carte!=$data['Numero_carte']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Numero_carte='$num_carte' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($nom_carte!=$_SESSION['Nom_carte']){
+			if($nom_carte!=$data['Nom_carte']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Nom_carte='$nom_carte' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($date_carte!=$_SESSION['Date_carte']){
+			if($date_carte!=$data['Date_carte']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Date_carte='$date_carte' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)
 				mysqli_query($db_handle,$sql);
 			}
 			
-			if($cvv!=$_SESSION['Code_carte']){
+			if($cvv!=$data['Code_carte']){
 				// lancement de la requête
 				$sql = "UPDATE Client SET Code_carte='$cvv' WHERE Email_Client='$email'";
 				// on exécute la requête (mysql_query)

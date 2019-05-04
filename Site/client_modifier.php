@@ -13,7 +13,7 @@
 		$db_found=mysqli_select_db($db_handle,$database);
 		if($db_found){	
 			//on capte les infos client
-			$sql = "SELECT Email_Client, Nom, Prenom, Password, Adresse, Ville, Code_postal, Pays, Telephone, Type_carte, Numero_carte, Date_carte, Code_carte FROM Client";
+			$sql = "SELECT Email_Client, Nom, Prenom, Password, Adresse, Ville, Code_postal, Pays, Telephone, Type_carte, Numero_carte, Date_carte, Code_carte FROM Client WHERE Email_Client = '".$_SESSION['Email_client']."'";
 			$req = mysqli_query($db_handle, $sql); 
 			$data=mysqli_fetch_assoc($req);
 		}
@@ -107,7 +107,7 @@
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">E-Mail :</p>
 										<input type="email" class="form-control mb-2 mr-sm-2" readonly value="<?php echo($data['Email_Client']);?>" name="email" >
 									</div>
-									<div style="display: inline-block; width: 45%;">
+									<div style="display: inline-block; width: 55%;">
 										<p style="text-align: left; font-weight: bold; font-size: 1.25rem">Téléphone :</p>
 										<input type="tel" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre Numero de Telephone" value="<?php echo($data['Telephone']);?>" name="phone">
 									</div>
