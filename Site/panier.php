@@ -87,7 +87,7 @@ if(empty($_SESSION['Email_client']))
 								<th scope="col">Article</th>
 								<th scope="col">Prix Unitaire</th>
 								<th scope="col">Quantité</th>
-								<th scope="col">Quantité en a supprimer</th>
+								<th scope="col">Quantité à supprimer</th>
 							</tr>
 						</thead>
 						<tbody>
