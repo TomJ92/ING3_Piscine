@@ -1,3 +1,20 @@
+<?php 
+	session_name('Vendeur');
+	session_start();
+	if(empty($_SESSION['Email_ECE'])){
+		header('Location: vendeur_connexion.php');
+	}
+	else{
+		//Get the Search request
+		$research = isset($_POST["search"])? $_POST["search"] : "";
+		// Database
+		$database='commerce';
+		$db_handle=mysqli_connect('localhost','root','');
+		$db_found=mysqli_select_db($db_handle,$database);
+	}
+?>
+
+
 <html>
 	<head>
 		<title>ECE Market Place | Vendeur Ajouter Items</title>
@@ -70,7 +87,13 @@
 							<div style="display: inline-block"><button type="submit" class="btn btn-secondary" style="font-size: 1.5rem;">Rechercher</button></div>
 						</form>
 					</div>	
-					<form action="vendeur_ajouter_item.php">		
+					
+					<form action="vendeur_ajouter_item2.php" method="post">
+						
+						<div style=" display:inline-block">
+							<div style="display: inline-block"><button type="submit" name="submit_ad" class="btn btn-success" style="font-size: 1.5rem;">Valider Ajouts</button></a></div>
+						</div>
+						
 						<table class="table table-striped " style="width:80%; margin: auto">
 							<thead class="thead-dark">
 								<tr>
@@ -84,69 +107,70 @@
 							</thead>
 							<tbody>
 								<?php
-										//Get the Search request
-										$research = isset($_POST["search"])? $_POST["search"] : "";
-										//Connection to the database
-										$database='commerce';
-										$db_handle=mysqli_connect('localhost','root','');
-										$db_found=mysqli_select_db($db_handle,$database);
-										if($db_found){	
-
-											if(empty($research)){
-												// on select dans la base
-												$sql = "SELECT * FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' ORDER BY item.quantite DESC"; 
-												$req = mysqli_query($db_handle, $sql); 
-												while($data=mysqli_fetch_assoc($req))
-												{
-													echo("<tr>");
-													echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
-													echo("<td class=\"align-middle\">".$data['Nom']."</td>");
-													echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
-													echo("<td class=\"align-middle\">".$data['Description']."</td>");
-													echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
-													echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="qte ajouts" name="quantite">');
-													echo("</tr>");
-												}
-											}
-											else{
-												// on select dans la base
-												$sql = "SELECT * FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND item.nom = '".$research."' ORDER BY item.quantite DESC " ; 
-												$req = mysqli_query($db_handle, $sql); 
-												while($data=mysqli_fetch_assoc($req)){
-													echo("<tr>");
-													echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
-													echo("<td class=\"align-middle\">".$data['Nom']."</td>");
-													echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
-													echo("<td class=\"align-middle\">".$data['Description']."</td>");
-													echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
-													echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="qte ajouts" name="quantite">');
-													echo("</tr>");
-												}
-												// on select dans la base
-												$sql = "SELECT * FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND item.categorie = '".$research."' ORDER BY item.quantite DESC "; 
-												$req = mysqli_query($db_handle, $sql); 
-												while($data=mysqli_fetch_assoc($req)){
-													echo("<tr>");
-													echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
-													echo("<td class=\"align-middle\">".$data['Nom']."</td>");
-													echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
-													echo("<td class=\"align-middle\">".$data['Description']."</td>");
-													echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
-													echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="qte ajouts" name="quantite">');
-													echo("</tr>");
-												}
+									//Get the Search request
+									$research = isset($_POST["search"])? $_POST["search"] : "";
+									//Connection to the database
+									$database='commerce';
+									$db_handle=mysqli_connect('localhost','root','');
+									$db_found=mysqli_select_db($db_handle,$database);
+									if($db_found){	
+										if(empty($research)){
+											// on select dans la base
+											$sql = "SELECT * FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' ORDER BY item.quantite DESC"; 
+											$req = mysqli_query($db_handle, $sql); 
+											while($data=mysqli_fetch_assoc($req))
+											{
+												echo("<tr>");
+												echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
+												echo("<td class=\"align-middle\">".$data['Nom']."</td>");
+												echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
+												echo("<td class=\"align-middle\">".$data['Description']."</td>");
+												echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
+												echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="qte ajouts" value="0" name="ajouter[]">');
+												echo("</tr>");
+												echo('<input type="hidden" name="ids[]" value="'.$data['Id_item'].'" placeholder="Nb"/>');
+												echo('<input type="hidden" name="quantite[]" value="'.$data['Quantite_vendeur'].'" placeholder="Nb"/>');
+												
 											}
 										}
+										else{
+											// on select dans la base
+											$sql = "SELECT * FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND item.nom = '".$research."' ORDER BY item.quantite DESC " ; 
+											$req = mysqli_query($db_handle, $sql); 
+											while($data=mysqli_fetch_assoc($req)){
+												echo("<tr>");
+												echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
+												echo("<td class=\"align-middle\">".$data['Nom']."</td>");
+												echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
+												echo("<td class=\"align-middle\">".$data['Description']."</td>");
+												echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
+												echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="qte ajouts" value="0" name="ajouter[]">');
+												echo("</tr>");
+												echo('<input type="hidden" name="ids[]" value="'.$data['Id_item'].'" placeholder="Nb"/>');
+												echo('<input type="hidden" name="quantite[]" value="'.$data['Quantite_vendeur'].'" placeholder="Nb"/>');
+											}
+											// on select dans la base
+											$sql = "SELECT * FROM item INNER JOIN imgitem ON item.Id_item = imgitem.Id_item WHERE imgitem.Is_main = '1' AND item.categorie = '".$research."' ORDER BY item.quantite DESC "; 
+											$req = mysqli_query($db_handle, $sql); 
+											while($data=mysqli_fetch_assoc($req)){
+												echo("<tr>");
+												echo("<td class=\"align-middle\"><img src=\"".$data['Nom_img']."\" style=\"width:6rem; height:6rem\" alt=\"\"></td>");
+												echo("<td class=\"align-middle\">".$data['Nom']."</td>");
+												echo("<td class=\"align-middle\">".$data['Categorie']."</td>");
+												echo("<td class=\"align-middle\">".$data['Description']."</td>");
+												echo("<td class=\"align-middle\">".$data['Prix']."€</td>");
+												echo('<td class="align-middle"><input type="number" class="form-control mb-2 mr-sm-2" placeholder="qte ajouts" value="0" name="ajouter[]">');
+												echo("</tr>");
+												echo('<input type="hidden" name="ids[]" value="'.$data['Id_item'].'" placeholder="Nb"/>');
+												echo('<input type="hidden" name="quantite[]" value="'.$data['Quantite_vendeur'].'" placeholder="Nb"/>');											
+											}
+										}
+									}
 											
-										mysqli_close($db_handle);
-									?>
+									mysqli_close($db_handle);
+								?>
 							</tbody>
 						</table>
-						
-						<!-- Validation -->
-						<div style="text-align: center">
-							<button type="submit" class="btn btn-success" style="font-size: 1.5rem; margin-top:1rem;">Valider les ajouts</button>
-						</div>
 					
 					</form>
 				</div>
