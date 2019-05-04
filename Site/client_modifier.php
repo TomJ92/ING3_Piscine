@@ -197,7 +197,7 @@
 									<button type="submit" class="btn btn-success" style="font-size: 1.5rem;">Appliquer</button>
 								</div>
 								<div style="display: inline-block; text-align: center; width: 48%">
-									<a href="compte_client.php" ><button type="button" class="btn btn-danger" style="font-size: 1.5rem;">Annuler</button></a>
+									<a href="client_connexion.php" ><button type="button" class="btn btn-danger" style="font-size: 1.5rem;">Annuler</button></a>
 								</div>
 							</div>
 						</div>

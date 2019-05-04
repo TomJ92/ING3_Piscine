@@ -58,8 +58,8 @@
 			<div class="collapse navbar-collapse justify-content-end">
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="admin_connexion.php">Admin</a></li>
-					<li class="nav-item"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
-					<li class="nav-item active"><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
+					<li class="nav-item active"><a class="nav-link" href="vendeur_connexion.php">Vendre</a></li>
+					<li class="nav-item "><a class="nav-link" href="client_connexion.php">Votre Compte <img src="Pictures/Compte.png" width="30" height="30"></a></li>
 					<li class="nav-item"><a class="nav-link" href="panier.php">Panier <img src="Pictures/Panier.png" width="30" height="30"></a></li>
 				</ul>
 			</div>
