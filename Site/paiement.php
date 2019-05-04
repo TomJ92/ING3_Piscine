@@ -163,6 +163,8 @@ if(isset($_POST['actuel'])||isset($_POST['nouvelle']))
 				$quantite_vendue=$data5['Quantite_vendeur']-$data4['Quantite_panier'];
 				$sql = "UPDATE Vendre SET Quantite_vendeur='".$quantite_vendue."' WHERE Id_item LIKE '".$data4['Id_item']."'";
 				$req = mysqli_query($db_handle, $sql);
+				$sql ="DELETE FROM Panier WHERE Id_item LIKE '".$data4['Id_item']."'";
+				$req = mysqli_query($db_handle, $sql);
 			}
 			session_write_close();
 
