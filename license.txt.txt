@@ -16,3 +16,6 @@ Outils d'aide à la conception du code :
 
 Sources de code utilisées :
 - https://pedago-ece.campusonline.me/course/view.php?id=1018 (ECE Paris : Web Dynamique, Cours et Corrigés de TD/TP)
+- https://www.w3schools.com (W3schools)
+- https://openclassrooms.com/fr/ (OpenClassrooms)
+
